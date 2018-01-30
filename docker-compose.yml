@@ -1,0 +1,17 @@
+web:
+ image: nginx:latest
+ ports:
+  - "8080:80"
+ volumes:
+  - /var/www/gabinet:/var/www/html
+  - /var/www/gabinet/site.conf:/etc/nginx/conf.d/000_site.conf
+ links:
+  - php
+
+php:
+  image: zaherg/php-7.2-xdebug-alpine
+  volumes:
+   - /var/www/gabinet:/var/www/html
+
+
+
