@@ -3,17 +3,20 @@
 @section('content')
     <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Dashboard</div>
+            <div class="panel-heading">Kategorie - Dodaj</div>
 
+            @if (session('status'))
             <div class="panel-body">
-                @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
-                @endif
-
-                You are logged in!
             </div>
+            @endif
+            {!! Form::open(['url' => url('categories')]) !!}
+            {!! Form::text('name') !!}
+            {!! Form::submit() !!}
+            {!! Form::close() !!}
+
         </div>
     </div>
 @endsection

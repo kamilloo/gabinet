@@ -18,3 +18,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('categories', 'CategoryController')->names([
+    'index' => 'categories.index',
+    'create' => 'categories.create',
+    'store' => 'categories.store',
+    'edit' => 'categories.edit',
+    'update' => 'categories.update',
+    'destroy' => 'categories.destroy',
+]);

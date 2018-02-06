@@ -6,7 +6,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Beautypress SPA Theme By Xpeedstudio</title>
+    <title>Gabinet kosmetyki pielęgnacyjnej Katarzyna Piętka</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -47,7 +47,7 @@
     <div class="preloader-window right-window"></div>
     <div class="preloader-content">
         <img src="img/prelaoder-logo.png" alt="">
-        <h2>Beautypress</h2>
+        <h2>Gabinet Kosmetyki Pielęgnacyjnej</h2>
     </div>
     <div class="spinner-block">
         <div class="spinner-eff spinner-eff-3">
@@ -65,25 +65,19 @@
         <div class="container">
             <div class="beautypress-spilit-container beautypress-version-2">
                 <div class="beautypress-language-select-list">
-                    <select name="lang-select" id="language-select">
-                        <option value="eng" selected>english</option>
-                        <option value="jap">japanese</option>
-                        <option value="thai">thai</option>
-                        <option value="chi">chinese</option>
-                    </select>
                     <div class="beautypress-header-social-list">
                         <ul>
-                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
-                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href=""><i class="fa fa-instagram"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="https://www.facebook.com/kosmetolog.wlkp/"><i class="fa fa-facebook"></i></a></li>
+                            {{--<li><a href=""><i class="fa fa-twitter"></i></a></li>--}}
+                            {{--<li><a href=""><i class="fa fa-dribbble"></i></a></li>--}}
+                            {{--<li><a href=""><i class="fa fa-instagram"></i></a></li>--}}
+                            {{--<li><a href=""><i class="fa fa-google-plus"></i></a></li>--}}
                         </ul>
                     </div>
                 </div>
                 <ul class="beautypress-simple-iocn-list beautypress-version-1">
-                    <li><i class="xsicon icon-call"></i>+00 11 222 333 444</li>
-                    <li><i class="xsicon icon-envelope"></i>info@xpeedstudio.com</li>
+                    <li><i class="xsicon icon-call"></i>+48 602 139 040</li>
+                    <li><i class="xsicon icon-envelope"></i>info.kosmetolog@gmail.com</li>
                 </ul>
             </div>
         </div>
@@ -98,11 +92,11 @@
                     <div class="nav-toggle"></div>
                 </div>
                 <div class="nav-search">
-                    <div class="nav-cart-button">
-                        <a href="#">
-                            <i class="fa fa-shopping-basket"></i>
-                        </a>
-                    </div>
+                    {{--<div class="nav-cart-button">--}}
+                        {{--<a href="#">--}}
+                            {{--<i class="fa fa-shopping-basket"></i>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
                     <div class="nav-search-button">
                         <a href="#">
                             <i class="fa fa-search"></i>
@@ -116,16 +110,9 @@
                 </div>
                 <div class="nav-menus-wrapper">
                     <ul class="nav-menu nav-menu-centered">
-                        <li><a href="#">Home</a>
-                            <ul class="nav-dropdown">
-                                <li><a href="index.html">home version 1</a></li>
-                                <li><a href="index-v2.html">home version 2</a></li>
-                                <li><a href="index-v3.html">home version 3</a></li>
-                                <li><a href="index-v4.html">home version 4</a></li>
-                                <li><a href="index-v5.html">home version 5</a></li>
-                            </ul>
+                        <li><a href="#">Strona Glówna</a>
                         </li>
-                        <li><a href="#">about</a>
+                        <li><a href="#">O mnie</a>
                             <ul class="nav-dropdown">
                                 <li><a href="about.html">about version 1</a></li>
                                 <li><a href="about-v2.html">about version 2</a></li>
@@ -134,7 +121,7 @@
                                 <li><a href="about-v5.html">about version 5</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">services</a>
+                        <li><a href="#">Usługi</a>
                             <ul class="nav-dropdown">
                                 <li><a href="service.html">service version 1</a></li>
                                 <li><a href="service-v1.html">service version 2</a></li>
@@ -180,7 +167,7 @@
                                 <li><a href="blog-post.html">blog post</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">contact</a>
+                        <li><a href="#">Kontakt</a>
                             <ul class="nav-dropdown">
                                 <li><a href="contact.html">contact version 1</a></li>
                                 <li><a href="contact-v2.html">contact version 2</a></li>
@@ -248,12 +235,12 @@
                     <div class="beautypress-welcome-content-group">
                         <div class="beautypress-welcome-container">
                             <div class="beautypress-welcome-wraper">
-                                <h2 class="color-white">The Best Treatments</h2>
-                                <h3 class="color-white">beautypress For Life</h3>
-                                <p class="color-white">The bedding was hardly able to cover it and seemed ready to slide off any moment. <br> His many legs, pitifully thin compared.</p>
+                                <h2 class="color-white">Pierwsze hasło</h2>
+                                <h3 class="color-white">Pierwszy podtytuł</h3>
+                                <p class="color-white">Pierwszy opis ale rzeczowy.</p>
                                 <div class="beautypress-btn-wraper">
-                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">phurchase<span></span></a>
-                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">learn more<span></span></a>
+                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>
                                 </div>
                             </div>
                         </div><!-- .beautypress-welcome-container END -->
@@ -266,12 +253,12 @@
                     <div class="beautypress-welcome-content-group">
                         <div class="beautypress-welcome-container">
                             <div class="beautypress-welcome-wraper">
-                                <h2 class="color-white">Perfect Looking Hair</h2>
-                                <h3 class="color-white">Enjoy The Difference</h3>
-                                <p class="color-white">The bedding was hardly able to cover it and seemed ready to slide off any moment. <br> His many legs, pitifully thin compared.</p>
+                                <h2 class="color-white">Drugie hasło, może to być nowość</h2>
+                                <h3 class="color-white">Drugi podtytuł do hasłą</h3>
+                                <p class="color-white">Drugi krótki ale jakże ważny opis.</p>
                                 <div class="beautypress-btn-wraper">
-                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">phurchase <span></span></a>
-                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">learn more <span></span></a>
+                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
                                 </div>
                             </div>
                         </div><!-- .beautypress-welcome-container END -->
@@ -284,12 +271,12 @@
                     <div class="beautypress-welcome-content-group">
                         <div class="beautypress-welcome-container">
                             <div class="beautypress-welcome-wraper">
-                                <h2 class="color-white">Get a Amazing</h2>
-                                <h3 class="color-white">awesome Hair Look</h3>
-                                <p class="color-white">The bedding was hardly able to cover it and seemed ready to slide off any moment. <br> His many legs, pitifully thin compared.</p>
+                                <h2 class="color-white">Trzeci tytuł</h2>
+                                <h3 class="color-white">trzecy podtytuł i równie ważny</h3>
+                                <p class="color-white">Trzeci opis też ważny.</p>
                                 <div class="beautypress-btn-wraper">
-                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">phurchase <span></span></a>
-                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">learn more <span></span></a>
+                                    <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                    <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
                                 </div>
                             </div>
                         </div><!-- .beautypress-welcome-container END -->
@@ -306,8 +293,8 @@
 <section class="beautypress-our-features-section beautypress-padding-bottom">
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
-            <h2>We are awesome</h2>
-            <h3>Our Services</h3>
+            <h2>Zapraszamy</h2>
+            <h3>Nasze usługi</h3>
             <img src="img/section-heading-separetor.png" alt="">
         </div>
 
@@ -319,7 +306,7 @@
                     <div class="beautypress-our-features-content">
                         <h3>Beauty Care</h3>
                         <div class="xs-btn-wraper">
-                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">read more <span></span></a>
+                            <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-purple">czytaj więcej <span></span></a>
                         </div>
                     </div>
                 </div><!-- .beautypress-single-our-feature END -->

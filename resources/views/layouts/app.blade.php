@@ -31,6 +31,9 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('home') }}">
+                        Dashboard
+                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
@@ -71,7 +74,22 @@
             </div>
         </nav>
 
-        @yield('content')
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active">Users</a>
+                        <a href="categories" class="list-group-item">Kategorie</a>
+                        <a href="#" class="list-group-item">Usługi</a>
+                        <a href="#" class="list-group-item">Galeria</a>
+                        <a href="#" class="list-group-item">Blog</a>
+                        <a href="#" class="list-group-item">Certyfikaty</a>
+                    </div>
+
+                </div>
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <!-- Scripts -->
