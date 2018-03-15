@@ -9,7 +9,7 @@ web:
   - php
 
 php:
-  image: zaherg/php-7.2-xdebug-alpine
+  image: php7_2:latest
   volumes:
    - /var/www/gabinet:/var/www/html
 

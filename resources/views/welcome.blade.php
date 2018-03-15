@@ -60,7 +60,7 @@
 <!-- Prelaoder end -->
 
 <!-- Main menu -->
-<header class="beautypress-header-section beautypress-header-version-3 beautypress-header-version-2 header-height-calc-minus">
+<header class="beautypress-header-section beautypress-header-version-2 header-height-calc-minus navbar-fixed">
     <div class="beautypress-header-top bg-color-gray-2">
         <div class="container">
             <div class="beautypress-spilit-container beautypress-version-2">
@@ -130,7 +130,7 @@
                                 <li><a href="square-service.html">service version 5</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">portfolio</a>
+                        <li><a href="#portfolio">portfolio</a>
                             <ul class="nav-dropdown">
                                 <li><a href="">portfolio version 1</a>
                                     <ul class="nav-dropdown">
@@ -294,7 +294,7 @@
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
             <h2>Zapraszamy</h2>
-            <h3>Nasze usługi</h3>
+            <h3>Nowości</h3>
             <img src="img/section-heading-separetor.png" alt="">
         </div>
 
@@ -343,13 +343,13 @@
 
 
 <!-- Simple text with image-->
-<section class="beautypress-simple-text-with-img-section bg-color-gray">
+<section id="about" class="beautypress-simple-text-with-img-section bg-color-gray">
     <div class="container">
         <div class="row">
             <div class="col-md-12 col-sm-12 col-xl-6 col-lg-6">
                 <div class="beautypress-simple-text beautypress-watermark-icon">
                     <div class="beautypress-separetor-sub-heading">
-                        <h2>Our Secrets</h2>
+                        <h2>O Nas</h2>
                     </div><!-- . END -->
                     <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought.</p>
                     <div class="beautypress-btn-wraper">
@@ -370,7 +370,7 @@
 
 
 <!-- Service section -->
-<section class="beautypress-service-section beautypress-version-2 beautypress-padding-bottom">
+<section id="services" class="beautypress-service-section beautypress-version-2 beautypress-padding-bottom">
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
             <h2>We are awesome</h2>
@@ -1300,7 +1300,7 @@
 <!-- booking section end -->
 
 <!-- Photo gallery -->
-<section class="beautypress-photo-gallery-section beautypress-version-2 beautypress-padding-bottom">
+<section id="portfolio" class="beautypress-photo-gallery-section beautypress-version-2 beautypress-padding-bottom">
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
             <h2>We are awesome</h2>
@@ -1409,7 +1409,7 @@
 <!-- Photo gallery -->
 
 <!-- Testimonial Slider -->
-<section class="beautypress-testimonial-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/testimonial-bg.jpg">
+<section id="reviews" class="beautypress-testimonial-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/testimonial-bg.jpg">
     <div class="container">
         <div class="beautypress-testimonial-slider owl-carousel">
             <div class="beautypress-single-testimonial">
@@ -1475,7 +1475,7 @@
 <!-- Testimonial Slider -->
 
 <!-- Pricing table -->
-<section class="beautypress-pricing-table-section beautypress-padding-bottom">
+<section id="pricing" class="beautypress-pricing-table-section beautypress-padding-bottom">
     <div class="container">
         <div class="beautypress-section-headinig beautypress-version-2">
             <h2>We are awesome</h2>
@@ -1762,7 +1762,7 @@
 <!-- Fun factory section -->
 
 <!-- partner section -->
-<section class="beautypress-partner-section section-padding">
+<section id="partners" class="beautypress-partner-section section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -1784,7 +1784,7 @@
 <!-- partner section end -->
 
 <!-- Footer section -->
-<footer class="beautypress-footer-section beautypress-version-3">
+<footer id class="beautypress-footer-section beautypress-version-3">
     <div class="container">
         <div class="beautypress-footer-content">
             <div class="beautypress-footer-logo">

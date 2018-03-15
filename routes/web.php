@@ -26,3 +26,21 @@ Route::resource('categories', 'CategoryController')->names([
     'update' => 'categories.update',
     'destroy' => 'categories.destroy',
 ]);
+
+Route::resource('services', 'ServiceController')->names([
+    'index' => 'services.index',
+    'create' => 'services.create',
+    'store' => 'services.store',
+    'edit' => 'services.edit',
+    'update' => 'services.update',
+    'destroy' => 'services.destroy',
+]);
+
+Route::resource('portfolio', 'PortfolioController')->names([
+    'index' => 'portfolio.index',
+    'create' => 'portfolio.create',
+    'store' => 'portfolio.store',
+    'edit' => 'portfolio.edit',
+    'update' => 'portfolio.update',
+    'destroy' => 'portfolio.destroy',
+]);

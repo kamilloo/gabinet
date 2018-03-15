@@ -79,9 +79,9 @@
                 <div class="col-md-4 ">
                     <div class="list-group">
                         <a href="#" class="list-group-item active">Users</a>
-                        <a href="categories" class="list-group-item">Kategorie</a>
-                        <a href="#" class="list-group-item">Usługi</a>
-                        <a href="#" class="list-group-item">Galeria</a>
+                        <a href="{{ route('categories.index') }}" class="list-group-item">Kategorie</a>
+                        <a href="{{ route('services.index') }}" class="list-group-item">Usługi</a>
+                        <a href="{{ route('portfolio.index') }}" class="list-group-item">Galeria</a>
                         <a href="#" class="list-group-item">Blog</a>
                         <a href="#" class="list-group-item">Certyfikaty</a>
                     </div>
