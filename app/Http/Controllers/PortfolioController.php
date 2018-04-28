@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Portfolio;
+use App\Notifications\TestNootification;
 use App\Service;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\DB;
 
 class PortfolioController extends Controller
 {
     public function index()
     {
-        return view('backend.portfolio.index', [
-            'services' => Service::all()
-        ]);
+        $files = Portfolio::all();
+        return view('backend.portfolio.index',compact('files'));
     }
 
     /**
@@ -32,52 +36,19 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        Service::create([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        DB::transaction(function() use ($request){
+            $file_name =  basename($request->filepath);
+            $path = 'portfolio/' .basename($file_name);
+            Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
+            Portfolio::create([
+                'disk' => 'storage',
+                'file' => $file_name,
+                'path' => $path
+            ]);
+            Storage::disk('file-manager')->delete($file_name);
+        });
 
-        return redirect('services')->with(['status' => 'Usługa została dodana.']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Service $service)
-    {
-        return view('backend.portfolio.edit', compact('service'));
-
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Service $service)
-    {
-        $service->update([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
-
-        return redirect('services')->with(['status' => 'Kategoria zapisana.']);
+        return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie została dodane.']);
     }
 
     /**
@@ -86,11 +57,19 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $service)
+    public function destroy(Portfolio $portfolio)
     {
-        $service->delete();
+        try{
+            DB::transaction(function () use($portfolio){
+                Storage::disk($portfolio->disk)->delete($portfolio->path);
+                $portfolio->delete();
+            });
+        }catch (\Exception $exception)
+        {
+            return redirect(route('portfolio.index'))->with(['error' => $exception->getMessage()]);
 
-        return redirect('services')->with(['status' => 'Usługa usunięta.']);
+        }
+        return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie usunięte.']);
 
     }
 }

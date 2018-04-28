@@ -3,8 +3,7 @@
 @section('content')
     <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Kategorie <a href="{{ route('services.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-
+            <div class="panel-heading">Portfolio <a href="{{ route('portfolio.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
             @if (session('status'))
             <div class="panel-body">
                     <div class="alert alert-success">
@@ -12,24 +11,27 @@
                     </div>
             </div>
             @endif
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>Lp</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($services as $service)
-                    <tr>
-                        <td>{{ $service->id }}</td>
-                        <td>{{ $service->title }}</td>
-                        <td><a href="{{ route('services.edit', $service) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><a href="{{ route('services.destroy', $service) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-                    </tr>
+            <div class="panel-body">
+                @foreach($files as $file)
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            <img src="{{ asset('storage/'.$file->path) }}">
+                            <div class="caption">
+                                <p>
+
+                                    <form action="{{ route('portfolio.destroy', $file) }}" method="post">
+                                    {{ csrf_field() }}
+                                    {{ method_field('delete') }}
+                                    <button class="btn btn-warning" role="button">Delete</button>
+                                    </form>
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
                 @endforeach
-                </tbody>
-            </table>
+            </div>
+
         </div>
     </div>
 @endsection

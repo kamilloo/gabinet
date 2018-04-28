@@ -5,6 +5,9 @@ web:
  volumes:
   - /var/www/gabinet:/var/www/html
   - /var/www/gabinet/site.conf:/etc/nginx/conf.d/000_site.conf
+  - /var/www/gabinet/nginx.conf:/etc/nginx/nginx.conf
+  - /var/www/gabinet/nginx/logs:/var/log/nginx
+
  links:
   - php
 

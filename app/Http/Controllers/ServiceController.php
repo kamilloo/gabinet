@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServiceRequest;
+use App\Rules\Uppercase;
 use App\Service;
+use App\User;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
     public function index()
     {
-        return view('backend.services.index', [
-            'services' => Service::all()
+        return \View::first(['backend', 'backend.services.index'])->with([
+            'services' => Service::paginate()
         ]);
     }
 
@@ -72,12 +81,13 @@ class ServiceController extends Controller
      */
     public function update(Request $request, Service $service)
     {
-        $service->update([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+            $service->update([
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
 
-        return redirect('services')->with(['status' => 'Kategoria zapisana.']);
+            return redirect('services')->with(['status' => 'Kategoria zapisana.']);
+
     }
 
     /**

@@ -36,11 +36,8 @@ Route::resource('services', 'ServiceController')->names([
     'destroy' => 'services.destroy',
 ]);
 
-Route::resource('portfolio', 'PortfolioController')->names([
-    'index' => 'portfolio.index',
-    'create' => 'portfolio.create',
-    'store' => 'portfolio.store',
-    'edit' => 'portfolio.edit',
-    'update' => 'portfolio.update',
-    'destroy' => 'portfolio.destroy',
-]);
+
+Route::get('portfolio/create', 'PortfolioController@create')->name('portfolio.create');
+Route::post('portfolio', 'PortfolioController@store')->name('portfolio.store');
+Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
+Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');

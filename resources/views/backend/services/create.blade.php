@@ -12,6 +12,15 @@
                     </div>
             </div>
             @endif
+
+            @if($errors->any())
+                @foreach($errors->all() as $error)
+                    <p>{{ $error }}</p>
+                @endforeach
+            @endif
+            @if($errors->has('destr'))
+                    <p>{{$errors->first('title')}}</p>
+            @endif
             {!! Form::open(['url' => url('services')]) !!}
             <div class="panel-body">
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
