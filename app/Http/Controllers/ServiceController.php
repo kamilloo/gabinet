@@ -2,18 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ServiceRequest;
-use App\Rules\Uppercase;
-use App\Service;
-use App\User;
+use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    public function __construct(Model $model)
+    public function __construct()
     {
-        $this->model = $model;
     }
 
     public function index()

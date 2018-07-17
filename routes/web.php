@@ -13,31 +13,43 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Auth::routes();
 
+Route::group(['prefix' => 'admin'], function(){
+
+    Route::resource('categories', 'CategoryController')->names([
+        'index' => 'categories.index',
+        'create' => 'categories.create',
+        'store' => 'categories.store',
+        'edit' => 'categories.edit',
+        'update' => 'categories.update',
+        'destroy' => 'categories.destroy',
+    ]);
+
+    Route::resource('services', 'ServiceController')->names([
+        'index' => 'services.index',
+        'create' => 'services.create',
+        'store' => 'services.store',
+        'edit' => 'services.edit',
+        'update' => 'services.update',
+        'destroy' => 'services.destroy',
+    ]);
+
+
+    Route::get('portfolio/create', 'PortfolioController@create')->name('portfolio.create');
+    Route::post('portfolio', 'PortfolioController@store')->name('portfolio.store');
+    Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
+    Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');
+});
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('categories', 'CategoryController')->names([
-    'index' => 'categories.index',
-    'create' => 'categories.create',
-    'store' => 'categories.store',
-    'edit' => 'categories.edit',
-    'update' => 'categories.update',
-    'destroy' => 'categories.destroy',
-]);
 
-Route::resource('services', 'ServiceController')->names([
-    'index' => 'services.index',
-    'create' => 'services.create',
-    'store' => 'services.store',
-    'edit' => 'services.edit',
-    'update' => 'services.update',
-    'destroy' => 'services.destroy',
-]);
+Route::group(['namespace' => 'Front'], function (){
+    Route::view('portfolio', 'portfolio', ['files' => \App\Models\Portfolio::all()])->name('portfolio');
+    Route::view('usługi', 'services', ['files' => \App\Models\Portfolio::all()])->name('services');
+    Route::view('onas', 'about', ['files' => \App\Models\Portfolio::all()])->name('about');
+    Route::view('kontakt', 'contact', ['files' => \App\Models\Portfolio::all()])->name('contact');
+    Route::view('cennik', 'pricing', ['files' => \App\Models\Portfolio::all()])->name('pricing');
+});
 
-
-Route::get('portfolio/create', 'PortfolioController@create')->name('portfolio.create');
-Route::post('portfolio', 'PortfolioController@store')->name('portfolio.store');
-Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
-Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');

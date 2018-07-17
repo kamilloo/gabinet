@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\Models\Certificate;
+use App\Models\Service;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
-use Tests\CreatesApplication;
 
-class CategoryController extends Controller
+class CertificateController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+    }
+
     public function index()
     {
-        return view('backend.categories.index', [
-            'categories' => Category::all()
+        return \View::first(['backend', 'backend.certificates.index'])->with([
+            'certificates' => Certificate::paginate()
         ]);
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.categories.create');
+        return view('backend.certificates.create');
     }
 
     /**
@@ -38,11 +38,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create([
-            'name' => $request->name,
+        Service::create([
+            'title' => $request->title,
+            'description' => $request->description,
         ]);
 
-        return redirect('categories')->with(['status' => 'Kategoria została dodana.']);
+        return redirect('certificates')->with(['status' => 'Usługa została dodana.']);
     }
 
     /**
@@ -62,9 +63,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Service $certificate)
     {
-        return view('backend.categories.edit', compact('category'));
+        return view('backend.certificates.edit', compact('certificate'));
 
     }
 
@@ -75,13 +76,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Service $certificate)
     {
-        $category->update([
-            'name' => $request->name,
-        ]);
+            $certificate->update([
+                'title' => $request->title,
+                'description' => $request->description,
+            ]);
 
-        return redirect('categories')->with(['status' => 'Kategoria zapisana.']);
+            return redirect('certificates')->with(['status' => 'Kategoria zapisana.']);
+
     }
 
     /**
@@ -90,11 +93,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Service $certificate)
     {
-        $category->delete();
+        $certificate->delete();
 
-        return redirect('categories')->with(['status' => 'Kategoria usunięta.']);
+        return redirect('certificates')->with(['status' => 'Usługa usunięta.']);
 
     }
 }

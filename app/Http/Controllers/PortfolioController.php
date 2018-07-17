@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Portfolio;
 use App\Notifications\TestNootification;
-use App\Service;
-use App\User;
+use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\DB;
