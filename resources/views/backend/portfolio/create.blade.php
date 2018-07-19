@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <h1 class="page-header">Dodaj zdjecie</h1>
-        {!! Form::open(['url' => route('portfolio.store'), 'mathod' => \Illuminate\Http\Request::METHOD_POST]) !!}
+        {!! Form::open(['url' => route('portfolio.store'), 'method' => \Illuminate\Http\Request::METHOD_POST]) !!}
         <div class="row">
             <div class="col-sm-4">
                 <div class="input-group">

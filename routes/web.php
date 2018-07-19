@@ -42,13 +42,23 @@ Route::group(['prefix' => 'admin'], function(){
     Route::post('portfolio', 'PortfolioController@store')->name('portfolio.store');
     Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
     Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');
+
+    Route::resource('certificates', 'CertificateController')->names([
+        'index' => 'certificates.index',
+        'create' => 'certificates.create',
+        'store' => 'certificates.store',
+        'edit' => 'certificates.edit',
+        'update' => 'certificates.update',
+        'destroy' => 'certificates.destroy',
+    ])->except('show');
+    
 });
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Front'], function (){
     Route::view('portfolio', 'portfolio', ['files' => \App\Models\Portfolio::all()])->name('portfolio');
     Route::view('usługi', 'services', ['files' => \App\Models\Portfolio::all()])->name('services');
-    Route::view('onas', 'about', ['files' => \App\Models\Portfolio::all()])->name('about');
+    Route::view('onas', 'about', ['certificates' => \App\Models\Certificate::all()])->name('about');
     Route::view('cennik', 'pricing', ['files' => \App\Models\Portfolio::all()])->name('pricing');
     Route::view('kontakt', 'contact', ['files' => \App\Models\Portfolio::all()])->name('contact');
     Route::post('kontakt', 'Contact@store');

@@ -49,29 +49,23 @@
     <section class="beautypress-team-section beautypress-padding-bottom bg-color-gray beautypress-bg">
         <div class="container">
             <div class="beautypress-section-headinig">
-                <h2>We are awesome</h2>
-                <h3>Expert Beauticians</h3>
+                <h2>Certyfikaty</h2>
+                <h3>Ciągły rozwój połączony z pasją</h3>
             </div>
             <div class="row">
+                @foreach($certificates as $certificate)
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-team beautypress-purple-overlay">
-                        <img src="img/team-1.jpg" alt="">
+                        <img src="{{ asset('storage/'.$certificate->path) }}" alt="">
                         <div class="beautypress-team-content">
                             <div class="beautypress-team-person-details">
-                                <h3>Jenny william</h3>
-                                <h4>Founder</h4>
-                            </div>
-                            <div class="beautypress-team-person-socail-details">
-                                <ul class="beautypress-social-list">
-                                    <li><a href="" class="beautypress-facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="" class="beautypress-twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="" class="beautypress-pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="" class="beautypress-dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                </ul><!-- .beautypress-social-list END -->
+                                <h3>{{ $certificate->title }}</h3>
+                                <h4>{{ $certificate->description }}</h4>
                             </div>
                         </div><!-- .beautypress-team-content END -->
                     </div><!-- .beautypress-single-team END -->
                 </div>
+                @endforeach
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-team beautypress-pink-overlay">
                         <img src="img/team-2.jpg" alt="">

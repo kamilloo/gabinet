@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Certificate;
-use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CertificateController extends Controller
 {
@@ -38,23 +39,21 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
-        Service::create([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        DB::transaction(function() use ($request){
+            $file_name =  basename($request->filepath);
+            $path = 'certificates/' .basename($file_name);
+            Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
+            Certificate::create([
+                'title' => $request->title,
+                'description' => $request->description,
+                'disk' => 'storage',
+                'file' => $file_name,
+                'path' => $path
+            ]);
+            Storage::disk('file-manager')->delete($file_name);
+        });
 
-        return redirect('certificates')->with(['status' => 'Usługa została dodana.']);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
+        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został dodany.']);
     }
 
     /**
@@ -63,7 +62,7 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Service $certificate)
+    public function edit(Certificate $certificate)
     {
         return view('backend.certificates.edit', compact('certificate'));
 
@@ -76,14 +75,31 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $certificate)
+    public function update(Request $request, Certificate $certificate)
     {
+        DB::transaction(function() use ($request, $certificate){
+
             $certificate->update([
                 'title' => $request->title,
                 'description' => $request->description,
             ]);
+            if ($request->filepath)
+            {
+                $old_file = $certificate->path;
+                $file_name =  basename($request->filepath);
+                $path = 'certificates/' .basename($file_name);
+                Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
+                $certificate->update([
+                    'disk' => 'storage',
+                    'file' => $file_name,
+                    'path' => $path
+                ]);
+                Storage::disk('file-manager')->delete($file_name);
+                Storage::disk('storage')->delete($old_file);
+            }
+        });
 
-            return redirect('certificates')->with(['status' => 'Kategoria zapisana.']);
+        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został zapisany.']);
 
     }
 
@@ -93,11 +109,18 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Service $certificate)
+    public function destroy(Certificate $certificate)
     {
-        $certificate->delete();
+        try{
+            DB::transaction(function () use($certificate){
+                Storage::disk($certificate->disk)->delete($certificate->path);
+                $certificate->delete();
+            });
+        }catch (\Exception $exception)
+        {
+            return redirect(route('portfolio.index'))->with(['error' => $exception->getMessage()]);
 
-        return redirect('certificates')->with(['status' => 'Usługa usunięta.']);
-
+        }
+        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat usunięty.']);
     }
 }
