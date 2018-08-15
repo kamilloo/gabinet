@@ -70,7 +70,7 @@ Route::group(['namespace' => 'Front'], function (){
     Route::view('portfolio', 'portfolio', ['files' => \App\Models\Portfolio::all()])->name('portfolio');
     Route::view('usługi', 'services', ['files' => \App\Models\Portfolio::all()])->name('services');
     Route::view('onas', 'about', ['certificates' => \App\Models\Certificate::all()])->name('about');
-    Route::view('cennik', 'pricing', ['files' => \App\Models\Portfolio::all()])->name('pricing');
+    Route::view('cennik', 'pricing', ['files' => \App\Models\Pricing::with('items')->get()])->name('pricing');
     Route::view('kontakt', 'contact', ['files' => \App\Models\Portfolio::all()])->name('contact');
     Route::post('kontakt', 'Contact@store');
 });

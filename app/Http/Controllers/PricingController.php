@@ -80,18 +80,17 @@ class PricingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Certificate $certificate)
+    public function destroy(Pricing $pricing)
     {
         try{
-            DB::transaction(function () use($certificate){
-                Storage::disk($certificate->disk)->delete($certificate->path);
-                $certificate->delete();
+            DB::transaction(function () use($pricing){
+                Storage::disk($pricing->disk)->delete($pricing->path);
+                $pricing->delete();
             });
         }catch (\Exception $exception)
         {
-            return redirect(route('portfolio.index'))->with(['error' => $exception->getMessage()]);
-
+            return redirect(route('pricing.index'))->with(['error' => $exception->getMessage()]);
         }
-        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat usunięty.']);
+        return redirect(route('pricing.index'))->with(['status' => 'Cennik usunięty.']);
     }
 }
