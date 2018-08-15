@@ -83,6 +83,7 @@
                         <a href="{{ route('services.index') }}" class="list-group-item">Usługi</a>
                         <a href="{{ route('portfolio.index') }}" class="list-group-item">Galeria</a>
                         <a href="{{ route('certificates.index') }}" class="list-group-item">Certyfikaty</a>
+                        <a href="{{ route('pricing.index') }}" class="list-group-item">Cennik</a>
                     </div>
 
                 </div>

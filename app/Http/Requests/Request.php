@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends Request
+class Request extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -12,7 +13,7 @@ class ServiceRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -23,7 +24,7 @@ class ServiceRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required'
+            //
         ];
     }
 }

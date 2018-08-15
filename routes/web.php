@@ -51,7 +51,18 @@ Route::group(['prefix' => 'admin'], function(){
         'update' => 'certificates.update',
         'destroy' => 'certificates.destroy',
     ])->except('show');
-    
+
+
+    Route::resource('pricing', 'PricingController')->names([
+        'index' => 'pricing.index',
+        'create' => 'pricing.create',
+        'store' => 'pricing.store',
+        'edit' => 'pricing.edit',
+        'update' => 'pricing.update',
+        'destroy' => 'pricing.destroy',
+    ]);
+
+
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

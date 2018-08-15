@@ -7,8 +7,8 @@
         <div class="container">
             <div class="beautypress-inner-welcome-content">
                 <img src="img/inner-welcome-icon.png" alt="">
-                <h1 class="color-white">Our Pricing</h1>
-                <p class="color-white">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.</p>
+                <h1 class="color-white">Cennik</h1>
+                <p class="color-white"></p>
             </div><!-- .beautypress-inner-welcome-content END -->
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">
@@ -48,7 +48,7 @@
                             </ul>
 
                             <div class="beautypress-btn-wraper">
-                                <a href="#" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Appointment Now <span></span></a>
+                                <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Appointment Now <span></span></a>
                             </div>
                         </div><!-- .beautypress-pricing-footer END -->
                     </div><!-- .beautypress-single-pricing-table END -->
