@@ -62,7 +62,10 @@ Route::group(['prefix' => 'admin'], function(){
         'destroy' => 'pricing.destroy',
     ]);
 
-
+    Route::resource('tags', 'TagController')->names([
+        'index' => 'tags.index',
+        'store' => 'tags.store',
+    ]);
 });
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
+use App\Models\Tag;
 use App\Notifications\TestNootification;
 use App\Models\Service;
 use App\Models\User;
@@ -14,7 +16,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        $files = Portfolio::all();
+        $files = Portfolio::with('tags')->get();
         return view('backend.portfolio.index',compact('files'));
     }
 
@@ -34,18 +36,25 @@ class PortfolioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PortfolioRequest $request)
     {
         DB::transaction(function() use ($request){
             $file_name =  basename($request->filepath);
             $path = 'portfolio/' .basename($file_name);
             Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
-            Portfolio::create([
+            $portfolio = Portfolio::create([
                 'disk' => 'storage',
                 'file' => $file_name,
                 'path' => $path
             ]);
             Storage::disk('file-manager')->delete($file_name);
+
+            $tags = collect($request->tags())->map(function($raw){
+                return Tag::create([
+                    'name' => $raw
+                ]);
+            });
+            $portfolio->tags()->attach($tags->pluck('id'));
         });
 
         return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie została dodane.']);

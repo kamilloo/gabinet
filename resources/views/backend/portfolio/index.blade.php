@@ -26,6 +26,12 @@
                                     </form>
                                 </p>
                             </div>
+                            <p>
+                                @foreach($file->tags as $tag)
+                                    <span class="label label-primary">{{ $tag->name }}</span>
+                                @endforeach
+                            </p>
+
                         </div>
                     </div>
                 @endforeach

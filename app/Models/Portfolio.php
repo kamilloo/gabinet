@@ -18,4 +18,9 @@ class Portfolio extends FileModel implements FileModelInterface
     {
         return 'portfolio/';
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'portfolio_tag');
+    }
 }

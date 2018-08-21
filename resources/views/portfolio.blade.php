@@ -37,22 +37,7 @@
 
 
             <div class="beautypress-photo-gallery-grid">
-                @foreach($files as $file)
-                <div class="beautypress-photo-gallery-grid-item hair">
-                    <div class="beautypress-single-photo-gallery">
-                        <img src="{{ asset('storage/'.$file->path) }}" alt="">
-                        <div class="beautypress-photo-gallery-content">
-                            <a href="{{ asset('storage/'.$file->path) }}" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-pink">
-                                <i class="fa fa-eye"></i>
-                            </a>
-                            <a href="#" class="beautypress-iocn-btn full-round-btn bg-color-purple">
-                                <i class="fa fa-link"></i>
-                            </a>
-                        </div><!-- .beautypress-photo-gallery-content END -->
-                        <div class="beautypress-gallery-overlay"></div>
-                    </div><!-- .beautypress-single-photo-gallery END -->
-                </div><!-- .beautypress-photo-gallery-grid-item END -->
-                @endforeach
+
                 <div class="beautypress-photo-gallery-grid-item hair">
                     <div class="beautypress-single-photo-gallery">
                         <img src="img/gallery-1.jpg" alt="">
@@ -137,6 +122,22 @@
                         <div class="beautypress-gallery-overlay"></div>
                     </div><!-- .beautypress-single-photo-gallery END -->
                 </div><!-- .beautypress-photo-gallery-grid-item END -->
+                @foreach($files as $file)
+                    <div class="beautypress-photo-gallery-grid-item hair">
+                        <div class="beautypress-single-photo-gallery">
+                            <img src="{{ asset('storage/'.$file->path) }}" alt="">
+                            <div class="beautypress-photo-gallery-content">
+                                <a href="{{ asset('storage/'.$file->path) }}" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-pink">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+                                <a href="#" class="beautypress-iocn-btn full-round-btn bg-color-purple">
+                                    <i class="fa fa-link"></i>
+                                </a>
+                            </div><!-- .beautypress-photo-gallery-content END -->
+                            <div class="beautypress-gallery-overlay"></div>
+                        </div><!-- .beautypress-single-photo-gallery END -->
+                    </div><!-- .beautypress-photo-gallery-grid-item END -->
+                @endforeach
             </div><!-- .beautypress-photo-gallery-grid END -->
         </div>
     </div>
