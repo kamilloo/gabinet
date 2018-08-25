@@ -13,6 +13,7 @@ window.Vue = require('vue');
 require('../css/bootstrap-tagsinput.css');
 var tagsInput = require('./bootstrap-tagsinput');
 var Bloodhound = require('./typeahead.bundle');
+var axios = require('axios');
 
 
 /**
@@ -27,24 +28,43 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 //     el: '#app'
 // });
 
-var tags = new Bloodhound({
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
-    queryTokenizer: Bloodhound.tokenizers.whitespace,
-    prefetch: {
-        url: '/admin/tags',
-        filter: function(list) {
-            return $.map(list, function(cityname) {
-                return { name: cityname }; });
-        }
-    }
-});
-tags.initialize();
+function getTags(){
+    axios.get('/admin/tags')
+        .then(function (response){
+            initTags(response.data);
 
-$('input[name="tags"]').tagsinput({
-    typeaheadjs: {
-        name: 'tags',
-        displayKey: 'name',
-        valueKey: 'id',
-        source: tags.ttAdapter()
-    }
-});
+        }).catch(function (error) {
+            console.log(error);
+    });
+}
+
+
+function initTags(tags_data) {
+    var tags = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: $.map(tags_data, function (tag) {
+            return {
+                name: tag
+            };
+        })
+    });
+    tags.initialize();
+
+    $('input[name="tags"]').tagsinput({
+        typeaheadjs: [{
+            minLength: 1,
+            highlight: true,
+        },{
+            minlength: 1,
+            name: 'tags',
+            displayKey: 'name',
+            valueKey: 'name',
+            source: tags.ttAdapter()
+        }],
+        freeInput: true
+    });
+}
+
+getTags();
+

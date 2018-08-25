@@ -6,7 +6,7 @@
         {!! Form::open(['url' => route('portfolio.store'), 'method' => \Illuminate\Http\Request::METHOD_POST]) !!}
         <div class="row">
             <div class="panel-body">
-                {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'tagi', 'data-role' => 'tagsinput']) !!}
+                {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'tagi']) !!}
 
             </div>
             <div class="col-sm-4">
@@ -30,10 +30,6 @@
 
         {!! Form::close() !!}
     </div>
-
-    {{--<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>--}}
-
-
 
 @endsection
 

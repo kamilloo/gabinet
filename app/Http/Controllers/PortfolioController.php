@@ -50,7 +50,7 @@ class PortfolioController extends Controller
             Storage::disk('file-manager')->delete($file_name);
 
             $tags = collect($request->tags())->map(function($raw){
-                return Tag::create([
+                return Tag::firstOrCreate([
                     'name' => $raw
                 ]);
             });

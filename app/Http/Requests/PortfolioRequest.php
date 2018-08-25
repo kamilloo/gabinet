@@ -29,6 +29,8 @@ class PortfolioRequest extends Request
 
     public function tags()
     {
-        return explode(',', $this->tags);
+        return collect(explode(',', $this->tags))->map(function ($tag){
+            return mb_strtolower(trim($tag));
+        })->all();
     }
 }

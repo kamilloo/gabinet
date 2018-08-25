@@ -14,7 +14,7 @@ class TagController extends Controller
      */
     public function index(Tag $tag)
     {
-        return response()->json($tag->newQuery()->get());
+        return response()->json($tag->newQuery()->pluck('name'));
     }
 
     /**
