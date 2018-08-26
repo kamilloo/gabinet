@@ -40,9 +40,10 @@ class CategoryController extends Controller
     {
         Category::create([
             'name' => $request->name,
+            'icon' => $request->icon,
         ]);
 
-        return redirect('categories')->with(['status' => 'Kategoria została dodana.']);
+        return redirect(route('categories.index'))->with(['status' => 'Kategoria została dodana.']);
     }
 
     /**
@@ -79,9 +80,10 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->name,
+            'icon' => $request->icon,
         ]);
 
-        return redirect('categories')->with(['status' => 'Kategoria zapisana.']);
+        return redirect(route('categories.index'))->with(['status' => 'Kategoria zapisana.']);
     }
 
     /**
@@ -94,7 +96,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect('categories')->with(['status' => 'Kategoria usunięta.']);
+        return redirect(route('categories.index'))->with(['status' => 'Kategoria usunięta.']);
 
     }
 }

@@ -13,8 +13,15 @@
             </div>
             @endif
             {!! Form::open(['url' => route('categories.update', $category), 'method' => 'put']) !!}
-            {!! Form::text('name', $category->name) !!}
-            {!! Form::submit() !!}
+            <div class="panel-body">
+                {!! Form::text('name', $category->name, ['class' => 'form-control', 'placeholder' => 'Nazwa']) !!}
+            </div>
+            <div class="panel-body">
+                {!! Form::text('icon', $category->icon, ['class' => 'form-control', 'placeholder' => 'Ikona']) !!}
+            </div>
+            <div class="panel-body">
+                {!! Form::submit('Zapis', ['class' => 'btn btn-primary']) !!}
+            </div>
             {!! Form::close() !!}
 
         </div>

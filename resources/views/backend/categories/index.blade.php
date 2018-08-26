@@ -17,6 +17,7 @@
                 <tr>
                     <th>Lp</th>
                     <th>Name</th>
+                    <th>Ikona</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -25,6 +26,7 @@
                     <tr>
                         <td>{{ $category->id }}</td>
                         <td>{{ $category->name }}</td>
+                        <td><span><i class="xsicon {{ $category->icon }}"></i>&nbsp;&nbsp;{{ $category->icon }}</span></td>
                         <td><a href="{{ route('categories.edit', $category) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><a href="{{ route('categories.destroy', $category) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
                     </tr>
                 @endforeach

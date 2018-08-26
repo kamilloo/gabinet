@@ -23,4 +23,9 @@ class Portfolio extends FileModel implements FileModelInterface
     {
         return $this->belongsToMany(Tag::class, 'portfolio_tag');
     }
+
+    public function tagsToString()
+    {
+        return implode(' ',$this->tags->pluck('name')->all());
+    }
 }

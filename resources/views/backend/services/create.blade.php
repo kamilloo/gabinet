@@ -29,7 +29,7 @@
                 {!! Form::textarea('description') !!}
             </div>
             <div class="panel-body">
-                {!! Form::submit(null, ['class' => 'btn btn-primary']) !!}
+                {!! Form::submit('Dodaj', ['class' => 'btn btn-primary']) !!}
             </div>
             {!! Form::close() !!}
 
