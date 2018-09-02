@@ -3,7 +3,7 @@
 @section('content')
     <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Uśługi - Dodaj</div>
+            <div class="panel-heading">Usługi - Edytuj</div>
 
             @if (session('status'))
             <div class="panel-body">
@@ -13,9 +13,33 @@
             </div>
             @endif
             {!! Form::open(['url' => route('services.update', $service), 'method' => 'put']) !!}
-            {!! Form::text('title', $service->title) !!}
-            {!! Form::textarea('description', $service->description) !!}
-            {!! Form::submit() !!}
+            <div class="panel-body">
+                {!! Form::select('category_id', $categories->pluck('name','id'), $service->category_id, ['class' => 'form-control']) !!}
+            </div>
+            <div class="panel-body">
+                {!! Form::text('title', $service->title, ['class' => 'form-control']) !!}
+            </div>
+            <div class="panel-body">
+                {!! Form::textarea('description', $service->description) !!}
+            </div>
+            <div class="panel-body">
+                <div class="input-group col-md-4">
+                  <span class="input-group-btn">
+                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                      <i class="fa fa-picture-o"></i> Importuj
+                    </a>
+                  </span>
+                    <input id="thumbnail" class="form-control" type="text" name="filepath">
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <img id="holder" class="img-thumbnail" src="{{ asset('storage/'.$service->path) }}">
+                </div>
+            </div>
+            <div class="panel-body">
+                {!! Form::submit('Zapisz', ['class' => 'btn btn-primary']) !!}
+            </div>
             {!! Form::close() !!}
 
         </div>
@@ -56,5 +80,16 @@
         };
 
         tinymce.init(editor_config);
+    </script>
+@endsection
+
+
+@section('javascript_content')
+    <script>
+        var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
+    </script>
+
+    <script>
+        $('#lfm').filemanager('image', {prefix: route_prefix});
     </script>
 @endsection

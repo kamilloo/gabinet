@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\ServiceBuilder;
+use App\Factories\ServiceFactory;
+use App\Http\Requests\Request;
+use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
@@ -26,7 +29,9 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('backend.services.create');
+        $categories = Category::all();
+
+        return view('backend.services.create', compact('categories'));
     }
 
     /**
@@ -35,14 +40,11 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, ServiceFactory $service_factory)
     {
-        Service::create([
-            'title' => $request->title,
-            'description' => $request->description,
-        ]);
+        $service_factory->create($request);
 
-        return redirect('services')->with(['status' => 'Usługa została dodana.']);
+        return redirect(route('services.index'))->with(['status' => 'Usługa została dodana.']);
     }
 
     /**
@@ -64,7 +66,8 @@ class ServiceController extends Controller
      */
     public function edit(Service $service)
     {
-        return view('backend.services.edit', compact('service'));
+        $categories = Category::all();
+        return view('backend.services.edit', compact('service', 'categories'));
 
     }
 
@@ -75,14 +78,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service)
+    public function update(Request $request, Service $service, ServiceBuilder $service_builder)
     {
-            $service->update([
-                'title' => $request->title,
-                'description' => $request->description,
-            ]);
+        $service_builder->update($request, $service);
 
-            return redirect('services')->with(['status' => 'Kategoria zapisana.']);
+        return redirect(route('services.index'))->with(['status' => 'Kategoria zapisana.']);
 
     }
 

@@ -21,12 +21,30 @@
             @if($errors->has('destr'))
                     <p>{{$errors->first('title')}}</p>
             @endif
-            {!! Form::open(['url' => url('services')]) !!}
+            {!! Form::open(['url' => route('services.store')]) !!}
+            <div class="panel-body">
+                {!! Form::select('category_id', $categories->pluck('name','id'), null, ['class' => 'form-control']) !!}
+            </div>
             <div class="panel-body">
                 {!! Form::text('title', null, ['class' => 'form-control']) !!}
             </div>
             <div class="panel-body">
                 {!! Form::textarea('description') !!}
+            </div>
+            <div class="panel-body">
+                <div class="input-group col-md-4">
+                  <span class="input-group-btn">
+                    <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                      <i class="fa fa-picture-o"></i> Importuj
+                    </a>
+                  </span>
+                    <input id="thumbnail" class="form-control" type="text" name="filepath">
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-12">
+                    <img id="holder" class="img-thumbnail">
+                </div>
             </div>
             <div class="panel-body">
                 {!! Form::submit('Dodaj', ['class' => 'btn btn-primary']) !!}
@@ -71,5 +89,15 @@
         };
 
         tinymce.init(editor_config);
+    </script>
+@endsection
+
+@section('javascript_content')
+    <script>
+        var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
+    </script>
+
+    <script>
+        $('#lfm').filemanager('image', {prefix: route_prefix});
     </script>
 @endsection

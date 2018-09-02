@@ -47,7 +47,7 @@
                                 <li>({{ $item->description }})</li>
                                 @endforeach
                             </ul>
-                            <i class="xsicon icon-nail"
+                            <i class="xsicon icon-nail"></i>
 
                             <div class="beautypress-btn-wraper">
                                 <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Appointment Now <span></span></a>

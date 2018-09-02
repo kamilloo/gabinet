@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
-
 Auth::routes();
 
 Route::group(['prefix' => 'admin'], function(){
@@ -71,10 +67,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Front'], function (){
     Route::view('portfolio', 'portfolio', ['files' => \App\Models\Portfolio::with('tags')->get(), 'tags' => \App\Models\Tag::all()])->name('portfolio');
-    Route::view('usługi', 'services', ['files' => \App\Models\Portfolio::all()])->name('services');
+    Route::view('usługi', 'services', ['categories' => \App\Models\Category::with('services')->get()])->name('services');
     Route::view('onas', 'about', ['certificates' => \App\Models\Certificate::all()])->name('about');
     Route::view('cennik', 'pricing', ['files' => \App\Models\Pricing::with('items')->get()])->name('pricing');
     Route::view('kontakt', 'contact', ['files' => \App\Models\Portfolio::all()])->name('contact');
     Route::post('kontakt', 'Contact@store');
 });
+Route::view('/', 'welcome', [
+    'services' => \App\Models\Service::latest('id')->limit(3)->get()
+])->name('welcome');
 
