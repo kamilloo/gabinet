@@ -66,44 +66,6 @@
                     </div><!-- .beautypress-single-team END -->
                 </div>
                 @endforeach
-                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
-                    <div class="beautypress-single-team beautypress-pink-overlay">
-                        <img src="img/team-2.jpg" alt="">
-                        <div class="beautypress-team-content">
-                            <div class="beautypress-team-person-details">
-                                <h3>Rusana ranshaw</h3>
-                                <h4>C. E. O</h4>
-                            </div>
-                            <div class="beautypress-team-person-socail-details">
-                                <ul class="beautypress-social-list">
-                                    <li><a href="" class="beautypress-facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="" class="beautypress-twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="" class="beautypress-pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="" class="beautypress-dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                </ul><!-- .beautypress-social-list END -->
-                            </div>
-                        </div><!-- .beautypress-team-content END -->
-                    </div><!-- .beautypress-single-team END -->
-                </div>
-                <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
-                    <div class="beautypress-single-team beautypress-sky-blue-overlay">
-                        <img src="img/team-3.jpg" alt="">
-                        <div class="beautypress-team-content">
-                            <div class="beautypress-team-person-details">
-                                <h3>Jennifar smith</h3>
-                                <h4>Senior Specialist</h4>
-                            </div>
-                            <div class="beautypress-team-person-socail-details">
-                                <ul class="beautypress-social-list">
-                                    <li><a href="" class="beautypress-facebook"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="" class="beautypress-twitter"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="" class="beautypress-pinterest"><i class="fa fa-pinterest-p"></i></a></li>
-                                    <li><a href="" class="beautypress-dribbble"><i class="fa fa-dribbble"></i></a></li>
-                                </ul><!-- .beautypress-social-list END -->
-                            </div>
-                        </div><!-- .beautypress-team-content END -->
-                    </div><!-- .beautypress-single-team END -->
-                </div>
             </div>
         </div>
     </section><!-- .beautypress-team-section END -->

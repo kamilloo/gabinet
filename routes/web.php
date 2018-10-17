@@ -66,14 +66,12 @@ Route::group(['prefix' => 'admin'], function(){
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Front'], function (){
-    Route::view('portfolio', 'portfolio', ['files' => \App\Models\Portfolio::with('tags')->get(), 'tags' => \App\Models\Tag::all()])->name('portfolio');
-    Route::view('usługi', 'services', ['categories' => \App\Models\Category::with('services')->get()])->name('services');
-    Route::view('onas', 'about', ['certificates' => \App\Models\Certificate::all()])->name('about');
-    Route::view('cennik', 'pricing', ['files' => \App\Models\Pricing::with('items')->get()])->name('pricing');
-    Route::view('kontakt', 'contact', ['files' => \App\Models\Portfolio::all()])->name('contact');
+    Route::get('portfolio', 'PortfolioController@index')->name('portfolio');
+    Route::get('usługi', 'ServiceController@index')->name('services');
+    Route::get('onas', 'AboutController@index')->name('about');
+    Route::get('cennik', 'PricingController@index')->name('pricing');
+    Route::get('kontakt', 'Contact@index')->name('contact');
     Route::post('kontakt', 'Contact@store');
+    Route::get('/', 'WelcomeController@index')->name('welcome');
 });
-Route::view('/', 'welcome', [
-    'services' => \App\Models\Service::latest('id')->limit(3)->get()
-])->name('welcome');
 

@@ -11,4 +11,9 @@ class Contact extends Controller
     {
         return response('Twoja wiadomość została wysłana. Dziękujęmy!');
     }
+
+    public function index()
+    {
+        return view('contact', ['portfolio' => \App\Models\Portfolio::all()]);
+    }
 }
