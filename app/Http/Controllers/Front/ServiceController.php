@@ -9,6 +9,6 @@ class ServiceController extends Controller
 {
     public function index()
     {
-        return view('service', ['categories' => \App\Models\Category::with('services')->get()]);
+        return view('services', ['categories' => \App\Models\Category::with('services')->get()]);
     }
 }

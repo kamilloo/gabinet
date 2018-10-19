@@ -9,7 +9,7 @@ class WelcomeController extends Controller
 {
     public function index()
     {
-        return view('about', [
+        return view('welcome', [
             'services' => \App\Models\Service::latest('id')->limit(3)->get(),
             'categories' => \App\Models\Category::with('services')->get(),
             'portfolio'=> \App\Models\Portfolio::with('tags')->get(),
