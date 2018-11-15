@@ -164,73 +164,76 @@
         </div>
     </section><!-- .beautypress-photo-gallery-section END -->
     <!-- Photo gallery -->
-
+    @if(!empty($facebook_ratings))
     <!-- Testimonial Slider -->
     <section id="reviews" class="beautypress-testimonial-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/testimonial-bg.jpg">
         <div class="container">
             <div class="beautypress-testimonial-slider owl-carousel">
+                @foreach($facebook_ratings as $review)
+                    @if(!empty($review->review_text))
                 <div class="beautypress-single-testimonial">
-                    <h2>Jenny Smith</h2>
-                    <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought.</p>
+                    <h2>Dodane dnia: {{ \Carbon\Carbon::parse($review->created_time)->format('d-m-Y') }}</h2>
+                    <p>{{ $review->review_text }}</p>
                     <ul class="beautypress-rating">
+                        @for($i = 0; $i< $review->rating; $i++)
                         <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star-half-full"></i></a></li>
+                        @endfor
+                        {{--<li><a href=""><i class="fa fa-star-half-full"></i></a></li>--}}
                     </ul><!-- .beautypress-rating END -->
                     <div class="beautypress-signature">
                         <img src="img/commentor-sign.png" alt="">
                     </div><!-- .beautypress-signature END -->
                 </div><!-- .beautypress-single-testimonial END -->
-                <div class="beautypress-single-testimonial">
-                    <h2>Isabela</h2>
-                    <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. "What's happened to me?" he thought.</p>
-                    <ul class="beautypress-rating">
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star-half-full"></i></a></li>
-                    </ul><!-- .beautypress-rating END -->
-                    <div class="beautypress-signature">
-                        <img src="img/commentor-sign.png" alt="">
-                    </div><!-- .beautypress-signature END -->
-                </div><!-- .beautypress-single-testimonial END -->
-                <div class="beautypress-single-testimonial">
-                    <h2>Loren</h2>
-                    <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin.</p>
-                    <ul class="beautypress-rating">
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star-half-full"></i></a></li>
-                    </ul><!-- .beautypress-rating END -->
-                    <div class="beautypress-signature">
-                        <img src="img/commentor-sign.png" alt="">
-                    </div><!-- .beautypress-signature END -->
-                </div><!-- .beautypress-single-testimonial END -->
-                <div class="beautypress-single-testimonial">
-                    <h2>Jenny Doe</h2>
-                    <p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked</p>
-                    <ul class="beautypress-rating">
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star"></i></a></li>
-                        <li><a href=""><i class="fa fa-star-half-full"></i></a></li>
-                    </ul><!-- .beautypress-rating END -->
-                    <div class="beautypress-signature">
-                        <img src="img/commentor-sign.png" alt="">
-                    </div><!-- .beautypress-signature END -->
-                </div><!-- .beautypress-single-testimonial END -->
+                    @endif
+                @endforeach
+                {{--<div class="beautypress-single-testimonial">--}}
+                    {{--<h2>Isabela</h2>--}}
+                    {{--<p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. "What's happened to me?" he thought. "What's happened to me?" he thought.</p>--}}
+                    {{--<ul class="beautypress-rating">--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star-half-full"></i></a></li>--}}
+                    {{--</ul><!-- .beautypress-rating END -->--}}
+                    {{--<div class="beautypress-signature">--}}
+                        {{--<img src="img/commentor-sign.png" alt="">--}}
+                    {{--</div><!-- .beautypress-signature END -->--}}
+                {{--</div><!-- .beautypress-single-testimonial END -->--}}
+                {{--<div class="beautypress-single-testimonial">--}}
+                    {{--<h2>Loren</h2>--}}
+                    {{--<p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin.</p>--}}
+                    {{--<ul class="beautypress-rating">--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star-half-full"></i></a></li>--}}
+                    {{--</ul><!-- .beautypress-rating END -->--}}
+                    {{--<div class="beautypress-signature">--}}
+                        {{--<img src="img/commentor-sign.png" alt="">--}}
+                    {{--</div><!-- .beautypress-signature END -->--}}
+                {{--</div><!-- .beautypress-single-testimonial END -->--}}
+                {{--<div class="beautypress-single-testimonial">--}}
+                    {{--<h2>Jenny Doe</h2>--}}
+                    {{--<p>The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked</p>--}}
+                    {{--<ul class="beautypress-rating">--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star"></i></a></li>--}}
+                        {{--<li><a href=""><i class="fa fa-star-half-full"></i></a></li>--}}
+                    {{--</ul><!-- .beautypress-rating END -->--}}
+                    {{--<div class="beautypress-signature">--}}
+                        {{--<img src="img/commentor-sign.png" alt="">--}}
+                    {{--</div><!-- .beautypress-signature END -->--}}
+                {{--</div><!-- .beautypress-single-testimonial END -->--}}
             </div><!-- .beautypress-testimonial-slider END -->
         </div>
         <div class="beautypress-black-overlay light-overlay"></div>
     </section><!-- .beautypress-testimonial-section END -->
     <!-- Testimonial Slider -->
-
+    @endif
     <!-- Pricing table -->
     <section id="pricing" class="beautypress-pricing-table-section beautypress-padding-bottom">
         <div class="container">
