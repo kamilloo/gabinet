@@ -15,7 +15,7 @@
                                     <h3 class="color-white">Pierwszy podtytuł</h3>
                                     <p class="color-white">Pierwszy opis ale rzeczowy.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
                                         <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                     <h3 class="color-white">Drugi podtytuł do hasłą</h3>
                                     <p class="color-white">Drugi krótki ale jakże ważny opis.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
                                         <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
                                     </div>
                                 </div>
@@ -51,7 +51,7 @@
                                     <h3 class="color-white">trzecy podtytuł i równie ważny</h3>
                                     <p class="color-white">Trzeci opis też ważny.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
                                         <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
 
 
     <!-- booking section -->
-    <section class="beautypress-booking-section beautypress-bg beautypress-version-2 beautypress-padding-bottom parallax-bg" data-parallax="scroll" data-image-src="img/get_appoinment.jpg">
+    <section id="kontakt" class="beautypress-booking-section beautypress-bg beautypress-version-2 beautypress-padding-bottom parallax-bg" data-parallax="scroll" data-image-src="img/get_appoinment.jpg">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
                 <h2>We are awesome</h2>

@@ -24,7 +24,7 @@
                             <i class="xsicon icon-nail"></i>
 
                             <div class="beautypress-btn-wraper">
-                                <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Appointment Now <span></span></a>
+                                <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Umów się <span></span></a>
                             </div>
                         </div><!-- .beautypress-pricing-footer END -->
                     </div><!-- .beautypress-single-pricing-table END -->
