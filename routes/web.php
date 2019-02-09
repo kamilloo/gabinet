@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::group(['prefix' => 'admin'], function(){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::resource('categories', 'CategoryController')->names([
         'index' => 'categories.index',
@@ -63,7 +63,7 @@ Route::group(['prefix' => 'admin'], function(){
         'store' => 'tags.store',
     ]);
 });
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'HomeController@index')->name('home');
 
 Route::group(['namespace' => 'Front'], function (){
     Route::get('portfolio', 'PortfolioController@index')->name('portfolio');

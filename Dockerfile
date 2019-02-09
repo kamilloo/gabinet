@@ -1,8 +1,18 @@
-FROM php:7.2-fpm-alpine
+FROM php:7.1-fpm-alpine
 
 ARG BUILD_DATE
 ARG VCS_REF
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
+ENV PHP_XDEBUG_DEFAULT_ENABLE ${PHP_XDEBUG_DEFAULT_ENABLE:-1}
+ENV PHP_XDEBUG_REMOTE_ENABLE ${PHP_XDEBUG_REMOTE_ENABLE:-1}
+ENV PHP_XDEBUG_REMOTE_HOST ${PHP_XDEBUG_REMOTE_HOST:-"127.0.0.1"}
+ENV PHP_XDEBUG_REMOTE_PORT ${PHP_XDEBUG_REMOTE_PORT:-9000}
+ENV PHP_XDEBUG_REMOTE_AUTO_START ${PHP_XDEBUG_REMOTE_AUTO_START:-1}
+ENV PHP_XDEBUG_REMOTE_CONNECT_BACK ${PHP_XDEBUG_REMOTE_CONNECT_BACK:-1}
+ENV PHP_XDEBUG_IDEKEY ${PHP_XDEBUG_IDEKEY:-docker}
+ENV PHP_XDEBUG_PROFILER_ENABLE ${PHP_XDEBUG_PROFILER_ENABLE:-0}
+ENV PHP_XDEBUG_PROFILER_OUTPUT_DIR ${PHP_XDEBUG_PROFILER_OUTPUT_DIR:-"/tmp"}
 
 LABEL Maintainer="Zaher Ghaibeh <z@zah.me>" \
       Description="Lightweight php 7.2 container based on alpine with xDebug enabled & composer installed." \
@@ -13,30 +23,22 @@ LABEL Maintainer="Zaher Ghaibeh <z@zah.me>" \
       org.label-schema.vcs-ref=$VCS_REF \
       org.label-schema.schema-version="1.0.0"
 
-RUN apk update \
-    && apk add  --no-cache git mysql-client curl openssh-client icu libpng libjpeg-turbo \
-    && apk add --no-cache --virtual build-dependencies icu-dev \
-    libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
+RUN set -ex \
+  	&& apk update \
+    && apk add --no-cache git mysql-client curl openssh-client icu libpng libjpeg-turbo postgresql-dev libffi-dev \
+    && apk add --no-cache --virtual build-dependencies icu-dev libxml2-dev freetype-dev libpng-dev libjpeg-turbo-dev g++ make autoconf \
     && docker-php-source extract \
-    && pecl install redis \
-    && docker-php-ext-enable redis \
+    && pecl install xdebug redis \
+    && docker-php-ext-enable xdebug redis \
     && docker-php-source delete \
-    && docker-php-ext-install pdo_mysql intl zip gd exif gettext mbstring \
-    && docker-php-ext-enable exif \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
+    && docker-php-ext-install pdo pgsql pdo_mysql pdo_pgsql intl zip gd \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
-    && mkdir /src && cd /src && git clone https://github.com/xdebug/xdebug.git \
-    && cd xdebug \
-    && sh ./rebuild.sh \
-    && echo "[xdebug]" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "zend_extension=xdebug.so" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_enable=on" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_autostart=off" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_handler=dbgp" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && echo "xdebug.remote_connect_back=0" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
     && cd  / && rm -fr /src \
     && apk del build-dependencies \
-    && rm -rf /tmp/* 
+    && rm -rf /tmp/*
+
+COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
 
 USER www-data
 

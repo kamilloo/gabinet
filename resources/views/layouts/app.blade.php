@@ -32,7 +32,7 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
-                    <a class="navbar-brand" href="{{ url('home') }}">
+                    <a class="navbar-brand" href="{{ route('home') }}">
                         Dashboard
                     </a>
                 </div>
@@ -48,7 +48,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
+                            {{--<li><a href="{{ route('register') }}">Register</a></li>--}}
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
@@ -76,20 +76,25 @@
         </nav>
 
         <div class="container">
-            <div class="row">
-                <div class="col-md-4 ">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active">Users</a>
-                        <a href="{{ route('categories.index') }}" class="list-group-item">Kategorie</a>
-                        <a href="{{ route('services.index') }}" class="list-group-item">Usługi</a>
-                        <a href="{{ route('portfolio.index') }}" class="list-group-item">Galeria</a>
-                        <a href="{{ route('certificates.index') }}" class="list-group-item">Certyfikaty</a>
-                        <a href="{{ route('pricing.index') }}" class="list-group-item">Cennik</a>
-                    </div>
+                <div class="row">
+                    @guest
 
+                    @else
+                    <div class="col-md-4 ">
+                        <div class="list-group">
+                            <a href="#" class="list-group-item active">Users</a>
+                            <a href="{{ route('categories.index') }}" class="list-group-item">Kategorie</a>
+                            <a href="{{ route('services.index') }}" class="list-group-item">Usługi</a>
+                            <a href="{{ route('portfolio.index') }}" class="list-group-item">Galeria</a>
+                            <a href="{{ route('certificates.index') }}" class="list-group-item">Certyfikaty</a>
+                            <a href="{{ route('pricing.index') }}" class="list-group-item">Cennik</a>
+                        </div>
+
+                    </div>
+                    @endguest
+
+                    @yield('content')
                 </div>
-                @yield('content')
-            </div>
         </div>
     </div>
 

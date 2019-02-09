@@ -15,8 +15,8 @@
                                     <h3 class="color-white">Pierwszy podtytuł</h3>
                                     <p class="color-white">Pierwszy opis ale rzeczowy.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
-                                        <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
                             </div><!-- .beautypress-welcome-container END -->
@@ -33,8 +33,8 @@
                                     <h3 class="color-white">Drugi podtytuł do hasłą</h3>
                                     <p class="color-white">Drugi krótki ale jakże ważny opis.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
-                                        <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
                             </div><!-- .beautypress-welcome-container END -->
@@ -51,8 +51,8 @@
                                     <h3 class="color-white">trzecy podtytuł i równie ważny</h3>
                                     <p class="color-white">Trzeci opis też ważny.</p>
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Omów się <span></span></a>
-                                        <a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
                             </div><!-- .beautypress-welcome-container END -->
