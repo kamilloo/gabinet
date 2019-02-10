@@ -51,8 +51,12 @@
                 <h2>Certyfikaty</h2>
                 <h3>Ciągły rozwój połączony z pasją</h3>
             </div>
-            <div class="row">
+            <div class="row pb-lg-4">
                 @foreach($certificates as $certificate)
+                @if($loop->index % 3 === 0)
+                    </div>
+                    <div class="row pb-lg-4">
+                @endif
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-team beautypress-pink-overlay">
                         <img src="{{ asset('storage/'.$certificate->path) }}" alt="">
