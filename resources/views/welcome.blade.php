@@ -11,9 +11,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Pierwsze hasło</h2>
-                                    <h3 class="color-white">Pierwszy podtytuł</h3>
-                                    <p class="color-white">Pierwszy opis ale rzeczowy.</p>
+                                    <h2 class="color-white">Witam</h2>
+                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
+                                    <p class="color-white">Katarzyna Piętka</p>
                                     <div class="beautypress-btn-wraper">
                                         <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>--}}
@@ -29,9 +29,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Drugie hasło, może to być nowość</h2>
-                                    <h3 class="color-white">Drugi podtytuł do hasłą</h3>
-                                    <p class="color-white">Drugi krótki ale jakże ważny opis.</p>
+                                    <h2 class="color-white">Witam</h2>
+                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
+                                    <p class="color-white">Katarzyna Piętka</p>
                                     <div class="beautypress-btn-wraper">
                                         <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
@@ -47,9 +47,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Trzeci tytuł</h2>
-                                    <h3 class="color-white">trzecy podtytuł i równie ważny</h3>
-                                    <p class="color-white">Trzeci opis też ważny.</p>
+                                    <h2 class="color-white">Witam</h2>
+                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
+                                    <p class="color-white">Katarzyna Piętka</p>
                                     <div class="beautypress-btn-wraper">
                                         <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
@@ -109,7 +109,7 @@
                         <p>Serdecznie zapraszam.</p>
 
                         <div class="beautypress-btn-wraper">
-                            <a href="{{ route('about') }}" class="xs-btn bg-color-cyan round-btn box-shadow-btn">learn more <span></span></a>
+                            <a href="{{ route('about') }}" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
                         </div>
                     </div><!-- . END -->
                 </div>
@@ -130,7 +130,7 @@
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
                 <h2>We are awesome</h2>
-                <h3>Our Services</h3>
+                <h3>Usługi</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
             @include('partials.services')
@@ -144,7 +144,7 @@
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
                 <h2>We are awesome</h2>
-                <h3>Get Appoinment</h3>
+                <h3>Umów się</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
             @include('partials.contact')
@@ -198,7 +198,7 @@
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
                 <h2>We are awesome</h2>
-                <h3>Our Pricing</h3>
+                <h3>Cennik</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
             @include('partials.pricing')

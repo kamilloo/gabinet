@@ -27,7 +27,7 @@
                                             <div class="beautypress-tab-text-content">
                                                 {!! $service->description !!}
                                                 <div class="beautypress-btn-wraper">
-                                                    <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-purple">get appointment <span></span></a>
+                                                    <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-purple">Umów się <span></span></a>
                                                 </div>
                                             </div>
                                         </div>
