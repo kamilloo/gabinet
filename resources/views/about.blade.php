@@ -7,13 +7,13 @@
         <div class="container">
             <div class="beautypress-inner-welcome-content">
                 <img src="img/inner-welcome-icon.png" alt="">
-                <h1 class="color-white">About Us</h1>
-                <p class="color-white">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.</p>
+                <h1 class="color-white">O Mnie</h1>
+                <p class="color-white">Gabinet to moja miejsce powstałe z pasji i warty w ludzi.</p>
             </div><!-- .beautypress-inner-welcome-content END -->
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">
                     <li><a href="{{ route('welcome') }}">Strona główna</a></li>
-                    <li><a href="">About Us</a></li>
+                    <li><a href="">O Mnie</a></li>
                 </ul>
             </div><!-- .beautypress-inner-welcome-footer-content END -->
         </div>
@@ -32,12 +32,11 @@
                 <div class="col-md-12 col-sm-12 col-xl-6 col-lg-6">
                     <div class="beautypress-simple-text beautypress-watermark-icon">
                         <div class="beautypress-separetor-sub-heading beautypress-no-separetor">
-                            <h2>Our Vission</h2>
+                            <h2>Wizja</h2>
                         </div><!-- . END -->
-                        <p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly.</p>
-                        <div class="beautypress-btn-wraper">
-                            <a href="#" class="xs-btn bg-color-purple round-btn box-shadow-btn">learn more <span></span></a>
-                        </div>
+                        <p>To wyjątkowe miejsce mieszczące się w Grodzisku Wielkopolskim przy ulicy Mossego 2, którego głównym atutem jest miła i fachowa obsługa doświadczonego i odpowiednio przygotowanego personelu.
+                        </p>
+                        <p>Uwzględniając zmieniające sie trendy, nieustannie podnoszę swoje kwalifikacje i rozszerzam ofertę.</p>
                     </div><!-- . END -->
                 </div>
             </div>
