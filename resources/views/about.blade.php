@@ -54,7 +54,7 @@
             <div class="row">
                 @foreach($certificates as $certificate)
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
-                    <div class="beautypress-single-team beautypress-purple-overlay">
+                    <div class="beautypress-single-team beautypress-pink-overlay">
                         <img src="{{ asset('storage/'.$certificate->path) }}" alt="">
                         <div class="beautypress-team-content">
                             <div class="beautypress-team-person-details">
