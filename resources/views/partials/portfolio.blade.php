@@ -20,9 +20,9 @@
                                 <a href="{{ asset('storage/'.$file->path) }}" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-pink">
                                     <i class="fa fa-eye"></i>
                                 </a>
-                                <a href="#" class="beautypress-iocn-btn full-round-btn bg-color-purple">
-                                    <i class="fa fa-link"></i>
-                                </a>
+                                {{--<a href="#" class="beautypress-iocn-btn full-round-btn bg-color-purple">--}}
+                                    {{--<i class="fa fa-link"></i>--}}
+                                {{--</a>--}}
                             </div><!-- .beautypress-photo-gallery-content END -->
                             <div class="beautypress-gallery-overlay"></div>
                         </div><!-- .beautypress-single-photo-gallery END -->
