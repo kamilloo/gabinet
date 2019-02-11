@@ -13,7 +13,7 @@
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">
                     <li><a href="{{ route('welcome') }}">Strona główna</a></li>
-                    <li><a href="">Pricing</a></li>
+                    <li><a href="">Cennik</a></li>
                 </ul>
             </div><!-- .beautypress-inner-welcome-footer-content END -->
         </div>

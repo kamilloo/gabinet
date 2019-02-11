@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Inner welcome -->
-    <section class="beautypress-inner-welocme-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/about_us.jpg">
+    <section class="beautypress-inner-welocme-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/katarzyna_pietka.jpg">
         <div class="beautypress-black-overlay"></div>
         <div class="container">
             <div class="beautypress-inner-welcome-content">
