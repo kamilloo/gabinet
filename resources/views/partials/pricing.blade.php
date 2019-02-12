@@ -1,6 +1,6 @@
             <div class="row">
                 @foreach($pricing as $file)
-                <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6 beautypress-padding-bottom">
+                <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-single-pricing-table beautypress-version-4">
                         <div class="beautypress-pricing-header">
                             <img src="{{ asset('storage/'.$file->path) }}" alt="">
