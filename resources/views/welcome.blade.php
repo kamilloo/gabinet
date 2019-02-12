@@ -143,7 +143,7 @@
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
 
-                <h3>Umów się</h3>
+                <h3>Kontakt</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
             @include('partials.contact')

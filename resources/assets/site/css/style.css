@@ -6768,10 +6768,10 @@ Section
 	-ms-flex-pack: center;
 	justify-content: center;
 }
-.beautypress-contact-wraper.beautypress-version-2 .beautypress-contact-form input[type="submit"] {
-	background-color: #5BC271;
-	margin: 0 auto;
-}
+/*.beautypress-contact-wraper.beautypress-version-2 .beautypress-contact-form input[type="submit"] {*/
+	/*background-color: #5BC271;*/
+	/*margin: 0 auto;*/
+/*}*/
 .beautypress-contact-wraper.beautypress-version-2 .beautypress-contact-form:before {
 	position: absolute;
 	content: "";

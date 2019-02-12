@@ -5,8 +5,7 @@
     <section class="beautypress-inner-welocme-section beautypress-bg parallax-bg" data-parallax="scroll" data-image-src="img/contact_header_bg.jpg">
         <div class="beautypress-black-overlay"></div>
         <div class="container">
-            <div class="beautypress-inner-welcome-content">
-                <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
+            <div class="beautypress-inner-welcome-content section-padding">
             </div><!-- .beautypress-inner-welcome-content END -->
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">
@@ -18,15 +17,24 @@
     </section><!-- .beautypress-inner-welocme-section END -->
     <!-- Inner welcome end -->
 
-    <!-- Contact us form section -->
+
+    {{--<!-- Contact us form section -->--}}
+    {{--<section class="beautypress-contact-us-section">--}}
+        {{--<div class="container">--}}
+            {{--<div class="beautypress-contact-wraper beautypress-version-2">--}}
+                {{--@include('partials.contact')--}}
+            {{--</div><!-- .beautypress-contact-wraper END -->--}}
+        {{--</div>--}}
+    {{--</section><!-- .beautypress-contact-us-section END -->--}}
+    {{--<!-- Contact us form section end -->--}}
+
     <section class="beautypress-contact-us-section">
         <div class="container">
             <div class="beautypress-contact-wraper beautypress-version-2">
                 @include('partials.contact')
-            </div><!-- .beautypress-contact-wraper END -->
+            </div>
         </div>
-    </section><!-- .beautypress-contact-us-section END -->
-    <!-- Contact us form section end -->
+    </section><!-- .beautypress-booking-section END -->
 
     <!-- Maps -->
     <div id="beautypress_maps"></div>
