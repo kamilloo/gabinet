@@ -11,11 +11,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Witam</h2>
-                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
-                                    <p class="color-white">Katarzyna Piętka</p>
+                                    <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-color-purple round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">Czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
@@ -29,11 +27,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Witam</h2>
-                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
-                                    <p class="color-white">Katarzyna Piętka</p>
+                                    <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-color-purple round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
@@ -47,11 +43,9 @@
                         <div class="beautypress-welcome-content-group">
                             <div class="beautypress-welcome-container">
                                 <div class="beautypress-welcome-wraper">
-                                    <h2 class="color-white">Witam</h2>
-                                    <h3 class="color-white">Gabinet Kosmetyki Pielęgnacyjnej</h3>
-                                    <p class="color-white">Katarzyna Piętka</p>
+                                    <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
                                     <div class="beautypress-btn-wraper">
-                                        <a href="#kontakt" class="xs-btn bg-chocolate round-btn box-shadow-btn">Umów się <span></span></a>
+                                        <a href="#kontakt" class="xs-btn bg-color-purple round-btn box-shadow-btn">Umów się <span></span></a>
                                         {{--<a href="#" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
                                     </div>
                                 </div>
@@ -65,7 +59,7 @@
     </section><!-- .beautypress-welcome-section END -->
     <!-- welcome section -->
     <!-- Our features -->
-    <section class="beautypress-our-features-section beautypress-padding-bottom">
+    <section class="beautypress-our-features-section beautypress-padding-bottom bg-color-gray">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
                 <h2>Zapraszamy</h2>
@@ -95,30 +89,35 @@
 
 
     <!-- Simple text with image-->
-    <section id="about" class="beautypress-simple-text-with-img-section bg-color-gray">
+    <section id="about" class="beautypress-simple-text-with-img-section">
         <div class="container">
             <div class="row">
+                <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
+                    <div class="beautypress-simple-img-wraper">
+                        <img src="img/feature_img_1.png" alt="">
+                    </div><!-- .beautypress-simple-img-wraper END -->
+                    {{--<div class='twentytwenty-container beautypress-before-after'>--}}
+                        {{--<img src="img/before-after-1.jpg" alt="">--}}
+                        {{--<img src="img/before-after-2.jpg" alt="">--}}
+                    {{--</div>--}}
+                </div>
+
                 <div class="col-md-12 col-sm-12 col-xl-6 col-lg-6">
                     <div class="beautypress-simple-text beautypress-watermark-icon">
                         <div class="beautypress-separetor-sub-heading">
-                            <h2>O Nas</h2>
+                            <h2>Wizja</h2>
                         </div><!-- . END -->
-                        <p>To wyjątkowe miejsce mieszczące się w Grodzisku Wielkopolskim przy ulicy Mossego 2, którego głównym atutem jest miła i fachowa obsługa doświadczonego i odpowiednio przygotowanego personelu.</p>
-                        <p>Oferta gabinetu obejmuje m.in. usługi kosmetyczne z zakresu kosmetyki twarzy oraz pielęgnacji dłoni i stóp, masaże , a także wizaż. Usługi kosmetyczne i zabiegi wykonuję stosując kosmetyki uznanych firm takich jak: Natinuel, Clarena, Bielenda, Gehwol.</p>
+                        <p>To wyjątkowe miejsce mieszczące się w Grodzisku Wielkopolskim przy ulicy Mossego 2, którego głównym atutem jest kameralna atmosfera oraz miła i fachowa obsługa doświadczonego i odpowiednio przygotowanego personelu.</p>
+                        <p>Oferta gabinetu obejmuje m.in. usługi kosmetyczne z zakresu kosmetyki twarzy oraz pielęgnacji dłoni i stóp, masaże , a także wizaż. Usługi kosmetyczne i zabiegi wykonuję stosując kosmetyki uznanych firm takich jak: Natinuel, Mesoestetic, Cell&nbsp;Fusion&nbsp;C, Clarena, Gehwol.</p>
                         <p>Uwzględniając zmieniające sie trendy, nieustannie podnoszę swoje kwalifikacje i rozszerzam ofertę.</p>
                         <p>Serdecznie zapraszam.</p>
 
-                        <div class="beautypress-btn-wraper">
-                            <a href="{{ route('about') }}" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>
-                        </div>
+                        {{--<div class="beautypress-btn-wraper">--}}
+                            {{--<a href="{{ route('about') }}" class="xs-btn bg-color-cyan round-btn box-shadow-btn">czytaj więcej <span></span></a>--}}
+                        {{--</div>--}}
                     </div><!-- . END -->
                 </div>
-                <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
-                    <div class='twentytwenty-container beautypress-before-after'>
-                        <img src="img/before-after-1.jpg" alt="">
-                        <img src="img/before-after-2.jpg" alt="">
-                    </div>
-                </div>
+
             </div>
         </div>
     </section><!-- .beautypress-simple-text-with-img-section END -->
@@ -126,10 +125,10 @@
 
 
     <!-- Service section -->
-    <section id="services" class="beautypress-service-section beautypress-version-2 beautypress-padding-bottom">
+    <section id="services" class="beautypress-service-section beautypress-version-2 beautypress-padding-bottom bg-color-gray">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
-                <h2>We are awesome</h2>
+
                 <h3>Usługi</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
@@ -143,7 +142,7 @@
     <section id="kontakt" class="beautypress-booking-section beautypress-bg beautypress-version-2 beautypress-padding-bottom parallax-bg" data-parallax="scroll" data-image-src="img/get_appoinment.jpg">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
-                <h2>We are awesome</h2>
+
                 <h3>Umów się</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
@@ -156,7 +155,7 @@
     <section id="portfolio" class="beautypress-photo-gallery-section beautypress-version-2 beautypress-padding-bottom">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
-                <h2>We are awesome</h2>
+
                 <h3>Portfolio</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>
@@ -197,7 +196,7 @@
     <section id="pricing" class="beautypress-pricing-table-section beautypress-padding-bottom">
         <div class="container">
             <div class="beautypress-section-headinig beautypress-version-2">
-                <h2>We are awesome</h2>
+
                 <h3>Cennik</h3>
                 <img src="img/section-heading-separetor.png" alt="">
             </div>

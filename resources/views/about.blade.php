@@ -6,9 +6,7 @@
         <div class="beautypress-black-overlay"></div>
         <div class="container">
             <div class="beautypress-inner-welcome-content">
-                <img src="img/inner-welcome-icon.png" alt="">
-                <h1 class="color-white">O Mnie</h1>
-                <p class="color-white">Gabinet to moja miejsce powstałe z pasji i warty w ludzi.</p>
+                <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
             </div><!-- .beautypress-inner-welcome-content END -->
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">
@@ -34,9 +32,10 @@
                         <div class="beautypress-separetor-sub-heading beautypress-no-separetor">
                             <h2>Wizja</h2>
                         </div><!-- . END -->
-                        <p>To wyjątkowe miejsce mieszczące się w Grodzisku Wielkopolskim przy ulicy Mossego 2, którego głównym atutem jest miła i fachowa obsługa doświadczonego i odpowiednio przygotowanego personelu.
-                        </p>
+                        <p>To wyjątkowe miejsce mieszczące się w Grodzisku Wielkopolskim przy ulicy Mossego 2, którego głównym atutem jest kameralna atmosfera oraz miła i fachowa obsługa doświadczonego i odpowiednio przygotowanego personelu.</p>
+                        <p>Oferta gabinetu obejmuje m.in. usługi kosmetyczne z zakresu kosmetyki twarzy oraz pielęgnacji dłoni i stóp, masaże , a także wizaż. Usługi kosmetyczne i zabiegi wykonuję stosując kosmetyki uznanych firm takich jak: Natinuel, Mesoestetic, Cell&nbsp;Fusion&nbsp;C, Clarena, Gehwol.</p>
                         <p>Uwzględniając zmieniające sie trendy, nieustannie podnoszę swoje kwalifikacje i rozszerzam ofertę.</p>
+                        <p>Serdecznie zapraszam.</p>
                     </div><!-- . END -->
                 </div>
             </div>

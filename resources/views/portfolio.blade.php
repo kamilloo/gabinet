@@ -6,9 +6,7 @@
     <div class="beautypress-black-overlay"></div>
     <div class="container">
         <div class="beautypress-inner-welcome-content">
-            <img src="img/inner-welcome-icon.png" alt="">
-            <h1 class="color-white">portfolio</h1>
-            <p class="color-white">One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back.</p>
+            <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
         </div><!-- .beautypress-inner-welcome-content END -->
         <div class="beautypress-inner-welcome-footer-content">
             <ul class="beautypress-breadcrumb">

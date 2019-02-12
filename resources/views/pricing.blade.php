@@ -6,9 +6,7 @@
         <div class="beautypress-black-overlay"></div>
         <div class="container">
             <div class="beautypress-inner-welcome-content">
-                <img src="img/inner-welcome-icon.png" alt="">
-                <h1 class="color-white">Cennik</h1>
-                <p class="color-white"></p>
+                <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
             </div><!-- .beautypress-inner-welcome-content END -->
             <div class="beautypress-inner-welcome-footer-content">
                 <ul class="beautypress-breadcrumb">

@@ -46,8 +46,7 @@
     <div class="preloader-window left-window"></div>
     <div class="preloader-window right-window"></div>
     <div class="preloader-content">
-        <img src="img/prelaoder-logo.png" alt="">
-        <h2>Gabinet Kosmetyki Pielęgnacyjnej</h2>
+        <img src="img/logo_bez_tla.png" alt="Gabinet Kosmetyki Pielęgnacyjnej Katarzyna Piętka">
     </div>
     <div class="spinner-block">
         <div class="spinner-eff spinner-eff-3">
