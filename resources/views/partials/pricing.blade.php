@@ -18,13 +18,14 @@
                             <ul class="beautypress-both-side-list beautypress-version-3">
                                 @foreach($file->items as $item)
                                 <li>{{ $item->title }}<span>{{ $item->price }} zł</span></li>
-                                <li>({{ $item->description }})</li>
+                                @if(!empty($item->description))
+                                    <li>({{ $item->description }})</li>
+                                @endif
                                 @endforeach
                             </ul>
-                            <i class="xsicon icon-nail"></i>
 
                             <div class="beautypress-btn-wraper">
-                                <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-cyan">Umów się <span></span></a>
+                                <a href="{{ route('contact') }}" class="xs-btn round-btn box-shadow-btn bg-color-purple">Umów się <span></span></a>
                             </div>
                         </div><!-- .beautypress-pricing-footer END -->
                     </div><!-- .beautypress-single-pricing-table END -->
