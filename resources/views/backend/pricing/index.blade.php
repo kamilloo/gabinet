@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-8 ">
         <div class="panel panel-default">
             <div class="panel-heading">Cennik <a href="{{ route('pricing.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
 
@@ -42,5 +41,4 @@
                 </tbody>
             </table>
         </div>
-    </div>
 @endsection

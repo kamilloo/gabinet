@@ -35,14 +35,21 @@
                     <a class="navbar-brand" href="{{ route('home') }}">
                         Dashboard
                     </a>
+
+
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    @auth()
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        <li class="active"><a href="{{ route('categories.index') }}">Kategorie</a></li>
+                        <li class=""><a href="{{ route('services.index') }}">Usługi</a></li>
+                        <li class=""><a href="{{ route('portfolio.index') }}">Galeria</a></li>
+                        <li class=""><a href="{{ route('certificates.index') }}">Certyfikaty</a></li>
+                        <li class=""><a href="{{ route('pricing.index') }}">Cennik</a></li>
                     </ul>
-
+                    @endauth
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
@@ -82,12 +89,7 @@
                     @else
                     <div class="col-md-4 ">
                         <div class="list-group">
-                            <a href="#" class="list-group-item active">Users</a>
-                            <a href="{{ route('categories.index') }}" class="list-group-item">Kategorie</a>
-                            <a href="{{ route('services.index') }}" class="list-group-item">Usługi</a>
-                            <a href="{{ route('portfolio.index') }}" class="list-group-item">Galeria</a>
-                            <a href="{{ route('certificates.index') }}" class="list-group-item">Certyfikaty</a>
-                            <a href="{{ route('pricing.index') }}" class="list-group-item">Cennik</a>
+
                         </div>
 
                     </div>

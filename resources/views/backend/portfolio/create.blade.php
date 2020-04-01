@@ -1,15 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <h1 class="page-header">Dodaj zdjecie</h1>
-        {!! Form::open(['url' => route('portfolio.store'), 'method' => \Illuminate\Http\Request::METHOD_POST]) !!}
-        <div class="row">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 class="page-header">Dodaj zdjecie</h1>
+        </div>
+        @if (session('status'))
             <div class="panel-body">
-                {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'tagi']) !!}
-
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
             </div>
-            <div class="col-sm-4">
+        @endif
+        <div class="panel-body">
+            {!! Form::open(['url' => route('portfolio.store'), 'method' => \Illuminate\Http\Request::METHOD_POST]) !!}
+            <div class="form-group">
+                <label for="tags">Tagi</label><br>
+                {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'tagi']) !!}
+            </div>
+            <div class="form-group">
+                <label for="lfm">Dodaj obrazek</label>
                 <div class="input-group">
                   <span class="input-group-btn">
                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
@@ -18,16 +28,15 @@
                   </span>
                     <input id="thumbnail" class="form-control" type="text" name="filepath">
                 </div>
-                <br>
-                <div class="input-group section-padding">
-                    <input type="submit" class="btn btn-primary" value="Dodaj do galerii">
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <img id="holder" class="img-thumbnail">
                 </div>
             </div>
-            <div class="col-sm-4">
-                <img id="holder" class="img-thumbnail">
-            </div>
-        </div>
+            <button type="submit" class="btn btn-primary">Dodaj do galerii</button>
 
+        </div>
         {!! Form::close() !!}
     </div>
 
@@ -36,9 +45,7 @@
 @section('javascript_content')
     <script>
         var route_prefix = "{{ url(config('lfm.url_prefix')) }}";
-    </script>
 
-    <script>
         $('#lfm').filemanager('image', {prefix: route_prefix});
     </script>
 @endsection

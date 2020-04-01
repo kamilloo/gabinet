@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Kategorie <a href="{{ route('services.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
+            <div class="panel-heading">Usługi <a href="{{ route('services.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
 
             @if (session('status'))
             <div class="panel-body">
@@ -31,5 +30,4 @@
                 </tbody>
             </table>
         </div>
-    </div>
 @endsection

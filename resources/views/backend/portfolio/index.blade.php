@@ -1,9 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Portfolio <a href="{{ route('portfolio.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
+            <div class="panel-heading">
+                <h1>Portfolio</h1>
+                <div class="float-right"><a class="btn btn-default " href="{{ route('portfolio.create') }}">
+                    Create <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                </div>
+            </div>
             @if (session('status'))
             <div class="panel-body">
                     <div class="alert alert-success">
@@ -38,5 +42,4 @@
             </div>
 
         </div>
-    </div>
 @endsection
