@@ -43,11 +43,11 @@
                     @auth()
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="{{ route('categories.index') }}">Kategorie</a></li>
-                        <li class=""><a href="{{ route('services.index') }}">Usługi</a></li>
-                        <li class=""><a href="{{ route('portfolio.index') }}">Galeria</a></li>
-                        <li class=""><a href="{{ route('certificates.index') }}">Certyfikaty</a></li>
-                        <li class=""><a href="{{ route('pricing.index') }}">Cennik</a></li>
+                        <li class="@if($active_module == \App\Models\Enums\ModuleType::CATEGORIES) active @endif"><a href="{{ route('categories.index') }}">Kategorie</a></li>
+                        <li class="@if($active_module == \App\Models\Enums\ModuleType::SERVICES) active @endif"><a href="{{ route('services.index') }}">Usługi</a></li>
+                        <li class="@if($active_module == \App\Models\Enums\ModuleType::PORTFOLIO) active @endif"><a href="{{ route('portfolio.index') }}">Galeria</a></li>
+                        <li class="@if($active_module == \App\Models\Enums\ModuleType::CERTIFICATES) active @endif"><a href="{{ route('certificates.index') }}">Certyfikaty</a></li>
+                        <li class="@if($active_module == \App\Models\Enums\ModuleType::PRICING) active @endif"><a href="{{ route('pricing.index') }}">Cennik</a></li>
                     </ul>
                     @endauth
                     <!-- Right Side Of Navbar -->

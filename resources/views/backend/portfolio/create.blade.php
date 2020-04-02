@@ -5,18 +5,14 @@
         <div class="panel-heading">
             <h1 class="page-header">Dodaj zdjecie</h1>
         </div>
-        @if (session('status'))
-            <div class="panel-body">
-                <div class="alert alert-success">
-                    {{ session('status') }}
-                </div>
-            </div>
-        @endif
         <div class="panel-body">
             {!! Form::open(['url' => route('portfolio.store'), 'method' => \Illuminate\Http\Request::METHOD_POST]) !!}
             <div class="form-group">
                 <label for="tags">Tagi</label><br>
                 {!! Form::text('tags', null, ['class' => 'form-control', 'placeholder' => 'tagi']) !!}
+                @if($errors->has('tags'))
+                    <p><span class="text-danger">{{$errors->first('tags')}}</span></p>
+                @endif
             </div>
             <div class="form-group">
                 <label for="lfm">Dodaj obrazek</label>
@@ -28,6 +24,9 @@
                   </span>
                     <input id="thumbnail" class="form-control" type="text" name="filepath">
                 </div>
+                @if($errors->has('filepath'))
+                    <p><span class="text-danger">{{$errors->first('filepath')}}</span></p>
+                @endif
             </div>
             <div class="row">
                 <div class="col-sm-12">
