@@ -2,16 +2,18 @@
 
 @section('content')
         <div class="panel panel-default">
-            <div class="panel-heading">Usługi <a href="{{ route('services.create') }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></div>
-
-            @if (session('status'))
+            <div class="panel-heading">
+                <a class="btn btn-default pull-right" href="{{ route('services.create') }}">
+                    Create <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+                <h1>Usługi</h1>
+            </div>
             <div class="panel-body">
-                    <div class="alert alert-success">
+                @if (session('status'))
+                <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
-            </div>
-            @endif
-            <table class="table">
+                @endif
+                <table class="table">
                 <thead>
                 <tr>
                     <th>Lp</th>
@@ -29,5 +31,6 @@
                 @endforeach
                 </tbody>
             </table>
+            </div>
         </div>
 @endsection

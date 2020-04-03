@@ -84,17 +84,6 @@
 
         <div class="container">
                 <div class="row">
-                    @guest
-
-                    @else
-                    <div class="col-md-4 ">
-                        <div class="list-group">
-
-                        </div>
-
-                    </div>
-                    @endguest
-
                     @yield('content')
                 </div>
         </div>

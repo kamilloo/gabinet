@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="col-md-8 ">
         <div class="panel panel-default">
-            <div class="panel-heading">Dashboard</div>
+            <div class="panel-heading">Witai {{ auth()->user()->name }}</div>
 
             <div class="panel-body">
                 @if (session('status'))
@@ -11,9 +10,10 @@
                         {{ session('status') }}
                     </div>
                 @endif
+                <h4>Znajdujesz się w panelu do zarządziania stroną internetową</h4>
+                <h2>Gabinet kosmetyki pielęgnacyjnej Katarzyna Piętka</h2>
+                <p>Życzymy miłego dnia :)</p>
 
-                You are logged in!
             </div>
         </div>
-    </div>
 @endsection

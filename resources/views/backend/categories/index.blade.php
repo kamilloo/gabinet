@@ -3,18 +3,17 @@
 @section('content')
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h1>Kategorie</h1>
-                <div class="float-right">
+                <div class="pull-right">
                     <a class="btn btn-default" href="{{ route('categories.create') }}">Create&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
                 </div>
+                <h1>Kategorie</h1>
             </div>
-            @if (session('status'))
             <div class="panel-body">
-                    <div class="alert alert-success">
+                @if (session('status'))
+                <div class="alert alert-success">
                         {{ session('status') }}
                     </div>
-            </div>
-            @endif
+                @endif
             <table class="table">
                 <thead>
                 <tr>
@@ -27,7 +26,7 @@
                 <tbody>
                 @foreach($categories as $category)
                     <tr>
-                        <td>{{ $category->id }}</td>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $category->name }}</td>
                         <td><span><i class="xsicon {{ $category->icon }}"></i>&nbsp;&nbsp;{{ $category->icon }}</span></td>
                         <td>
@@ -38,6 +37,8 @@
                 @endforeach
                 </tbody>
             </table>
+            </div>
+
         </div>
     </div>
 @endsection
