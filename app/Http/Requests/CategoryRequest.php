@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 
-class ServiceRequest extends Request
+class CategoryRequest extends Request
 {
      /**
      * Get the validation rules that apply to the request.
@@ -13,7 +13,8 @@ class ServiceRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required'
+            'name' => 'required',
+            'icon' => 'required'
         ];
     }
 }

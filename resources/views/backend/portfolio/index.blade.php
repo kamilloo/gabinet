@@ -1,40 +1,56 @@
-@extends('layouts.app')
+@extends('layouts.crud')
 
 @section('content')
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a class="btn btn-default pull-right" href="{{ route('portfolio.create') }}">
-                    Create <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                <h1>Portfolio</h1>
-            </div>
-            <div class="panel-body">
-                @if (session('status'))
+    @parent
+@endsection
 
-                <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
+@section('header', 'Portfolio')
 
-                @foreach($files as $file)
-                    <div class="col-sm-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="{{ asset('storage/'.$file->path) }}">
-                            <div class="caption">
-                                    <form action="{{ route('portfolio.destroy', $file) }}" method="post">
-                                    {{ csrf_field() }}
-                                    {{ method_field('delete') }}
-                                    <button class="btn btn-warning" role="button">Delete</button>
-                                    </form>
-                            </div>
-                            <p>
-                                @foreach($file->tags as $tag)
-                                    <span class="label label-primary">{{ $tag->name }}</span>
-                                @endforeach
-                            </p>
-                        </div>
-                    </div>
+@section('route.create', route('portfolio.create'))
+
+@section('table-header')
+
+    <tr>
+        <th scope="col">Lp</th>
+        <th scope="col">Zdjęcie</th>
+        <th scope="col">Tagi</th>
+        <th scope="col">Action</th>
+    </tr>
+
+@endsection
+
+
+@section('table-footer')
+    @if(!$files->count())
+        <tr>
+            <td colspan="4" scope="col">Brak Portfolio</td>
+        </tr>
+    @endif
+@endsection
+
+@section('table-item')
+
+        @foreach($files as $file)
+        <tr>
+            <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
+            <td class="align-middle">
+                <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$file->path) }}">
+            </td>
+            <td class="align-middle">
+                @foreach($file->tags as $tag)
+                    <span class="label label-primary">{{ $tag->name }}</span>
                 @endforeach
-            </div>
+            </td>
+            <td class="align-middle">
+                <a class="btn btn-info float-left" href="{{ route('portfolio.tags.edit', $file) }}">Edit&nbsp;Tags<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 
-        </div>
+                <form class="form-inline pl-2" action="{{ route('portfolio.destroy', $file) }}" method="post">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                    <button class="btn btn-danger" type="submit">Delete&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+
 @endsection

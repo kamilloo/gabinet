@@ -1,29 +1,35 @@
-@extends('layouts.app')
+@extends('layouts.crud-form')
 
 @section('content')
-    <div class="col-md-8 ">
-        <div class="panel panel-default">
-            <div class="panel-heading">Kategorie - Dodaj</div>
+    @parent
+@endsection
 
-            @if (session('status'))
-            <div class="panel-body">
-                    <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-            </div>
-            @endif
+@section('header', 'Kategorie - Dodaj')
 
-        {!! Form::open(['url' => route('categories.store')]) !!}
-        <div class="panel-body">
-            {!! Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Nazwa']) !!}
-        </div>
-        <div class="panel-body">
-            {!! Form::text('icon', null, ['class' => 'form-control', 'placeholder' => 'Ikona']) !!}
-        </div>
-        <div class="panel-body">
-            {!! Form::submit('Dodaj', ['class' => 'btn btn-primary']) !!}
-        </div>
-        {!! Form::close() !!}
-        </div>
-    </div>
+@section('action', route('categories.store'))
+
+@section('button', 'Dodaj')
+
+@section('method')
+    {{ method_field('POST')  }}
+@endsection
+
+@section('form-control')
+
+    @include('backend.partials.form-input', [
+    'name' => 'name',
+    'label' => 'Nazwa',
+    'placeholder' => 'Podaj nazwę',
+    'helper' => '',
+    'value' => old('name')
+])
+
+    @include('backend.partials.form-input', [
+    'name' => 'icon',
+    'label' => 'Ikona',
+    'placeholder' => 'Wybierz obrazek',
+    'helper' => 'Wybierz obrazek odpowiadający kategorii',
+    'value' => old('icon'),
+])
+
 @endsection

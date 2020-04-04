@@ -39,6 +39,10 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
     Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');
 
+    Route::get('portfolio/{portfolio}/tags', 'PortfolioController@editTags')->name('portfolio.tags.edit');
+    Route::post('portfolio/{portfolio}/tags', 'PortfolioController@storeTags')->name('portfolio.tags.update');
+
+
     Route::resource('certificates', 'CertificateController')->names([
         'index' => 'certificates.index',
         'create' => 'certificates.create',

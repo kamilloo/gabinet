@@ -1,36 +1,48 @@
-@extends('layouts.app')
+@extends('layouts.crud')
 
 @section('content')
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <a class="btn btn-default pull-right" href="{{ route('services.create') }}">
-                    Create <span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
-                <h1>Usługi</h1>
-            </div>
-            <div class="panel-body">
-                @if (session('status'))
-                <div class="alert alert-success">
-                        {{ session('status') }}
-                    </div>
-                @endif
-                <table class="table">
-                <thead>
-                <tr>
-                    <th>Lp</th>
-                    <th>Name</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach($services as $service)
-                    <tr>
-                        <td>{{ $service->id }}</td>
-                        <td>{{ $service->title }}</td>
-                        <td><a href="{{ route('services.edit', $service) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a><a href="{{ route('services.destroy', $service) }}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a></td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-            </div>
-        </div>
+    @parent
+@endsection
+
+@section('header', 'Usługi')
+
+@section('route.create', route('services.create'))
+
+@section('table-header')
+
+    <tr>
+        <th scope="col">Lp</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Action</th>
+    </tr>
+
+@endsection
+
+
+@section('table-footer')
+    @if(!$services->count())
+        <tr>
+            <td colspan="3" scope="col">Brak Usług</td>
+        </tr>
+    @endif
+@endsection
+
+
+@section('table-item')
+    @foreach($services as $service)
+        <tr>
+            <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
+            <td class="align-middle">{{ $service->title }}</td>
+            <td class="align-middle">
+                <a class="btn btn-info float-left" href="{{ route('services.edit', $service) }}">Edit&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+
+                <form class="form-inline pl-2" action="{{ route('services.destroy', $service) }}" method="post">
+                    {{ csrf_field() }}
+                    {{ method_field('delete') }}
+                    <button class="btn btn-danger" type="submit">Delete&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></button>
+                </form>
+            </td>
+        </tr>
+    @endforeach
+
 @endsection

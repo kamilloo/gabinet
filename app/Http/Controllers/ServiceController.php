@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Factories\ServiceBuilder;
 use App\Factories\ServiceFactory;
 use App\Http\Requests\Request;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
@@ -40,7 +41,7 @@ class ServiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, ServiceFactory $service_factory)
+    public function store(ServiceRequest $request, ServiceFactory $service_factory)
     {
         $service_factory->create($request);
 
@@ -78,7 +79,7 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Service $service, ServiceBuilder $service_builder)
+    public function update(ServiceRequest $request, Service $service, ServiceBuilder $service_builder)
     {
         $service_builder->update($request, $service);
 
