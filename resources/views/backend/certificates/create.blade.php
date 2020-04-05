@@ -31,6 +31,11 @@
     'value' => old('description'),
 ])
 
-    @include('backend.partials.form-file', [])
+    @include('backend.partials.form-file', [
+        'name' => 'filepath',
+        'label' => 'Zdjęcie',
+        'helper' => 'Dodaj zdjęcie certyfikatu',
+        'file' => '',
+])
 
 @endsection

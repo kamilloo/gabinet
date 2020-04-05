@@ -88,7 +88,7 @@
 </div>
 
     <!-- Scripts -->
-    <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
+    <script src="{{ asset('js/vendor/tinymce/js/tinymce/tinymce.min.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

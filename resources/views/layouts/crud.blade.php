@@ -18,7 +18,6 @@
                 @yield('table-footer')
             </tfoot>
         </table>
-
     </div>
 
 

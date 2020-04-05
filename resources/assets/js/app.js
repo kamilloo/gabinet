@@ -11,6 +11,7 @@ window.Vue = require('vue');
 
 require('../css/bootstrap-tagsinput.css');
 var tagsInput = require('./bootstrap-tagsinput');
+var fileManager = require('./vendor/laravel-filemanager/js/stand-alone-button')
 var Bloodhound = require('./typeahead.bundle');
 var axios = require('axios');
 
@@ -21,11 +22,12 @@ var axios = require('axios');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('file-upload', require('./components/FileUpload.vue').default);
+Vue.component('wysiwig', require('./components/Wysiwyg.vue').default);
 
-// const app = new Vue({
-//     el: '#app'
-// });
+const app = new Vue({
+    el: '#app'
+});
 
 function getTags(){
     axios.get('/admin/tags')

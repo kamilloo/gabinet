@@ -40,6 +40,11 @@
     'value' => old('description') ?? $service->description,
 ])
 
-    @include('backend.partials.form-file', [])
+    @include('backend.partials.form-file', [
+      'name' => 'filepath',
+        'label' => 'Zdjęcie',
+        'helper' => 'Dodaj zdjęcie do usługi',
+        'filepath' => $service->filepath,
+])
 
 @endsection

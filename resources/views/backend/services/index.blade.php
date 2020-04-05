@@ -24,6 +24,11 @@
         <tr>
             <td colspan="3" scope="col">Brak Usług</td>
         </tr>
+    @else
+        <tr>
+            <td colspan="3" scope="col">{{ $services->links() }}</td>
+        </tr>
+
     @endif
 @endsection
 
