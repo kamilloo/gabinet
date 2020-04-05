@@ -88,9 +88,7 @@
 </div>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="/vendor/laravel-filemanager/js/lfm.js"></script>
-    @yield('javascript_content')
-
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

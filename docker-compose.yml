@@ -1,20 +1,26 @@
-web:
- image: nginx:latest
- ports:
-  - "80:80"
- volumes:
-  - .:/var/www/html
-  - ./site.conf:/etc/nginx/conf.d/000_site.conf
-  - ./nginx.conf:/etc/nginx/nginx.conf
-  - ./nginx/logs:/var/log/nginx
+version: '2'
+services:
 
- links:
-  - php
-
-php:
-  image: php7_2:latest
+ web:
+  image: nginx:latest
+  container_name: gabinet-web
+  ports:
+   - "80:80"
   volumes:
    - .:/var/www/html
+   - ./site.conf:/etc/nginx/conf.d/000_site.conf
+   - ./nginx.conf:/etc/nginx/nginx.conf
+   - ./nginx/logs:/var/log/nginx
+
+  links:
+   - php
+
+ php:
+   container_name: gabinet-php
+   build: .
+   image: gabinet-php:1.0
+   volumes:
+    - .:/var/www/html
 
 
 
