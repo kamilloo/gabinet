@@ -12,12 +12,12 @@ class PortfolioRequest extends Request
     public function rules()
     {
         return [
-            'filepath' => ['required'],
-            'tags' => ['string'],
+            'filepath' => ['required', 'string'],
+            'tags' => ['nullable', 'string'],
         ];
     }
 
-    public function tags()
+    public function tags():array
     {
         return collect(explode(',', $this->tags))->map(function ($tag){
             return mb_strtolower(trim($tag));

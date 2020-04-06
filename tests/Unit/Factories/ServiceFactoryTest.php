@@ -60,7 +60,7 @@ class ServiceFactoryTest extends TestCase
 
         $this->assertDatabaseHas('services', [
 
-        ])
+        ]);
     }
 
 }
