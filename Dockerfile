@@ -28,7 +28,7 @@ RUN set -ex \
     && docker-php-ext-enable xdebug redis \
     && docker-php-source delete \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install pdo pgsql pdo_mysql pdo_pgsql intl zip gd exif \
+    && docker-php-ext-install pdo pgsql pdo_mysql pdo_pgsql intl gd exif \
     && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
     && cd  / && rm -fr /src \
     && apk del build-dependencies \

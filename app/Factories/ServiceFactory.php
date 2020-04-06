@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kamil
- * Date: 05.08.18
- * Time: 07:12
- */
+declare(strict_types=1);
 
 namespace App\Factories;
 
