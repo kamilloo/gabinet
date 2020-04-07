@@ -13,6 +13,7 @@ use App\Notifications\TestNootification;
 use App\Post;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Request;
@@ -44,6 +45,14 @@ class ServiceFactoryTest extends TestCase
      * @var m\LegacyMockInterface|m\MockInterface
      */
     private $data_provider;
+    /**
+     * @var FilesystemManager
+     */
+    private $file_manager;
+    /**
+     * @var \Illuminate\Http\Testing\FileFactory
+     */
+    private \Illuminate\Http\Testing\FileFactory $upload_file;
 
     public function entryData():iterable
     {
@@ -57,6 +66,8 @@ class ServiceFactoryTest extends TestCase
         parent::setUp();
         $this->service_factory = $this->app->make(ServiceFactory::class);
         $this->data_provider = m::mock(EntryDataProvider::class);
+        $this->file_manager = $this->app->make(FilesystemManager::class);
+        $this->upload_file = UploadedFile::fake();
     }
 
 
@@ -77,6 +88,32 @@ class ServiceFactoryTest extends TestCase
         $this->assertDatabaseHas('services', [
             'title' => Arr::get($entry_data, 'title')
         ]);
+    }
+
+    /**
+     *
+     * @dataProvider entryData
+     * @test
+     */
+    public function create_set_file(array $entry_data)
+    {
+        //Given
+        $file = $this->upload_file->image('image.png');
+        $this->file_manager->put($file->getPath(), $file);
+        Arr::set($entry_data, 'filepath', $file->getPath());
+        //When
+        $this->provideEntryData($entry_data);
+
+        //Then
+        $this->service_factory->create($this->data_provider);
+
+        //Assert
+        $this->assertDatabaseHas('services', [
+            'title' => Arr::get($entry_data, 'title'),
+            'filepath' => Arr::get()
+        ]);
+
+        $this->assertFileExists($file->getPath());
     }
 
     private function provideEntryData(array $entry_data):void
