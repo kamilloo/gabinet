@@ -43,9 +43,14 @@ class ServiceController extends Controller
      */
     public function store(ServiceRequest $request, ServiceFactory $service_factory)
     {
-        $service_factory->create($request);
+        $created = $service_factory->create($request);
+        if ($created)
+        {
+            return redirect(route('services.index'))->with(['status' => 'Usługa została dodana.']);
+        }
+        return redirect(route('services.index'))->withErrors('Usługa nie została dodana.');
 
-        return redirect(route('services.index'))->with(['status' => 'Usługa została dodana.']);
+
     }
 
     /**

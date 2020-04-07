@@ -3,7 +3,10 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
+use App\Contracts\EntryDataProvider;
+use App\Contracts\ServiceRequestDataProvider;
 use App\Http\Requests\Request;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Model;
 use App\Models\Pricing;
 use App\Models\PricingItem;
@@ -25,16 +28,23 @@ class ServiceFactory extends AbstractFactory
         $this->service = $service;
     }
 
-    protected function createModel()
+    /**
+     * @return Model|Service
+     */
+    protected function createModel():Model
     {
         return $this->service->newInstance();
     }
-    protected function setAttribute(Request $request)
+
+    /**
+     * @param EntryDataProvider|ServiceRequestDataProvider $data_provider
+     */
+    protected function setAttribute(EntryDataProvider $data_provider):void
     {
         $this->instance->fill([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $request->category_id
+            'title' => $data_provider->getTitle(),
+            'description' => $data_provider->getDescription(),
+            'category_id' => $data_provider->getCategoryId(),
         ]);
     }
 }

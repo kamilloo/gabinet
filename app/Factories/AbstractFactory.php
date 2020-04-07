@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
+use App\Contracts\EntryDataProvider;
 use App\Http\Requests\Request;
 use App\Models\Model;
 use Illuminate\Contracts\Logging\Log;
@@ -42,25 +43,26 @@ abstract class AbstractFactory
         $this->storage = $storage;
     }
 
-    public function create(Request $request){
+    public function create(EntryDataProvider $data_provider): bool {
 
         try{
-            $this->db->transaction(function() use ($request) {
+            $this->db->transaction(function() use ($data_provider) {
 
                 $this->instance = $this->createModel();
-                $this->setAttribute($request);
-                $this->setFile($request);
+                $this->setAttribute($data_provider);
+//                $this->setFile($data_provider);
                 $this->save();
             });
         } catch (\Throwable $exception)
         {
             $this->logger->error($exception->getMessage());
+            return false;
         }
-        return $this->instance;
+        return true;
     }
 
-    abstract protected function createModel();
-    abstract protected function setAttribute(Request $request);
+    abstract protected function createModel():Model;
+    abstract protected function setAttribute(EntryDataProvider $data_provider):void;
 
     protected function setFile(Request $request){
         $file_name =  basename($request->filepath);

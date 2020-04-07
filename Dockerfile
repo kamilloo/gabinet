@@ -38,5 +38,5 @@ COPY xdebug.ini /usr/local/etc/php/conf.d/xdebug-dev.ini
 
 USER 1000:1000
 
-WORKDIR /var/www
+WORKDIR /var/www/html
 CMD ["php-fpm"]

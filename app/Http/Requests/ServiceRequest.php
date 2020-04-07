@@ -3,7 +3,10 @@
 namespace App\Http\Requests;
 
 
-class ServiceRequest extends Request
+use App\Contracts\EntryDataProvider;
+use App\Contracts\ServiceRequestDataProvider;
+
+class ServiceRequest extends Request implements ServiceRequestDataProvider
 {
      /**
      * Get the validation rules that apply to the request.
@@ -13,7 +16,17 @@ class ServiceRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required'
+            'title' => ['required', 'string']
         ];
+    }
+
+    public function getStoragePath(): string
+    {
+        // TODO: Implement getStoragePath() method.
+    }
+
+    public function getTitle(): string
+    {
+        return $this->input('title');
     }
 }

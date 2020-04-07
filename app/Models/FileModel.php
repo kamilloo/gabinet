@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use App\Contracts\FileModelInterface;
-use Illuminate\Database\Eloquent\Model as Eloquent;
 
-abstract class FileModel extends Eloquent implements FileModelInterface
+abstract class FileModel extends Model
 {
-    //
+    public function getStoragePath(): string
+    {
+        return 'services/';
+    }
 }

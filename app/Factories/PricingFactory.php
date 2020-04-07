@@ -40,13 +40,13 @@ class PricingFactory extends AbstractFactory
     {
         return $this->pricing->newInstance();
     }
-    protected function setAttribute(Request $request)
+    protected function setAttribute(Request $data_provider)
     {
         $this->instance->fill([
-            'name' => $request->name,
-            'price_since' => $request->price_since,
+            'name' => $data_provider->name,
+            'price_since' => $data_provider->price_since,
         ]);
-        collect($request->items)->each(function($item){
+        collect($data_provider->items)->each(function($item){
            $price = $this->pricing_item->newInstance([
                'title' => array_get($item, 'title'),
                'description' => array_get($item, 'description'),
