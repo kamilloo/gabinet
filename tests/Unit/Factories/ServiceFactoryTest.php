@@ -13,6 +13,8 @@ use App\Notifications\TestNootification;
 use App\Post;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Contracts\Filesystem\Filesystem;
+use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
@@ -45,8 +47,9 @@ class ServiceFactoryTest extends TestCase
      * @var m\LegacyMockInterface|m\MockInterface
      */
     private $data_provider;
+
     /**
-     * @var FilesystemManager
+     * @var FilesystemAdapter
      */
     private $file_manager;
     /**
@@ -66,7 +69,7 @@ class ServiceFactoryTest extends TestCase
         parent::setUp();
         $this->service_factory = $this->app->make(ServiceFactory::class);
         $this->data_provider = m::mock(EntryDataProvider::class);
-        $this->file_manager = $this->app->make(FilesystemManager::class);
+        $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
     }
 
@@ -99,21 +102,24 @@ class ServiceFactoryTest extends TestCase
     {
         //Given
         $file = $this->upload_file->image('image.png');
-        $this->file_manager->put($file->getPath(), $file);
-        Arr::set($entry_data, 'filepath', $file->getPath());
+        $stored_path = $this->file_manager->putFile('testing', $file);
+//        $url = $this->file_manager->($stored_path);
+        $read = $this->file_manager->move($stored_path, 'copied1.png');
+//        dd($this->file_manager->putFile(, $read));
+//        Arr::set($entry_data, 'filepath', $file->getPath());
         //When
-        $this->provideEntryData($entry_data);
+//        $this->provideEntryData($entry_data);
 
         //Then
-        $this->service_factory->create($this->data_provider);
+//        $this->service_factory->create($this->data_provider);
 
         //Assert
-        $this->assertDatabaseHas('services', [
-            'title' => Arr::get($entry_data, 'title'),
-            'filepath' => Arr::get()
-        ]);
+//        $this->assertDatabaseHas('services', [
+//            'title' => Arr::get($entry_data, 'title'),
+//            'filepath' => Arr::get()
+//        ]);
 
-        $this->assertFileExists($file->getPath());
+//        $this->assertFileExists($file->getPath());
     }
 
     private function provideEntryData(array $entry_data):void
