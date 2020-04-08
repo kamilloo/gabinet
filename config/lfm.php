@@ -82,7 +82,7 @@ return [
 
     'disk'                     => 'public',
 
-    'rename_file'              => false,
+    'rename_file'              => true,
 
     'alphanumeric_filename'    => false,
 

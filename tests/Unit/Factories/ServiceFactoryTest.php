@@ -44,7 +44,7 @@ class ServiceFactoryTest extends TestCase
      */
     private $service_factory;
     /**
-     * @var m\LegacyMockInterface|m\MockInterface
+     * @var m\LegacyMockInterface|m\MockInterface|EntryDataProvider
      */
     private $data_provider;
 
@@ -56,6 +56,22 @@ class ServiceFactoryTest extends TestCase
      * @var \Illuminate\Http\Testing\FileFactory
      */
     private \Illuminate\Http\Testing\FileFactory $upload_file;
+    /**
+     * @var string
+     */
+    private $shares_directory;
+    /**
+     * @var string
+     */
+    private $image_directory;
+    /**
+     * @var string
+     */
+    private string $inner_directory;
+    /**
+     * @var string
+     */
+    private $disk;
 
     public function entryData():iterable
     {
@@ -71,6 +87,10 @@ class ServiceFactoryTest extends TestCase
         $this->data_provider = m::mock(EntryDataProvider::class);
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
+        $this->shares_directory = config('lfm.shared_folder_name');
+        $this->image_directory = config('lfm.folder_categories.image.folder_name');
+        $this->inner_directory = 'inner';
+        $this->disk = config('lfm.disk');
     }
 
 
@@ -102,22 +122,19 @@ class ServiceFactoryTest extends TestCase
     {
         //Given
         $file = $this->upload_file->image('image.png');
-        $stored_path = $this->file_manager->putFile('testing', $file);
-//        $url = $this->file_manager->($stored_path);
-        $read = $this->file_manager->move($stored_path, 'copied1.png');
-//        dd($this->file_manager->putFile(, $read));
-//        Arr::set($entry_data, 'filepath', $file->getPath());
+
         //When
-//        $this->provideEntryData($entry_data);
+        [$url, $file] = $this->whenUploadFile($file);
+        $this->provideEntryData($entry_data);
 
         //Then
-//        $this->service_factory->create($this->data_provider);
+        $this->service_factory->create($this->data_provider);
 
         //Assert
-//        $this->assertDatabaseHas('services', [
-//            'title' => Arr::get($entry_data, 'title'),
-//            'filepath' => Arr::get()
-//        ]);
+        $this->assertDatabaseHas('services', [
+            'title' => Arr::get($entry_data, 'title'),
+            'filepath' => ''
+        ]);
 
 //        $this->assertFileExists($file->getPath());
     }
@@ -127,6 +144,19 @@ class ServiceFactoryTest extends TestCase
         $this->data_provider->shouldReceive('getTitle')->once()->andReturn(Arr::get($entry_data, 'title'));
         $this->data_provider->shouldReceive('getDescription')->once()->andReturn(Arr::get($entry_data, 'description'));
         $this->data_provider->shouldReceive('getCategoryId')->once()->andReturn(Arr::get($entry_data, 'category_id'));
+        $this->data_provider->shouldReceive('getFilepath')->once()->andReturn(Arr::get($entry_data, 'filepath'));
+    }
+
+    protected function whenUploadFile(\Illuminate\Http\Testing\File $file):array
+    {
+        $upload_path = implode(DIRECTORY_SEPARATOR, [
+            $this->image_directory,
+            $this->inner_directory
+        ]);
+        $upload_file = $this->file_manager->putFile($upload_path, $file);
+        $url = $this->file_manager->disk($this->disk)->url($upload_file);
+
+        return [$url, $upload_file];
     }
 
 }
