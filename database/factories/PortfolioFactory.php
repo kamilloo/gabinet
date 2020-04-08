@@ -15,8 +15,6 @@ use Faker\Generator as Faker;
 
 $factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
     return [
-        'disk' => $faker->name,
-        'path' => $faker->unique()->name,
-        'file' => $faker->unique()->fileExtension,
+        'filepath' => $faker->unique()->fileExtension,
     ];
 });

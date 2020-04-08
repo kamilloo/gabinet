@@ -15,12 +15,10 @@ class CreateCertificatesTable extends Migration
     {
         Schema::create('certificates', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('ordinal')->default(9999999);
+            $table->unsignedInteger('ordinal')->nullable()->default(null);
             $table->string('title');
             $table->string('description');
-            $table->string('disk');
-            $table->string('path');
-            $table->string('file');
+            $table->string('filepath');
             $table->timestamps();
         });
     }

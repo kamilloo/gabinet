@@ -4,12 +4,15 @@ declare(strict_types=1);
 
 namespace App\Factories;
 
+use App\Contracts\EntryDataProvider;
 use App\Http\Requests\Request;
 use App\Models\FileModel;
 use App\Models\Model;
+use GuzzleHttp\Psr7\Uri;
 use Illuminate\Contracts\Logging\Log;
 use Illuminate\Database\Connection;
 use Illuminate\Filesystem\FilesystemManager;
+use Illuminate\Http\File;
 
 abstract class AbstractBuilder
 {
@@ -41,50 +44,70 @@ abstract class AbstractBuilder
         $this->db = $db;
         $this->logger = $logger;
         $this->storage = $storage;
+        $this->drive = config('lfm.disk');
+
     }
 
-    public function update(Request $request, FileModel $model){
+    public function update(EntryDataProvider $data_provider, FileModel $model):bool {
 
         try{
-            $this->db->transaction(function() use ($request, $model) {
+            return $this->db->transaction(function() use ($data_provider, $model) {
 
                 $this->instance = $model;
-                $this->setAttribute($request);
-                $this->setFile($request);
-                $this->save();
+                $this->setAttribute($data_provider);
+                $this->setFile($data_provider);
+                return $this->save();
             });
         } catch (\Throwable $exception)
         {
             $this->logger->error($exception->getMessage());
-        }
-        return $this->instance;
-    }
-
-    abstract protected function setAttribute(Request $request);
-
-    protected function setFile(Request $request){
-
-        if ($request->filepath) {
-            $old_file = $this->instance->path;
-            $file_name = basename($request->filepath);
-            $path = $this->instance->getStoragePath() . basename($file_name);
-            $this->storage->disk('storage')
-                ->put($path, $this->storage->disk('file-manager')->get($file_name));
-
-            $this->instance->fill([
-                'disk' => 'storage',
-                'file' => $file_name,
-                'path' => $path
-            ]);
-
-            $this->storage->disk('file-manager')->delete($file_name);
-            $this->storage->disk('file-manager')->delete($old_file);
+            return false;
         }
     }
 
-    protected function save()
+    abstract protected function setAttribute($request);
+
+    protected function setFile(EntryDataProvider $data_provider){
+
+        $file_url = $data_provider->getFilePath();
+        if (!empty($file_url))
+        {
+            $parsed_url = new Uri($file_url);
+            $path = trim($parsed_url->getPath(), DIRECTORY_SEPARATOR);
+            $segments = explode(DIRECTORY_SEPARATOR, $path);
+
+            $first_segment = array_shift($segments);
+            $filepath = implode(DIRECTORY_SEPARATOR, $segments);
+
+            if ($first_segment == 'storage' && $this->disk()->exists($filepath))
+            {
+                $file_info = new File($filepath, false);
+                $to = implode(DIRECTORY_SEPARATOR, [
+                    $this->instance->getStoragePath(),
+                    implode('.',[bin2hex(openssl_random_pseudo_bytes(16)), $file_info->getExtension()]),
+                ]);
+                $copied = $this->disk()->copy($filepath, $to);
+                if ($copied)
+                    $old_file = $this->instance->filepath;
+                    $this->instance->fill([
+                            'filepath' => $to,
+                    ]);
+                    $this->disk()->delete($old_file);
+            }
+        }
+    }
+
+    protected function save():bool
     {
-        $this->instance->save();
+        return $this->instance->save();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Filesystem\Filesystem
+     */
+    protected function disk(): \Illuminate\Contracts\Filesystem\Filesystem
+    {
+        return $this->storage->drive($this->drive);
     }
 
 }

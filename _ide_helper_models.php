@@ -42,10 +42,8 @@ namespace App\Models{
  * App\Models\Portfolio
  *
  * @property int $id
- * @property int $ordinal
- * @property string $disk
- * @property string $path
- * @property string $file
+ * @property int|null $position
+ * @property string $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Category[] $Categories
@@ -56,11 +54,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereDisk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereOrdinal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio wherePath($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Portfolio whereUpdatedAt($value)
  */
 	class Portfolio extends \Eloquent {}
@@ -72,9 +68,9 @@ namespace App\Models{
  *
  * @property int $id
  * @property string $name
+ * @property string|null $icon
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|null $icon
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
  * @property-read int|null $services_count
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category newModelQuery()
@@ -96,9 +92,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property float|null $price_since
- * @property string|null $disk
- * @property string|null $path
- * @property string|null $file
+ * @property string|null $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\PricingItem[] $items
@@ -107,11 +101,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereDisk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing wherePriceSince($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereUpdatedAt($value)
  */
@@ -154,9 +146,7 @@ namespace App\Models{
  * @property string $title
  * @property int|null $category_id
  * @property string|null $description
- * @property string|null $disk
- * @property string|null $path
- * @property string|null $file
+ * @property string|null $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Category|null $category
@@ -166,10 +156,8 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereCategoryId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereDisk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereUpdatedAt($value)
  */
@@ -181,12 +169,10 @@ namespace App\Models{
  * App\Models\Certificate
  *
  * @property int $id
- * @property int $ordinal
+ * @property int|null $ordinal
  * @property string $title
  * @property string $description
- * @property string $disk
- * @property string $path
- * @property string $file
+ * @property string $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate newModelQuery()
@@ -194,11 +180,9 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate query()
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereCreatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereDescription($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereDisk($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereFile($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereOrdinal($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereUpdatedAt($value)
  */

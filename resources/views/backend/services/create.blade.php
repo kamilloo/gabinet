@@ -44,7 +44,7 @@
         'name' => 'filepath',
         'label' => 'Zdjęcie',
         'helper' => 'Dodaj zdjęcie do usługi',
-        'file' => '',
+        'filepath' => '',
 ])
 
 @endsection

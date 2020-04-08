@@ -24,7 +24,7 @@ class ServiceBuilder extends AbstractBuilder
         $this->service = $service;
     }
 
-    protected function setAttribute(Request $request)
+    protected function setAttribute($request)
     {
         $this->instance->fill([
             'title' => $request->title,

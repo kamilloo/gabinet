@@ -54,16 +54,6 @@ return [
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
-        'file-manager' => [
-            'driver' => 'local',
-            'root' => public_path('photos/shares')
-        ],
-
-        'storage' => [
-            'driver' => 'local',
-            'root' => public_path('storage')
-        ],
-
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

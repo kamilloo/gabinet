@@ -16,7 +16,7 @@ class Portfolio extends FileModel implements FileModelInterface
 
     public function getStoragePath(): string
     {
-        return 'portfolio/';
+        return 'portfolio';
     }
 
     public function tags()

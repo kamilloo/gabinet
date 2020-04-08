@@ -37,7 +37,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  */
 class ServiceFactoryTest extends TestCase
 {
-    use DatabaseTransactions;
+    use RefreshDatabase;
+
+    const SERVICE_NAME = 'service-name';
 
     /**
      * @var ServiceFactory
@@ -76,7 +78,7 @@ class ServiceFactoryTest extends TestCase
     public function entryData():iterable
     {
         yield [[
-            'title' => 'title'
+            'title' => self::SERVICE_NAME,
         ]];
     }
 
@@ -85,12 +87,11 @@ class ServiceFactoryTest extends TestCase
         parent::setUp();
         $this->service_factory = $this->app->make(ServiceFactory::class);
         $this->data_provider = m::mock(EntryDataProvider::class);
+
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
-        $this->shares_directory = config('lfm.shared_folder_name');
-        $this->image_directory = config('lfm.folder_categories.image.folder_name');
-        $this->inner_directory = 'inner';
-        $this->disk = config('lfm.disk');
+
+        $this->fileManagerConfig();
     }
 
 
@@ -125,18 +126,17 @@ class ServiceFactoryTest extends TestCase
 
         //When
         [$url, $file] = $this->whenUploadFile($file);
+        $entry_data['filepath'] = $url;
         $this->provideEntryData($entry_data);
 
         //Then
         $this->service_factory->create($this->data_provider);
 
         //Assert
-        $this->assertDatabaseHas('services', [
-            'title' => Arr::get($entry_data, 'title'),
-            'filepath' => ''
-        ]);
+        $service = Service::whereTitle(self::SERVICE_NAME)->firstOrFail();
 
-//        $this->assertFileExists($file->getPath());
+        $this->assertNotEmpty($service->filepath);
+        $this->file_manager->disk($this->disk)->assertExists($service->filepath);
     }
 
     private function provideEntryData(array $entry_data):void
@@ -153,10 +153,19 @@ class ServiceFactoryTest extends TestCase
             $this->image_directory,
             $this->inner_directory
         ]);
-        $upload_file = $this->file_manager->putFile($upload_path, $file);
-        $url = $this->file_manager->disk($this->disk)->url($upload_file);
+        $filepath = $this->file_manager->disk($this->disk)->putFile($upload_path, $file);
+        $file_url = $this->file_manager->disk($this->disk)->url($filepath);
 
-        return [$url, $upload_file];
+        return [$file_url, $filepath];
+    }
+
+    protected function fileManagerConfig(): void
+    {
+        $this->shares_directory = config('lfm.shared_folder_name');
+        $this->image_directory = config('lfm.folder_categories.image.folder_name');
+        $this->inner_directory = 'inner';
+        $this->disk = config('lfm.disk');
+        $this->file_manager->disk($this->disk);
     }
 
 }

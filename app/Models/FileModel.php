@@ -8,6 +8,6 @@ abstract class FileModel extends Model
 {
     public function getStoragePath(): string
     {
-        return 'services/';
+        return 'services';
     }
 }

@@ -8,6 +8,7 @@
 
 namespace App\Factories;
 
+use App\Contracts\EntryDataProvider;
 use App\Http\Requests\Request;
 use App\Models\Model;
 use App\Models\Pricing;
@@ -36,11 +37,11 @@ class PricingFactory extends AbstractFactory
         $this->pricing_item = $pricing_item;
     }
 
-    protected function createModel()
+    protected function createModel():Model
     {
         return $this->pricing->newInstance();
     }
-    protected function setAttribute(Request $data_provider)
+    protected function setAttribute(EntryDataProvider $data_provider):void
     {
         $this->instance->fill([
             'name' => $data_provider->name,

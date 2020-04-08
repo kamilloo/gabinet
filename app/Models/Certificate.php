@@ -11,6 +11,6 @@ class Certificate extends FileModel implements FileModelInterface
 
     public function getStoragePath(): string
     {
-        return 'certificates/';
+        return 'certificates';
     }
 }

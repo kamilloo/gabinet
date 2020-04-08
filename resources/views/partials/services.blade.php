@@ -19,7 +19,7 @@
                                     <div class="tab-pane beautypress-tab-content @if($loop->first) active @endif" id="{{ str_slug($service->title) }}">
                                         <div class="beautypress-spilit-container">
                                             <div class="beautypress-tab-image">
-                                                <img src="{{ asset('storage/'.$service->path) }}" alt="Image">
+                                                <img src="{{ Storage::url($service->filepath) }}" alt="Image">
                                                 <div class="beautypress-tab-image-content">
                                                     <span class="beautypress-iocn-btn full-round-btn bg-color-purple">$50</span>
                                                 </div>

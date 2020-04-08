@@ -9,6 +9,10 @@ use App\Http\Requests\ServiceRequest;
 use App\Models\Category;
 use App\Models\Service;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use View;
 
 class ServiceController extends Controller
 {
@@ -18,7 +22,7 @@ class ServiceController extends Controller
 
     public function index()
     {
-        return \View::first(['backend', 'backend.services.index'])->with([
+        return View::first(['backend', 'backend.services.index'])->with([
             'services' => Service::paginate()
         ]);
     }
@@ -26,7 +30,7 @@ class ServiceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -38,8 +42,9 @@ class ServiceController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return RedirectResponse|Redirector
      */
     public function store(ServiceRequest $request, ServiceFactory $service_factory)
     {
@@ -57,7 +62,7 @@ class ServiceController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -68,7 +73,7 @@ class ServiceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit(Service $service)
     {
@@ -82,27 +87,30 @@ class ServiceController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
     public function update(ServiceRequest $request, Service $service, ServiceBuilder $service_builder)
     {
-        $service_builder->update($request, $service);
-
-        return redirect(route('services.index'))->with(['status' => 'Kategoria zapisana.']);
-
+        $created = $service_builder->update($request, $service);
+        if ($created)
+        {
+            return redirect(route('services.index'))->with(['status' => 'Usługa została zapisana.']);
+        }
+        return redirect(route('services.index'))->withErrors('Usługa nie została zapisana.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy(Service $service)
     {
-        $service->delete();
-
-        return redirect('services')->with(['status' => 'Usługa usunięta.']);
+        if ($service->delete())
+        {
+            return redirect(route('services.index'))->with(['status' => 'Usługa została usunięta.']);
+        }
+        return redirect(route('services.index'))->withErrors('Usługa nie została usunięta.');
 
     }
 }

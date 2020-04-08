@@ -15,10 +15,8 @@ class CreatePortfoliosTable extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('ordinal')->default(9999999);
-            $table->string('disk');
-            $table->string('path');
-            $table->string('file');
+            $table->unsignedInteger('position')->nullable()->default(null);
+            $table->string('filepath');
             $table->timestamps();
         });
     }

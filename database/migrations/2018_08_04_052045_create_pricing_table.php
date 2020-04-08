@@ -17,9 +17,7 @@ class CreatePricingTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->decimal('price_since')->nullable()->default(null);
-            $table->string('disk')->nullable()->default(null);
-            $table->string('path')->nullable()->default(null);
-            $table->string('file')->nullable()->default(null);
+            $table->string('filepath')->nullable()->default(null);
             $table->timestamps();
         });
     }

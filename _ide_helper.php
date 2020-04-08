@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.48 on 2020-04-07 17:00:38.
+ * Generated for Laravel 5.5.48 on 2020-04-08 18:42:11.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3274,32 +3274,20 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
                         return $instance->flush();
         }
         
         /**
-         * Get the Filesystem instance.
+         * Get the underlying database connection.
          *
-         * @return \Illuminate\Filesystem\Filesystem 
+         * @return \Illuminate\Database\MySqlConnection 
          * @static 
          */ 
-        public static function getFilesystem()
+        public static function getConnection()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getFilesystem();
-        }
-        
-        /**
-         * Get the working directory of the cache.
-         *
-         * @return string 
-         * @static 
-         */ 
-        public static function getDirectory()
-        {
-                        /** @var \Illuminate\Cache\FileStore $instance */
-                        return $instance->getDirectory();
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        return $instance->getConnection();
         }
         
         /**
@@ -3310,7 +3298,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\FileStore $instance */
+                        /** @var \Illuminate\Cache\DatabaseStore $instance */
                         return $instance->getPrefix();
         }
          
@@ -3614,6 +3602,108 @@ namespace Illuminate\Support\Facades {
         {
                         /** @var \Illuminate\Cookie\CookieJar $instance */
                         return $instance->getQueuedCookies();
+        }
+         
+    }
+
+    /**
+     * 
+     *
+     * @see \Illuminate\Encryption\Encrypter
+     */ 
+    class Crypt {
+        
+        /**
+         * Determine if the given key and cipher combination is valid.
+         *
+         * @param string $key
+         * @param string $cipher
+         * @return bool 
+         * @static 
+         */ 
+        public static function supported($key, $cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::supported($key, $cipher);
+        }
+        
+        /**
+         * Create a new encryption key for the given cipher.
+         *
+         * @param string $cipher
+         * @return string 
+         * @static 
+         */ 
+        public static function generateKey($cipher)
+        {
+                        return \Illuminate\Encryption\Encrypter::generateKey($cipher);
+        }
+        
+        /**
+         * Encrypt the given value.
+         *
+         * @param mixed $value
+         * @param bool $serialize
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\EncryptException
+         * @static 
+         */ 
+        public static function encrypt($value, $serialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encrypt($value, $serialize);
+        }
+        
+        /**
+         * Encrypt a string without serialization.
+         *
+         * @param string $value
+         * @return string 
+         * @static 
+         */ 
+        public static function encryptString($value)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->encryptString($value);
+        }
+        
+        /**
+         * Decrypt the given value.
+         *
+         * @param mixed $payload
+         * @param bool $unserialize
+         * @return string 
+         * @throws \Illuminate\Contracts\Encryption\DecryptException
+         * @static 
+         */ 
+        public static function decrypt($payload, $unserialize = true)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decrypt($payload, $unserialize);
+        }
+        
+        /**
+         * Decrypt the given string without unserialization.
+         *
+         * @param string $payload
+         * @return string 
+         * @static 
+         */ 
+        public static function decryptString($payload)
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->decryptString($payload);
+        }
+        
+        /**
+         * Get the encryption key.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getKey()
+        {
+                        /** @var \Illuminate\Encryption\Encrypter $instance */
+                        return $instance->getKey();
         }
          
     }
@@ -7401,6 +7491,61 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
+         * Release a reserved job back onto the queue.
+         *
+         * @param string $queue
+         * @param \Illuminate\Queue\Jobs\DatabaseJobRecord $job
+         * @param int $delay
+         * @return mixed 
+         * @static 
+         */ 
+        public static function release($queue, $job, $delay)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->release($queue, $job, $delay);
+        }
+        
+        /**
+         * Delete a reserved job from the queue.
+         *
+         * @param string $queue
+         * @param string $id
+         * @return void 
+         * @throws \Exception|\Throwable
+         * @static 
+         */ 
+        public static function deleteReserved($queue, $id)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        $instance->deleteReserved($queue, $id);
+        }
+        
+        /**
+         * Get the queue or return the default.
+         *
+         * @param string|null $queue
+         * @return string 
+         * @static 
+         */ 
+        public static function getQueue($queue)
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getQueue($queue);
+        }
+        
+        /**
+         * Get the underlying database instance.
+         *
+         * @return \Illuminate\Database\Connection 
+         * @static 
+         */ 
+        public static function getDatabase()
+        {
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
+                        return $instance->getDatabase();
+        }
+        
+        /**
          * Get the expiration timestamp for an object-based queue handler.
          *
          * @param mixed $job
@@ -7410,7 +7555,7 @@ namespace Illuminate\Support\Facades {
         public static function getJobExpiration($job)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         return $instance->getJobExpiration($job);
         }
         
@@ -7424,7 +7569,7 @@ namespace Illuminate\Support\Facades {
         public static function setContainer($container)
         {
             //Method inherited from \Illuminate\Queue\Queue            
-                        /** @var \Illuminate\Queue\SyncQueue $instance */
+                        /** @var \Illuminate\Queue\DatabaseQueue $instance */
                         $instance->setContainer($container);
         }
          
@@ -14873,6 +15018,8 @@ namespace  {
     class Config extends \Illuminate\Support\Facades\Config {}
 
     class Cookie extends \Illuminate\Support\Facades\Cookie {}
+
+    class Crypt extends \Illuminate\Support\Facades\Crypt {}
 
     class DB extends \Illuminate\Support\Facades\DB {}
 

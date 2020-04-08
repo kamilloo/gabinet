@@ -12,7 +12,7 @@ class Pricing extends FileModel implements FileModelInterface
 
     public function getStoragePath(): string
     {
-        return 'pricing/';
+        return 'pricing';
     }
 
     public function items()
