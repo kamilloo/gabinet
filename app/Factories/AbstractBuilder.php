@@ -65,7 +65,7 @@ abstract class AbstractBuilder
         }
     }
 
-    abstract protected function setAttribute($request);
+    abstract protected function setAttribute(EntryDataProvider $request);
 
     protected function setFile(EntryDataProvider $data_provider){
 

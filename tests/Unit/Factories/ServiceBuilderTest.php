@@ -4,6 +4,7 @@ namespace Tests\Feature\Controllers;
 
 use App\Comment;
 use App\Contracts\EntryDataProvider;
+use App\Factories\ServiceBuilder;
 use App\Factories\ServiceFactory;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
@@ -35,7 +36,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
  * File copied
  * File renamed
  */
-class ServiceFactoryTest extends TestCase
+class ServiceBuilderTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -74,6 +75,10 @@ class ServiceFactoryTest extends TestCase
      * @var string
      */
     private $disk;
+    /**
+     * @var Service
+     */
+    protected $service;
 
     public function entryData():iterable
     {
@@ -86,9 +91,9 @@ class ServiceFactoryTest extends TestCase
     protected function setUp()
     {
         parent::setUp();
-        $this->service_factory = $this->app->make(ServiceFactory::class);
+        $this->service_factory = $this->app->make(ServiceBuilder::class);
         $this->data_provider = m::mock(EntryDataProvider::class);
-
+        $this->service = factory(Service::class)->create();
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
 
@@ -107,11 +112,12 @@ class ServiceFactoryTest extends TestCase
         $this->provideEntryData($entry_data);
 
         //Then
-        $this->service_factory->create($this->data_provider);
+        $this->service_factory->update($this->data_provider, $this->service);
 
         //Assert
         $this->assertDatabaseHas('services', [
-            'title' => Arr::get($entry_data, 'title')
+            'id' => $this->service->id,
+            'title' => Arr::get($entry_data, 'title'),
         ]);
     }
 
@@ -131,13 +137,11 @@ class ServiceFactoryTest extends TestCase
         $this->provideEntryData($entry_data);
 
         //Then
-        $this->service_factory->create($this->data_provider);
+        $this->service_factory->update($this->data_provider, $this->service);
 
         //Assert
-        $service = Service::whereTitle(self::SERVICE_NAME)->firstOrFail();
-
-        $this->assertNotEmpty($service->filepath);
-        $this->file_manager->disk($this->disk)->assertExists($service->filepath);
+        $this->assertNotEmpty($this->service->filepath);
+        $this->file_manager->disk($this->disk)->assertExists($this->service->filepath);
     }
 
     private function provideEntryData(array $entry_data):void

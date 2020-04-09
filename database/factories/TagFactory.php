@@ -13,9 +13,8 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
+$factory->define(\App\Models\Tag::class, function (Faker $faker) {
     return [
-        'filepath' => $faker->unique()->fileExtension,
-        'position' => $faker->numerify(),
+        'name' => $faker->name,
     ];
 });

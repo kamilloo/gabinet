@@ -13,9 +13,9 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
+$factory->define(\App\Models\Category::class, function (Faker $faker) {
     return [
-        'filepath' => $faker->unique()->fileExtension,
-        'position' => $faker->numerify(),
+        'name' => $faker->name,
+        'icon' => $faker->name,
     ];
 });

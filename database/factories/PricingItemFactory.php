@@ -13,9 +13,12 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
+$factory->define(\App\Models\PricingItem::class, function (Faker $faker) {
     return [
-        'filepath' => $faker->unique()->fileExtension,
-        'position' => $faker->numerify(),
+        'title' => $faker->name,
+        'description' => $faker->text,
+        'link' => $faker->url,
+        'price' => $faker->randomFloat(2,1,99),
+        'pricing_id' => factory(\App\Models\Pricing::class)->create()->id,
     ];
 });

@@ -13,9 +13,13 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
+$factory->define(\App\Models\Service::class, function (Faker $faker) {
     return [
+        'title' => $faker->title,
+        'description' => $faker->text,
+        'category_id' => function(){
+            return factory(\App\Models\Category::class)->create()->id;
+        },
         'filepath' => $faker->unique()->fileExtension,
-        'position' => $faker->numerify(),
     ];
 });

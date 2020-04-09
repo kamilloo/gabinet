@@ -2,7 +2,9 @@
 
 namespace App\Factories;
 
+use App\Contracts\EntryDataProvider;
 use App\Http\Requests\Request;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Model;
 use App\Models\Pricing;
 use App\Models\PricingItem;
@@ -24,12 +26,15 @@ class ServiceBuilder extends AbstractBuilder
         $this->service = $service;
     }
 
-    protected function setAttribute($request)
+    /**
+     * @param EntryDataProvider|ServiceRequest $request
+     */
+    protected function setAttribute(EntryDataProvider $request)
     {
         $this->instance->fill([
-            'title' => $request->title,
-            'description' => $request->description,
-            'category_id' => $request->category_id
+            'title' => $request->getTitle(),
+            'description' => $request->getDescription(),
+            'category_id' => $request->getCategoryId()
         ]);
     }
 }

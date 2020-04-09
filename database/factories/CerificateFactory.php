@@ -13,8 +13,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(\App\Models\Portfolio::class, function (Faker $faker) {
+$factory->define(\App\Models\Certificate::class, function (Faker $faker) {
     return [
+        'title' => $faker->name,
+        'description' => $faker->text,
         'filepath' => $faker->unique()->fileExtension,
         'position' => $faker->numerify(),
     ];
