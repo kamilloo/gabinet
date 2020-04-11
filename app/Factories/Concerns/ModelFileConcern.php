@@ -51,7 +51,10 @@ trait ModelFileConcern
                     $this->instance->fill([
                         'filepath' => $to,
                     ]);
-                    $this->disk()->delete($old_file);
+                    if ($this->disk()->exists($old_file))
+                    {
+                        $this->disk()->delete($old_file);
+                    }
 
                 }
 
