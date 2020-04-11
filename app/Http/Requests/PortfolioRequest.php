@@ -2,8 +2,12 @@
 
 namespace App\Http\Requests;
 
-class PortfolioRequest extends Request
+use App\Contracts\PortfolioRequestDataProvider;
+use App\Http\Requests\Concerns\UploadFileEntryDataTrait;
+
+class PortfolioRequest extends Request implements PortfolioRequestDataProvider
 {
+    use UploadFileEntryDataTrait;
     /**
      * Get the validation rules that apply to the request.
      *

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\PortfolioFactory;
 use App\Http\Requests\PortfolioRequest;
 use App\Models\Portfolio;
 use App\Models\Tag;
@@ -33,31 +34,18 @@ class PortfolioController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param PortfolioRequest $request
+     * @param PortfolioFactory $factory
      * @return \Illuminate\Http\Response
      */
-    public function store(PortfolioRequest $request)
+    public function store(PortfolioRequest $request, PortfolioFactory $factory)
     {
-        DB::transaction(function() use ($request){
-            $file_name =  basename($request->filepath);
-            $path = 'portfolio/' .basename($file_name);
-            Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
-            $portfolio = Portfolio::create([
-                'disk' => 'storage',
-                'file' => $file_name,
-                'path' => $path
-            ]);
-            Storage::disk('file-manager')->delete($file_name);
-
-            $tags = collect($request->tags())->map(function($raw){
-                return Tag::firstOrCreate([
-                    'name' => $raw
-                ]);
-            });
-            $portfolio->tags()->attach($tags->pluck('id'));
-        });
-
-        return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie została dodane.']);
+        $created = $factory->create($request);
+        if ($created)
+        {
+            return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie zostało dodane.']);
+        }
+        return redirect(route('portfolio.index'))->withErrors('Zdjęcie nie zostało dodane.');
     }
 
     /**

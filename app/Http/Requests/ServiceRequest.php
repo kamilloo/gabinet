@@ -5,10 +5,12 @@ namespace App\Http\Requests;
 
 use App\Contracts\EntryDataProvider;
 use App\Contracts\ServiceRequestDataProvider;
+use App\Http\Requests\Concerns\UploadFileEntryDataTrait;
 use Illuminate\Validation\Rule;
 
 class ServiceRequest extends Request implements ServiceRequestDataProvider
 {
+    use UploadFileEntryDataTrait;
      /**
      * Get the validation rules that apply to the request.
      *
@@ -22,11 +24,6 @@ class ServiceRequest extends Request implements ServiceRequestDataProvider
             'description' => ['nullable', 'string'],
             'category_id' => ['required', Rule::exists('categories', 'id')],
         ];
-    }
-
-    public function getFilePath(): string
-    {
-        return $this->input('filepath') ?? '';
     }
 
     public function getTitle(): string

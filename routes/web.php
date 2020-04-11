@@ -31,16 +31,17 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'edit' => 'services.edit',
         'update' => 'services.update',
         'destroy' => 'services.destroy',
-    ]);
+    ])->except('show');
 
 
-    Route::get('portfolio/create', 'PortfolioController@create')->name('portfolio.create');
-    Route::post('portfolio', 'PortfolioController@store')->name('portfolio.store');
-    Route::get('portfolio', 'PortfolioController@index')->name('portfolio.index');
-    Route::delete('portfolio/{portfolio}', 'PortfolioController@destroy')->name('portfolio.destroy');
-
-    Route::get('portfolio/{portfolio}/tags', 'PortfolioController@editTags')->name('portfolio.tags.edit');
-    Route::post('portfolio/{portfolio}/tags', 'PortfolioController@storeTags')->name('portfolio.tags.update');
+    Route::resource('portfolio', 'PortfolioController')->names([
+        'index' => 'portfolio.index',
+        'create' => 'portfolio.create',
+        'store' => 'portfolio.store',
+        'edit' => 'portfolio.edit',
+        'update' => 'portfolio.update',
+        'destroy' => 'portfolio.destroy',
+    ])->except('show');
 
 
     Route::resource('certificates', 'CertificateController')->names([
