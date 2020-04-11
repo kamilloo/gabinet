@@ -53,7 +53,7 @@ abstract class AbstractBuilder
     public function update(EntryDataProvider $data_provider, FileModel $model):bool {
 
         try{
-            return $this->db->transaction(function() use ($data_provider, $model) {
+            return $this->db->transaction(function() use ($data_provider, $model){
 
                 $this->instance = $model;
                 $this->setAttribute($data_provider);

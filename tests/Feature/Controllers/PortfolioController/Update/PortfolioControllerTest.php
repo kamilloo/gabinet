@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\PortfolioController\Store;
+namespace Tests\Feature\Controllers\PortfolioController\Update;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
@@ -55,6 +55,11 @@ class PortfolioControllerTest extends TestCase
      */
     private $disk;
 
+    /**
+     * @var Portfolio
+     */
+    private $portfolio;
+
     public function invalidEntryData():iterable
     {
         yield 'empty data' => [[
@@ -62,7 +67,7 @@ class PortfolioControllerTest extends TestCase
         ]];
 
         yield 'invalid data' => [[
-            'filepath' => false,
+            'position' => false,
             'tags' => false,
         ]];
     }
@@ -70,7 +75,7 @@ class PortfolioControllerTest extends TestCase
     public function entryData()
     {
         yield 'valid data' => [[
-            'filepath' => 'filepath',
+            'position' => 1,
             'tags' => 'string',
         ]];
     }
@@ -79,11 +84,7 @@ class PortfolioControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-
-        $this->file_manager = $this->app['filesystem'];
-        $this->upload_file = UploadedFile::fake();
-
-        $this->fileManagerConfig();
+        $this->portfolio = factory(Portfolio::class)->create();
     }
 
     /**
@@ -92,9 +93,9 @@ class PortfolioControllerTest extends TestCase
      */
     public function store_validation_exception(array $data)
     {
-        $response = $this->sendPortfolioStoreRequest($data);
+        $response = $this->sendPortfolioUpdateRequest($this->portfolio, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('filepath');
+        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('tags');
 
     }
@@ -105,19 +106,12 @@ class PortfolioControllerTest extends TestCase
      */
     public function store_model(array $entry)
     {
-        //Given
-        $file = $this->upload_file->image('image.png');
-
-        //When
-        $url = $this->whenUploadFile($file);
-        $entry['filepath'] = $url;
-
         //Then
-        $response = $this->sendPortfolioStoreRequest($entry);
+        $response = $this->sendPortfolioUpdateRequest($this->portfolio, $entry);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Zdjęcie zostało dodane.');
+        $response->assertSessionHas('status', 'Zmiany zostały zapisane.');
 
     }
 
@@ -126,30 +120,10 @@ class PortfolioControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendPortfolioStoreRequest(array $data): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendPortfolioUpdateRequest(Portfolio $portfolio, array $data): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->post(route('portfolio.store'), $data);
-    }
-
-
-    protected function whenUploadFile(\Illuminate\Http\Testing\File $file):string
-    {
-        $upload_path = implode(DIRECTORY_SEPARATOR, [
-            $this->image_directory,
-            $this->inner_directory
-        ]);
-        $filepath = $this->file_manager->disk($this->disk)->putFile($upload_path, $file);
-        return $this->file_manager->disk($this->disk)->url($filepath);
-    }
-
-    protected function fileManagerConfig(): void
-    {
-        $this->shares_directory = config('lfm.shared_folder_name');
-        $this->image_directory = config('lfm.folder_categories.image.folder_name');
-        $this->inner_directory = 'inner';
-        $this->disk = config('lfm.disk');
-        $this->file_manager->disk($this->disk);
+        return $this->put(route('portfolio.update', $portfolio), $data);
     }
 
 }

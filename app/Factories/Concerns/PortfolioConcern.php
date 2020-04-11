@@ -13,10 +13,7 @@ use App\Models\Tag;
 trait PortfolioConcern
 {
 
-    /**
-     * @param EntryDataProvider|PortfolioRequest $data_provider
-     */
-    protected function setAttribute(EntryDataProvider $data_provider):void
+    protected function addRelations(EntryDataProvider $data_provider): void
     {
         $tags = collect($data_provider->tags())->map(function($raw){
             return Tag::firstOrCreate([

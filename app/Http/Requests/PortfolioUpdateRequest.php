@@ -3,12 +3,13 @@
 namespace App\Http\Requests;
 
 use App\Contracts\PortfolioRequestDataProvider;
+use App\Contracts\PortfolioUpdateDataProvider;
 use App\Http\Requests\Concerns\TagsEntryDataTrait;
 use App\Http\Requests\Concerns\UploadFileEntryDataTrait;
 
-class PortfolioRequest extends Request implements PortfolioRequestDataProvider
+class PortfolioUpdateRequest extends Request implements PortfolioUpdateDataProvider
 {
-    use UploadFileEntryDataTrait, TagsEntryDataTrait;
+    use TagsEntryDataTrait;
     /**
      * Get the validation rules that apply to the request.
      *
@@ -17,8 +18,18 @@ class PortfolioRequest extends Request implements PortfolioRequestDataProvider
     public function rules()
     {
         return [
-            'filepath' => ['required', 'string'],
+            'position' => ['required', 'integer'],
             'tags' => ['nullable', 'string'],
         ];
+    }
+
+    public function position(): int
+    {
+        return $this->input('position');
+    }
+
+    public function getFilePath(): string
+    {
+        return '';
     }
 }

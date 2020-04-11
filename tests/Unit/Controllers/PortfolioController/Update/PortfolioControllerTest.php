@@ -64,7 +64,7 @@ class PortfolioControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->factory = m::mock(PortfolioFactory::class);
+        $this->factory = m::mock(PortfolioBuilder::class);
         $this->instance(PortfolioFactory::class, $this->factory);
     }
 

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\PortfolioBuilder;
 use App\Factories\PortfolioFactory;
+use App\Factories\ServiceBuilder;
 use App\Http\Requests\PortfolioRequest;
+use App\Http\Requests\PortfolioUpdateRequest;
+use App\Http\Requests\ServiceRequest;
 use App\Models\Portfolio;
 use App\Models\Tag;
 use App\Notifications\TestNootification;
@@ -47,6 +51,36 @@ class PortfolioController extends Controller
         }
         return redirect(route('portfolio.index'))->withErrors('Zdjęcie nie zostało dodane.');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function edit(Portfolio $portfolio)
+    {
+        return view('backend.portfolio.edit', compact('portfolio'));
+
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     */
+    public function update(PortfolioUpdateRequest $request, Portfolio $portfolio, PortfolioBuilder $builder)
+    {
+        $saved = $builder->update($request, $portfolio);
+        if ($saved)
+        {
+            return redirect(route('portfolio.index'))->with(['status' => 'Zmiany zostały zapisane.']);
+        }
+        return redirect(route('portfolio.index'))->withErrors('Zmiany nie zostały zapisane.');
+    }
+
 
     /**
      * Remove the specified resource from storage.

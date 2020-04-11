@@ -1,10 +1,11 @@
 <?php
 
-namespace Tests\Feature\Controllers\PortfolioController\Store;
+namespace Tests\Feature\Controllers\ServiceController\Store;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
+use App\Models\Category;
 use App\Models\Portfolio;
 use App\Movie;
 use App\Notifications\TestNootification;
@@ -21,7 +22,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PortfolioControllerTest extends TestCase
+class ServiceControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -58,20 +59,17 @@ class PortfolioControllerTest extends TestCase
     public function invalidEntryData():iterable
     {
         yield 'empty data' => [[
-           'tags' => [],
         ]];
 
         yield 'invalid data' => [[
-            'filepath' => false,
-            'tags' => false,
+            'title' => false,
         ]];
     }
 
     public function entryData()
     {
         yield 'valid data' => [[
-            'filepath' => 'filepath',
-            'tags' => 'string',
+            'title' => 'title',
         ]];
     }
 
@@ -92,10 +90,9 @@ class PortfolioControllerTest extends TestCase
      */
     public function store_validation_exception(array $data)
     {
-        $response = $this->sendPortfolioStoreRequest($data);
+        $response = $this->sendServiceStoreRequest($data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('filepath');
-        $response->assertSessionHasErrors('tags');
+        $response->assertSessionHasErrors('title');
 
     }
 
@@ -110,14 +107,15 @@ class PortfolioControllerTest extends TestCase
 
         //When
         $url = $this->whenUploadFile($file);
+        $entry['category_id'] = factory(Category::class)->create()->id;
         $entry['filepath'] = $url;
 
         //Then
-        $response = $this->sendPortfolioStoreRequest($entry);
+        $response = $this->sendServiceStoreRequest($entry);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Zdjęcie zostało dodane.');
+        $response->assertSessionHas('status', 'Usługa została dodana.');
 
     }
 
@@ -126,10 +124,10 @@ class PortfolioControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendPortfolioStoreRequest(array $data): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendServiceStoreRequest(array $data): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->post(route('portfolio.store'), $data);
+        return $this->post(route('services.store'), $data);
     }
 
 
