@@ -7,6 +7,7 @@ use App\Factories\AbstractFactory;
 use App\Factories\ServiceFactory;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
+use App\Models\Category;
 use App\Models\Portfolio;
 use App\Movie;
 use App\Notifications\TestNootification;
@@ -49,9 +50,11 @@ class ServiceControllerTest extends TestCase
 
     public function entryData()
     {
-        yield 'valid data' => [[
+        $category = $this->createCategory([]);
+        return [
             'title' => 'title',
-        ]];
+            'category_id' => $category->id,
+        ];
     }
 
     protected function setUp()
@@ -70,16 +73,21 @@ class ServiceControllerTest extends TestCase
     {
         $response = $this->sendServiceStoreRequest($data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('title');
+        $response->assertSessionHasErrors([
+            'title',
+            'category_id'
+        ]);
 
     }
 
     /**
      * @test
-     * @dataProvider entryData
      */
-    public function store_model(array $entry)
+    public function store_model()
     {
+        //Given
+        $entry = $this->entryData();
+
         //When
         $this->factoryCreatesService();
 
@@ -88,16 +96,19 @@ class ServiceControllerTest extends TestCase
 
         //Assert
         $response->assertStatus(302);
+
         $response->assertSessionHas('status', 'Usługa została dodana.');
     }
 
 
     /**
      * @test
-     * @dataProvider entryData
      */
-    public function store_factory_doesnt_save_model(array $entry)
+    public function store_factory_doesnt_save_model()
     {
+        //Given
+        $entry = $this->entryData();
+
         //When
         $this->factoryDoesntCreatesService();
 
@@ -132,6 +143,11 @@ class ServiceControllerTest extends TestCase
         $this->factory->shouldReceive('create')
             ->once()
             ->andReturn(False);
+    }
+
+    protected function createCategory(array $attributes): Category
+    {
+        return factory(Category::class)->create($attributes);
     }
 
 }
