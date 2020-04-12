@@ -169,7 +169,7 @@ namespace App\Models{
  * App\Models\Certificate
  *
  * @property int $id
- * @property int|null $ordinal
+ * @property int|null $position
  * @property string $title
  * @property string $description
  * @property string $filepath

@@ -125,7 +125,7 @@ class PortfolioControllerTest extends TestCase
     protected function sendPortfolioUpdateRequest(array $data): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->post(route('portfolio.update'), $data);
+        return $this->put(route('portfolio.update'), $data);
     }
 
     private function factoryUpdate()

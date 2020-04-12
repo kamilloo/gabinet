@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CertificateRequest;
 use App\Models\Certificate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -37,7 +38,7 @@ class CertificateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CertificateRequest $request)
     {
         DB::transaction(function() use ($request){
             $file_name =  basename($request->filepath);

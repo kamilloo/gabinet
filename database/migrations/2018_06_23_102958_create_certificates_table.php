@@ -17,7 +17,7 @@ class CreateCertificatesTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('position')->nullable()->default(null);
             $table->string('title');
-            $table->string('description');
+            $table->string('description')->nullable()->default(null);
             $table->string('filepath');
             $table->timestamps();
         });
