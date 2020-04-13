@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\ServiceBuilder;
 use App\Factories\ServiceFactory;
+use App\Factories\ServiceRemover;
 use App\Http\Requests\Request;
 use App\Http\Requests\ServiceRequest;
 use App\Models\Category;
@@ -104,9 +105,11 @@ class ServiceController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy(Service $service)
+    public function destroy(Service $service, ServiceRemover $remover)
     {
-        if ($service->delete())
+
+        $removed = $remover->destroy($service);
+        if ($removed)
         {
             return redirect(route('services.index'))->with(['status' => 'Usługa została usunięta.']);
         }

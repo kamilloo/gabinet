@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\PortfolioBuilder;
 use App\Factories\PortfolioFactory;
+use App\Factories\PortfolioRemover;
 use App\Factories\ServiceBuilder;
 use App\Http\Requests\PortfolioRequest;
 use App\Http\Requests\PortfolioUpdateRequest;
@@ -88,19 +89,14 @@ class PortfolioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy(Portfolio $portfolio, PortfolioRemover $remover)
     {
-        try{
-            DB::transaction(function () use($portfolio){
-                Storage::disk($portfolio->disk)->delete($portfolio->path);
-                $portfolio->delete();
-            });
-        }catch (\Exception $exception)
+        $removed = $remover->destroy($portfolio);
+        if ($removed)
         {
-            return redirect(route('portfolio.index'))->with(['error' => $exception->getMessage()]);
-
+            return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie zostało usunięte.']);
         }
-        return redirect(route('portfolio.index'))->with(['status' => 'Zdjęcie usunięte.']);
+        return redirect(route('portfolio.index'))->withErrors('Certyfikat nie został usunięty.');
 
     }
 }

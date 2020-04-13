@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\PricingBuilder;
 use App\Factories\PricingFactory;
+use App\Factories\PricingRemover;
 use App\Http\Requests\PricingRequest;
 use App\Http\Requests\PricingUpdateRequest;
 use App\Models\Certificate;
@@ -88,17 +89,13 @@ class PricingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Pricing $pricing)
+    public function destroy(Pricing $pricing, PricingRemover $remover)
     {
-        try{
-            DB::transaction(function () use($pricing){
-                Storage::disk($pricing->disk)->delete($pricing->path);
-                $pricing->delete();
-            });
-        }catch (\Exception $exception)
+        $removed = $remover->destroy($pricing);
+        if ($removed)
         {
-            return redirect(route('pricing.index'))->with(['error' => $exception->getMessage()]);
+            return redirect(route('pricing.index'))->with(['status' => 'Cennik usunięty.']);
         }
-        return redirect(route('pricing.index'))->with(['status' => 'Cennik usunięty.']);
+        return redirect(route('pricing.index'))->withErrors('Cennik nie został usunięty.');
     }
 }

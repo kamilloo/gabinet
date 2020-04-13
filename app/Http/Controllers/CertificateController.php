@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Factories\CertificateBuilder;
 use App\Factories\CertificateFactory;
+use App\Factories\CertificateRemover;
 use App\Http\Requests\CertificateRequest;
 use App\Http\Requests\CertificateUpdateRequest;
 use App\Models\Certificate;
@@ -88,18 +89,13 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Certificate $certificate)
+    public function destroy(Certificate $certificate, CertificateRemover $remover)
     {
-        try{
-            DB::transaction(function () use($certificate){
-                Storage::delete($certificate->filepath);
-//                $certificate->delete();
-            });
-        }catch (\Exception $exception)
+        $removed = $remover->destroy($certificate);
+        if ($removed)
         {
-            return redirect(route('portfolio.index'))->with(['error' => $exception->getMessage()]);
-
+            return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został usunięty.']);
         }
-        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat usunięty.']);
+        return redirect(route('certificates.index'))->withErrors('Certyfikat nie został usunięty.');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\CertificateController\Destroy;
+namespace Tests\Feature\Controllers\PortfolioController\Destroy;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
@@ -8,6 +8,7 @@ use App\Mail\Test;
 use App\Models\Category;
 use App\Models\Certificate;
 use App\Models\Portfolio;
+use App\Models\Tag;
 use App\Movie;
 use App\Notifications\TestNootification;
 use App\Post;
@@ -24,7 +25,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CertificateControllerTest extends TestCase
+class PortfolioControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -58,15 +59,15 @@ class CertificateControllerTest extends TestCase
     private $disk;
 
     /**
-     * @var Service
+     * @var Portfolio
      */
-    private $certificate;
+    private $portfolio;
 
     protected function setUp()
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->certificate = factory(Certificate::class)->create();
+        $this->portfolio = factory(Portfolio::class)->create();
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
 
@@ -82,16 +83,34 @@ class CertificateControllerTest extends TestCase
         $file = $this->upload_file->image('image.png');
         //when
         $filepath = $this->whenUploadFile($file);
-        $this->certificate->filepath = $filepath;
-        $this->certificate->save();
+        $this->portfolio->filepath = $filepath;
+        $this->portfolio->save();
 
         //Then
-        $response = $this->sendCertificateDeleteRequest($this->certificate);
+        $response = $this->sendPortfolioDeleteRequest($this->portfolio);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Certyfikat został usunięty.');
-        $this->assertCertificateFileMissing($filepath);
+        $response->assertSessionHas('status', 'Zdjęcie zostało usunięte.');
+        $this->assertFileMissing($filepath);
+
+    }
+
+    /**
+     * @test
+     */
+    public function remove_portfolio_tags()
+    {
+        //Given
+        $tag = factory(Tag::class)->create();
+        //when
+        $this->portfolio->tags()->attach($tag);
+
+        //Then
+        $response = $this->sendPortfolioDeleteRequest($this->portfolio);
+
+        //Assert
+        $this->assertTagsMissing($tag);
 
     }
 
@@ -100,10 +119,10 @@ class CertificateControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendCertificateDeleteRequest(Certificate $certificate): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendPortfolioDeleteRequest(Portfolio $portfolio): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->delete(route('certificates.destroy', $certificate));
+        return $this->delete(route('portfolio.destroy', $portfolio));
     }
 
     protected function whenUploadFile(\Illuminate\Http\Testing\File $file):string
@@ -124,9 +143,15 @@ class CertificateControllerTest extends TestCase
         $this->file_manager->disk($this->disk);
     }
 
-    private function assertCertificateFileMissing(string $file_path)
+    private function assertFileMissing(string $file_path)
     {
         $this->assertFalse($this->file_manager->disk($this->disk)->exists($file_path));
+    }
+
+    private function assertTagsMissing(Tag $tag)
+    {
+        $this->assertFalse($tag->portfolio()->exists());
+        $this->assertTrue($tag->exists);
     }
 
 }

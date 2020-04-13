@@ -21,7 +21,6 @@ use Symfony\Component\Finder\SplFileInfo;
 
 abstract class AbstractRemover
 {
-    use ModelFileConcern;
     /**
      * @var Model|FileModelInterface
      */
@@ -57,13 +56,13 @@ abstract class AbstractRemover
         $this->drive = config('lfm.disk');
     }
 
-    public function detroy(Model $model): bool {
+    public function destroy(Model $model): bool {
 
         try{
             return $this->db->transaction(function() use ($model) {
 
                 $this->instance = $model;
-                $this->setFile();
+                $this->removeFile();
                 $this->delete();
                 return true;
             });
@@ -83,38 +82,12 @@ abstract class AbstractRemover
         return $this->storage->drive($this->drive);
     }
 
-    protected function setFile(EntryDataProvider $data_provider)
+    protected function removeFile()
     {
-        $file_url = $data_provider->getFilePath();
-        if (!empty($file_url)) {
-            $parsed_url = new Uri($file_url);
-            $path = trim($parsed_url->getPath(), DIRECTORY_SEPARATOR);
-            $segments = explode(DIRECTORY_SEPARATOR, $path);
-
-            $first_segment = array_shift($segments);
-            $filepath = implode(DIRECTORY_SEPARATOR, $segments);
-
-            if ($first_segment == 'storage' && $this->disk()->exists($filepath)) {
-                $file_info = new File($filepath, false);
-                $to = implode(DIRECTORY_SEPARATOR, [
-                    $this->instance->getStoragePath(),
-                    implode('.', [bin2hex(openssl_random_pseudo_bytes(16)), $file_info->getExtension()]),
-                ]);
-                $copied = $this->disk()->copy($filepath, $to);
-                if ($copied)
-                {
-                    $old_file = $this->instance->filepath;
-                    $this->instance->fill([
-                        'filepath' => $to,
-                    ]);
-                    if ($this->disk()->exists($old_file))
-                    {
-                        $this->disk()->delete($old_file);
-                    }
-
-                }
-
-            }
+        $old_file = $this->instance->filepath;
+        if ($this->disk()->exists($old_file))
+        {
+            $this->disk()->delete($old_file);
         }
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\CertificateController\Destroy;
+namespace Tests\Feature\Controllers\PricingController\Destroy;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
@@ -8,6 +8,9 @@ use App\Mail\Test;
 use App\Models\Category;
 use App\Models\Certificate;
 use App\Models\Portfolio;
+use App\Models\Pricing;
+use App\Models\PricingItem;
+use App\Models\Tag;
 use App\Movie;
 use App\Notifications\TestNootification;
 use App\Post;
@@ -24,7 +27,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CertificateControllerTest extends TestCase
+class PricingControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -58,15 +61,15 @@ class CertificateControllerTest extends TestCase
     private $disk;
 
     /**
-     * @var Service
+     * @var Pricing
      */
-    private $certificate;
+    private $pricing;
 
     protected function setUp()
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->certificate = factory(Certificate::class)->create();
+        $this->pricing = factory(Pricing::class)->create();
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
 
@@ -82,16 +85,34 @@ class CertificateControllerTest extends TestCase
         $file = $this->upload_file->image('image.png');
         //when
         $filepath = $this->whenUploadFile($file);
-        $this->certificate->filepath = $filepath;
-        $this->certificate->save();
+        $this->pricing->filepath = $filepath;
+        $this->pricing->save();
 
         //Then
-        $response = $this->sendCertificateDeleteRequest($this->certificate);
+        $response = $this->sendPricingDeleteRequest($this->pricing);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Certyfikat został usunięty.');
-        $this->assertCertificateFileMissing($filepath);
+        $response->assertSessionHas('status', 'Cennik usunięty.');
+        $this->assertFileMissing($filepath);
+
+    }
+
+    /**
+     * @test
+     */
+    public function remove_portfolio_tags()
+    {
+        //Given
+        $item = factory(PricingItem::class)->make();
+        //when
+        $this->pricing->items()->save($item);
+
+        //Then
+        $response = $this->sendPricingDeleteRequest($this->pricing);
+
+        //Assert
+        $this->assertPricingItemMissing($item);
 
     }
 
@@ -100,10 +121,10 @@ class CertificateControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendCertificateDeleteRequest(Certificate $certificate): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendPricingDeleteRequest(Pricing $pricing): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->delete(route('certificates.destroy', $certificate));
+        return $this->delete(route('pricing.destroy', $pricing));
     }
 
     protected function whenUploadFile(\Illuminate\Http\Testing\File $file):string
@@ -124,9 +145,15 @@ class CertificateControllerTest extends TestCase
         $this->file_manager->disk($this->disk);
     }
 
-    private function assertCertificateFileMissing(string $file_path)
+    private function assertFileMissing(string $file_path)
     {
         $this->assertFalse($this->file_manager->disk($this->disk)->exists($file_path));
+    }
+
+    private function assertPricingItemMissing(PricingItem $pricing_item)
+    {
+        $pricing_item = $pricing_item->fresh();
+        $this->assertNull($pricing_item);
     }
 
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\CertificateController\Destroy;
+namespace Tests\Feature\Controllers\ServiceController\Destroy;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
@@ -8,6 +8,9 @@ use App\Mail\Test;
 use App\Models\Category;
 use App\Models\Certificate;
 use App\Models\Portfolio;
+use App\Models\Pricing;
+use App\Models\PricingItem;
+use App\Models\Tag;
 use App\Movie;
 use App\Notifications\TestNootification;
 use App\Post;
@@ -24,7 +27,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CertificateControllerTest extends TestCase
+class ServiceControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -60,13 +63,13 @@ class CertificateControllerTest extends TestCase
     /**
      * @var Service
      */
-    private $certificate;
+    private $service;
 
     protected function setUp()
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->certificate = factory(Certificate::class)->create();
+        $this->service = factory(Service::class)->create();
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
 
@@ -82,16 +85,16 @@ class CertificateControllerTest extends TestCase
         $file = $this->upload_file->image('image.png');
         //when
         $filepath = $this->whenUploadFile($file);
-        $this->certificate->filepath = $filepath;
-        $this->certificate->save();
+        $this->service->filepath = $filepath;
+        $this->service->save();
 
         //Then
-        $response = $this->sendCertificateDeleteRequest($this->certificate);
+        $response = $this->sendServiceDeleteRequest($this->service);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Certyfikat został usunięty.');
-        $this->assertCertificateFileMissing($filepath);
+        $response->assertSessionHas('status', 'Usługa została usunięta.');
+        $this->assertFileMissing($filepath);
 
     }
 
@@ -100,10 +103,10 @@ class CertificateControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendCertificateDeleteRequest(Certificate $certificate): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendServiceDeleteRequest(Service $service): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->delete(route('certificates.destroy', $certificate));
+        return $this->delete(route('services.destroy', $service));
     }
 
     protected function whenUploadFile(\Illuminate\Http\Testing\File $file):string
@@ -124,9 +127,10 @@ class CertificateControllerTest extends TestCase
         $this->file_manager->disk($this->disk);
     }
 
-    private function assertCertificateFileMissing(string $file_path)
+    private function assertFileMissing(string $file_path)
     {
         $this->assertFalse($this->file_manager->disk($this->disk)->exists($file_path));
     }
+
 
 }
