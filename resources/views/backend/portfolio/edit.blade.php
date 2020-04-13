@@ -4,14 +4,14 @@
     @parent
 @endsection
 
-@section('header', 'Portfolio - Dodaj')
+@section('header', 'Portfolio - Edytuj')
 
-@section('action', route('portfolio.store'))
+@section('action', route('portfolio.update', $portfolio))
 
-@section('button', 'Dodaj')
+@section('button', 'Zapisa')
 
 @section('method')
-    {{ method_field('POST')  }}
+    {{ method_field('PUT')  }}
 @endsection
 
 @section('form-control')
@@ -21,14 +21,14 @@
     'label' => 'Tagi',
     'placeholder' => 'Podaj tagi',
     'helper' => '',
-    'value' => old('tags')
+    'value' => $portfolio->tags->pluck('name')
 ])
 
     @include('backend.partials.form-file', [
     'name' => 'filepath',
     'label' => 'Zdjęcie',
     'helper' => 'Dodaj zdjęcie',
-    'filepath' => '',
+    'filepath' => $portfolio->filepath,
 ])
 
 @endsection

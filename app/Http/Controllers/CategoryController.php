@@ -28,7 +28,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('backend.categories.create');
+        $icons = config('icons');
+        $icons = array_combine($icons,$icons);
+        return view('backend.categories.create', compact('icons'));
     }
 
     /**
@@ -66,7 +68,9 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('backend.categories.edit', compact('category'));
+        $icons = config('icons');
+        $icons = array_combine($icons,$icons);
+        return view('backend.categories.edit', compact('category', 'icons'));
 
     }
 
@@ -97,7 +101,7 @@ class CategoryController extends Controller
     {
         if ($category->services()->exists())
         {
-            return redirect(route('categories.index'))->withErrors('Kategoria posiada usługi.');
+            return redirect(route('categories.index'))->with(['error' =>'Kategoria posiada usługi.']);
         }
         $category->delete();
 

@@ -6,7 +6,7 @@
 
 @section('header', 'Usługi - Edytuj')
 
-@section('action', route('services.update', $certificate))
+@section('action', route('certificates.update', $certificate))
 
 @section('button', 'Zapisz')
 
@@ -31,6 +31,11 @@
     'value' => old('description') ?? $certificate->description,
 ])
 
-    @include('backend.partials.form-file', [])
+    @include('backend.partials.form-file', [
+        'name' => 'filepath',
+        'label' => 'Zdjęcie',
+        'helper' => 'Dodaj zdjęcie certyfikatu',
+        'filepath' => $certificate->filepath,
+])
 
 @endsection

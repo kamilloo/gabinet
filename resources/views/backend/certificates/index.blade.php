@@ -36,7 +36,7 @@
             <td class="align-middle">{{ $certificate->title }}</td>
             <td class="align-middle">
                 <a href="{{ route('certificates.edit', $certificate) }}">
-                    <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$certificate->path) }}">
+                    <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$certificate->filepath) }}">
                 </a>
             </td>
             <td class="align-middle">

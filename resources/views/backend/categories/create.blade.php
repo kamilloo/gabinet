@@ -24,12 +24,9 @@
     'value' => old('name')
 ])
 
-    @include('backend.partials.form-input', [
-    'name' => 'icon',
-    'label' => 'Ikona',
-    'placeholder' => 'Wybierz obrazek',
-    'helper' => 'Wybierz obrazek odpowiadający kategorii',
+    @include('backend.partials.icon-form-select', [
     'value' => old('icon'),
+    'options' => $icons
 ])
 
 @endsection

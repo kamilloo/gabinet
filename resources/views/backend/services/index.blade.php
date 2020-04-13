@@ -13,6 +13,8 @@
     <tr>
         <th scope="col">Lp</th>
         <th scope="col">Nazwa</th>
+        <th scope="col">Zdjęcie</th>
+        <th scope="col">Kategoria</th>
         <th scope="col">Action</th>
     </tr>
 
@@ -22,11 +24,11 @@
 @section('table-footer')
     @if(!$services->count())
         <tr>
-            <td colspan="3" scope="col">Brak Usług</td>
+            <td colspan="5" scope="col">Brak Usług</td>
         </tr>
     @else
         <tr>
-            <td colspan="3" scope="col">{{ $services->links() }}</td>
+            <td colspan="5" scope="col">{{ $services->links() }}</td>
         </tr>
 
     @endif
@@ -38,6 +40,14 @@
         <tr>
             <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
             <td class="align-middle">{{ $service->title }}</td>
+            <td class="align-middle">
+                <a href="{{ route('services.edit', $service) }}">
+                    <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$service->filepath) }}">
+                </a>
+            </td>
+            <td class="align-middle">
+                <span class="border border-info rounded text-info shadow-sm p-2 bg-white"><i class="xsicon {{ $service->category->icon }}"></i></span>
+            </td>
             <td class="align-middle">
                 <a class="btn btn-info float-left" href="{{ route('services.edit', $service) }}">Edit&nbsp;<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 
