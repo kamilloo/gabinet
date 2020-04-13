@@ -40,8 +40,8 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         Category::create([
-            'name' => $request->name,
-            'icon' => $request->icon,
+            'name' => $request->getName(),
+            'icon' => $request->getIcon(),
         ]);
 
         return redirect(route('categories.index'))->with(['status' => 'Kategoria została dodana.']);
@@ -80,8 +80,8 @@ class CategoryController extends Controller
     public function update(CategoryRequest $request, Category $category)
     {
         $category->update([
-            'name' => $request->name,
-            'icon' => $request->icon,
+            'name' => $request->getName(),
+            'icon' => $request->getIcon(),
         ]);
 
         return redirect(route('categories.index'))->with(['status' => 'Kategoria zapisana.']);
@@ -95,6 +95,10 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->services()->exists())
+        {
+            return redirect(route('categories.index'))->withErrors('Kategoria posiada usługi.');
+        }
         $category->delete();
 
         return redirect(route('categories.index'))->with(['status' => 'Kategoria usunięta.']);

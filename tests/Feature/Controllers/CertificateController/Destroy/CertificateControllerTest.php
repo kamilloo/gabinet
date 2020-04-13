@@ -1,17 +1,19 @@
 <?php
 
-namespace Tests\Feature\Controllers\PricingController\Store;
+namespace Tests\Feature\Controllers\CertificateController\Destroy;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
 use App\Models\Category;
+use App\Models\Certificate;
 use App\Models\Portfolio;
 use App\Movie;
 use App\Notifications\TestNootification;
 use App\Post;
 use App\Models\Service;
 use App\Models\User;
+use Illuminate\Filesystem\FilesystemManager;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Http\Request;
@@ -22,24 +24,22 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PricingControllerTest extends TestCase
+class CertificateControllerTest extends TestCase
 {
-    use RefreshDatabase;
+    use DatabaseTransactions;
 
     /**
      * @var User
      */
     private $user;
     /**
-     * @var \Illuminate\Http\Testing\FileFactory
+     * @var FilesystemManager
      */
     private $file_manager;
-
     /**
      * @var \Illuminate\Http\Testing\FileFactory
      */
     private \Illuminate\Http\Testing\FileFactory $upload_file;
-
     /**
      * @var \Illuminate\Config\Repository
      */
@@ -57,48 +57,16 @@ class PricingControllerTest extends TestCase
      */
     private $disk;
 
-    public function invalidEntryData():iterable
-    {
-        yield 'empty data' => [[
-        ]];
-
-        yield 'invalid data' => [[
-            'name' => false,
-            'price_since' => false,
-        ]];
-    }
-
-    public function entryData():iterable
-    {
-        yield 'valid data' => [[
-            'name' => 'title',
-            'price_since' => 10,
-        ]];
-    }
-
-
-    public function entryPricingItemsData():iterable
-    {
-        yield 'valid data' => [[
-            'name' => 'title',
-            'price_since' => 10,
-            'items' => [
-                [
-                    'title' => 'title',
-                    'description' => 'title',
-                    'price' => 10,
-                    'link' => null,
-                ],
-            ],
-
-        ]];
-    }
+    /**
+     * @var Service
+     */
+    private $certificate;
 
     protected function setUp()
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-
+        $this->certificate = factory(Certificate::class)->create();
         $this->file_manager = $this->app['filesystem'];
         $this->upload_file = UploadedFile::fake();
 
@@ -107,54 +75,23 @@ class PricingControllerTest extends TestCase
 
     /**
      * @test
-     * @dataProvider invalidEntryData
      */
-    public function store_validation_exception(array $data)
-    {
-        $response = $this->sendPricingStoreRequest($data);
-        $response->assertStatus(302);
-        $response->assertSessionHasErrors('name');
-        $response->assertSessionHasErrors('price_since');
-
-    }
-
-    /**
-     * @test
-     * @dataProvider entryData
-     */
-    public function store_model(array $entry)
+    public function store_model()
     {
         //Given
         $file = $this->upload_file->image('image.png');
-
-        //When
-        $url = $this->whenUploadFile($file);
-        $entry['filepath'] = $url;
+        //when
+        $filepath = $this->whenUploadFile($file);
+        $this->certificate->filepath = $filepath;
+        $this->certificate->save();
 
         //Then
-        $response = $this->sendPricingStoreRequest($entry);
+        $response = $this->sendCertificateDeleteRequest($this->certificate);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Cennik został dodany.');
-    }
-
-    /**
-     * @test
-     * @dataProvider entryPricingItemsData
-     */
-    public function add_pricing_items(array $entry)
-    {
-        //Given
-
-        //When
-
-        //Then
-        $response = $this->sendPricingStoreRequest($entry);
-
-        //Assert
-        $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Cennik został dodany.');
+        $response->assertSessionHas('status', 'Certyfikat usunięty.');
+        $this->assertCertificateFileMissing($filepath);
 
     }
 
@@ -163,12 +100,11 @@ class PricingControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendPricingStoreRequest(array $data): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendCertificateDeleteRequest(Certificate $certificate): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->post(route('pricing.store'), $data);
+        return $this->delete(route('certificates.destroy', $certificate));
     }
-
 
     protected function whenUploadFile(\Illuminate\Http\Testing\File $file):string
     {
@@ -176,8 +112,7 @@ class PricingControllerTest extends TestCase
             $this->image_directory,
             $this->inner_directory
         ]);
-        $filepath = $this->file_manager->disk($this->disk)->putFile($upload_path, $file);
-        return $this->file_manager->disk($this->disk)->url($filepath);
+        return $this->file_manager->disk($this->disk)->putFile($upload_path, $file);
     }
 
     protected function fileManagerConfig(): void
@@ -187,6 +122,11 @@ class PricingControllerTest extends TestCase
         $this->inner_directory = 'inner';
         $this->disk = config('lfm.disk');
         $this->file_manager->disk($this->disk);
+    }
+
+    private function assertCertificateFileMissing(string $file_path)
+    {
+        $this->assertFalse($this->file_manager->disk($this->disk)->exists($file_path));
     }
 
 }

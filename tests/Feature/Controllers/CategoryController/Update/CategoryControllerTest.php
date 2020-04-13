@@ -1,14 +1,12 @@
 <?php
 
-namespace Tests\Feature\Controllers\PricingController\Update;
+namespace Tests\Feature\Controllers\CategoryController\Update;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
 use App\Models\Category;
-use App\Models\Certificate;
 use App\Models\Portfolio;
-use App\Models\Pricing;
 use App\Movie;
 use App\Notifications\TestNootification;
 use App\Post;
@@ -24,7 +22,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PricingControllerTest extends TestCase
+class CategoryControllerTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -33,35 +31,9 @@ class PricingControllerTest extends TestCase
      */
     private $user;
     /**
-     * @var \Illuminate\Http\Testing\FileFactory
+     * @var Category
      */
-    private \Illuminate\Http\Testing\FileFactory $upload_manager;
-    /**
-     * @var \Illuminate\Http\Testing\FileFactory
-     */
-    private \Illuminate\Http\Testing\FileFactory $upload_file;
-    private $file_manager;
-    /**
-     * @var \Illuminate\Config\Repository
-     */
-    private $shares_directory;
-    /**
-     * @var \Illuminate\Config\Repository
-     */
-    private $image_directory;
-    /**
-     * @var string
-     */
-    private string $inner_directory;
-    /**
-     * @var \Illuminate\Config\Repository
-     */
-    private $disk;
-
-    /**
-     * @var Pricing
-     */
-    private $pricing;
+    private $category;
 
     public function invalidEntryData():iterable
     {
@@ -70,8 +42,7 @@ class PricingControllerTest extends TestCase
 
         yield 'invalid data' => [[
             'name' => false,
-            'price_since' => false,
-            'position' => false,
+            'icon' => false,
         ]];
     }
 
@@ -79,8 +50,7 @@ class PricingControllerTest extends TestCase
     {
         yield 'valid data' => [[
             'name' => 'title',
-            'price_since' => 1,
-            'position' => 1,
+            'icon' => 'title',
         ]];
     }
 
@@ -88,7 +58,7 @@ class PricingControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->pricing = factory(Pricing::class)->create();
+        $this->category = factory(Category::class)->create();
     }
 
     /**
@@ -97,11 +67,10 @@ class PricingControllerTest extends TestCase
      */
     public function store_validation_exception(array $data)
     {
-        $response = $this->sendPricingUpdateRequest($this->pricing, $data);
+        $response = $this->sendCategoryUpdateRequest($this->category, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('name');
-        $response->assertSessionHasErrors('price_since');
+        $response->assertSessionHasErrors('icon');
 
     }
 
@@ -111,12 +80,14 @@ class PricingControllerTest extends TestCase
      */
     public function store_model(array $entry)
     {
+        //Given
+
         //Then
-        $response = $this->sendPricingUpdateRequest($this->pricing, $entry);
+        $response = $this->sendCategoryUpdateRequest($this->category, $entry);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Cennik został zapisany.');
+        $response->assertSessionHas('status', 'Kategoria zapisana.');
 
     }
 
@@ -125,10 +96,10 @@ class PricingControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendPricingUpdateRequest(Pricing $pricing, array $data): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendCategoryUpdateRequest(Category $category, array $data): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->put(route('pricing.update', $pricing), $data);
+        return $this->put(route('categories.update', $category), $data);
     }
 
 }

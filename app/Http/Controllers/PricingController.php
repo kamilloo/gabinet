@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Factories\PricingBuilder;
 use App\Factories\PricingFactory;
 use App\Http\Requests\PricingRequest;
+use App\Http\Requests\PricingUpdateRequest;
 use App\Models\Certificate;
 use App\Models\Pricing;
 use Illuminate\Database\Eloquent\Model;
@@ -39,11 +40,14 @@ class PricingController extends Controller
      * Store a newly created resource in storage.
      *
      */
-    public function store(PricingRequest $request, PricingFactory $pricing_factory)
+    public function store(PricingRequest $request, PricingFactory $factory)
     {
-        $pricing = $pricing_factory->create($request);
-
-        return redirect(route('pricing.index'))->with(['status' => 'Cennik został dodany.']);
+        $created = $factory->create($request);
+        if ($created)
+        {
+            return redirect(route('pricing.index'))->with(['status' => 'Cennik został dodany.']);
+        }
+        return redirect(route('pricing.index'))->withErrors('Cennik nie został dodany.');
     }
 
     /**
@@ -66,11 +70,15 @@ class PricingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(PricingRequest $request, Pricing $pricing, PricingBuilder $builder)
+    public function update(PricingUpdateRequest $request, Pricing $pricing, PricingBuilder $builder)
     {
-        $builder->update($request, $pricing);
+        $created = $builder->update($request, $pricing);
+        if ($created)
+        {
+            return redirect(route('pricing.index'))->with(['status' => 'Cennik został zapisany.']);
+        }
+        return redirect(route('pricing.index'))->withErrors('Cennik nie został zapisany.');
 
-        return redirect(route('pricing.index'))->with(['status' => 'Cennik został zapisany.']);
 
     }
 

@@ -2,18 +2,21 @@
 
 namespace App\Http\Requests;
 
+use App\Contracts\PositionRequestDataProvider;
 use App\Contracts\PricingItemRequestDataProvider;
 use App\Contracts\PricingRequestDataProvider;
 use App\Http\Requests\Concerns\NameEntryDataTrait;
+use App\Http\Requests\Concerns\PositionEntryDataTrait;
 use App\Http\Requests\Concerns\TitleAndDescriptionDataTrait;
 use App\Http\Requests\Concerns\UploadFileEntryDataTrait;
+use App\Models\Pricing;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use PhpParser\Builder\Class_;
 
-class PricingRequest extends Request implements PricingRequestDataProvider
+class PricingUpdateRequest extends PricingRequest implements PricingRequestDataProvider, PositionRequestDataProvider
 {
-    use UploadFileEntryDataTrait, NameEntryDataTrait;
+    use UploadFileEntryDataTrait, NameEntryDataTrait, PositionEntryDataTrait;
 
     /**
      * Get the validation rules that apply to the request.
@@ -22,16 +25,9 @@ class PricingRequest extends Request implements PricingRequestDataProvider
      */
     public function rules()
     {
-        return [
-            'name' => ['required', 'string'],
-            'price_since' => ['required', 'numeric'],
-            'filepath' => ['nullable', 'url'],
-            'items' => ['nullable', 'array'],
-            'items.*.title' => ['required', 'string', 'min:1'],
-            'items.*.description' => ['nullable', 'string', 'min:1'],
-            'items.*.price' => ['nullable', 'numeric', 'min:1'],
-            'items.*.link' => ['nullable','url',],
-        ];
+        return array_merge(parent::rules(),[
+            'position' => ['required', 'integer'],
+        ]);
     }
 
     public function getPriceSince(): float

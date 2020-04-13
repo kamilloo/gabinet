@@ -92,8 +92,8 @@ class CertificateController extends Controller
     {
         try{
             DB::transaction(function () use($certificate){
-                Storage::disk($certificate->disk)->delete($certificate->path);
-                $certificate->delete();
+                Storage::delete($certificate->filepath);
+//                $certificate->delete();
             });
         }catch (\Exception $exception)
         {
