@@ -4,15 +4,18 @@ namespace App\Http\Requests;
 
 
 use App\Contracts\CertificateRequestDataProvider;
+use App\Contracts\CertificateUpdateRequestDataProvider;
 use App\Contracts\EntryDataProvider;
 use App\Contracts\ServiceRequestDataProvider;
+use App\Http\Requests\Concerns\PositionEntryDataTrait;
 use App\Http\Requests\Concerns\TitleAndDescriptionDataTrait;
 use App\Http\Requests\Concerns\UploadFileEntryDataTrait;
 use Illuminate\Validation\Rule;
 
-class CertificateRequest extends Request implements CertificateRequestDataProvider
+class CertificateUpdateRequest extends Request implements CertificateUpdateRequestDataProvider
 {
-    use UploadFileEntryDataTrait, TitleAndDescriptionDataTrait;
+    use UploadFileEntryDataTrait, TitleAndDescriptionDataTrait, PositionEntryDataTrait;
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -22,8 +25,9 @@ class CertificateRequest extends Request implements CertificateRequestDataProvid
     {
         return [
             'title' => ['required', 'string'],
-            'filepath' => ['required', 'url'],
+            'filepath' => ['nullable', 'url'],
             'description' => ['nullable', 'string'],
+            'position' => ['required', 'integer'],
         ];
     }
 

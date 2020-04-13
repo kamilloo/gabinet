@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Controllers\CertifacateController\Store;
+namespace Tests\Feature\Controllers\PricingController\Store;
 
 use App\Comment;
 use App\Http\Resources\UserResource;
@@ -22,7 +22,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CertificateControllerTest extends TestCase
+class PricingControllerTest extends TestCase
 {
     use RefreshDatabase;
 
@@ -62,15 +62,16 @@ class CertificateControllerTest extends TestCase
         ]];
 
         yield 'invalid data' => [[
-            'title' => false,
-            'filepath' => false,
+            'name' => false,
+            'price_since' => false,
         ]];
     }
 
     public function entryData()
     {
         yield 'valid data' => [[
-            'title' => 'title',
+            'name' => 'title',
+            'price_since' => 10,
         ]];
     }
 
@@ -93,8 +94,7 @@ class CertificateControllerTest extends TestCase
     {
         $response = $this->sendCertificateStoreRequest($data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('title');
-        $response->assertSessionHasErrors('filepath');
+        $response->assertSessionHasErrors('name');
 
     }
 

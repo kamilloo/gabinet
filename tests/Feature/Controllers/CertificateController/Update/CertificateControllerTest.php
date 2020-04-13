@@ -6,6 +6,7 @@ use App\Comment;
 use App\Http\Resources\UserResource;
 use App\Mail\Test;
 use App\Models\Category;
+use App\Models\Certificate;
 use App\Models\Portfolio;
 use App\Movie;
 use App\Notifications\TestNootification;
@@ -59,7 +60,7 @@ class CertificateControllerTest extends TestCase
     /**
      * @var Service
      */
-    private $service;
+    private $certificate;
 
     public function invalidEntryData():iterable
     {
@@ -76,6 +77,7 @@ class CertificateControllerTest extends TestCase
     {
         yield 'valid data' => [[
             'title' => 'title',
+            'position' => 1
         ]];
     }
 
@@ -83,7 +85,7 @@ class CertificateControllerTest extends TestCase
     {
         parent::setUp();
         $this->user = $this->createAndBeUser();
-        $this->service = factory(Service::class)->create();
+        $this->certificate = factory(Certificate::class)->create();
     }
 
     /**
@@ -92,9 +94,9 @@ class CertificateControllerTest extends TestCase
      */
     public function store_validation_exception(array $data)
     {
-        $response = $this->sendServiceUpdateRequest($this->service, $data);
+        $response = $this->sendCertificateUpdateRequest($this->certificate, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('category_id');
+        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('title');
 
     }
@@ -105,15 +107,12 @@ class CertificateControllerTest extends TestCase
      */
     public function store_model(array $entry)
     {
-        //Given
-        $entry['category_id'] = factory(Category::class)->create()->id;
-
         //Then
-        $response = $this->sendServiceUpdateRequest($this->service, $entry);
+        $response = $this->sendCertificateUpdateRequest($this->certificate, $entry);
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHas('status', 'Usługa została zapisana.');
+        $response->assertSessionHas('status', 'Certyfikat został zapisany.');
 
     }
 
@@ -122,10 +121,10 @@ class CertificateControllerTest extends TestCase
      *
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
-    protected function sendServiceUpdateRequest(Service $portfolio, array $data): \Illuminate\Foundation\Testing\TestResponse
+    protected function sendCertificateUpdateRequest(Certificate $certificate, array $data): \Illuminate\Foundation\Testing\TestResponse
     {
         Arr::set($data, '_token',csrf_token());
-        return $this->put(route('services.update', $portfolio), $data);
+        return $this->put(route('certificates.update', $certificate), $data);
     }
 
 }

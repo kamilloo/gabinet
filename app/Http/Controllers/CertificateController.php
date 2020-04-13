@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Factories\CertificateBuilder;
+use App\Factories\CertificateFactory;
 use App\Http\Requests\CertificateRequest;
+use App\Http\Requests\CertificateUpdateRequest;
 use App\Models\Certificate;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
@@ -38,23 +41,15 @@ class CertificateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CertificateRequest $request)
+    public function store(CertificateRequest $request, CertificateFactory $factory)
     {
-        DB::transaction(function() use ($request){
-            $file_name =  basename($request->filepath);
-            $path = 'certificates/' .basename($file_name);
-            Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
-            Certificate::create([
-                'title' => $request->title,
-                'description' => $request->description,
-                'disk' => 'storage',
-                'file' => $file_name,
-                'path' => $path
-            ]);
-            Storage::disk('file-manager')->delete($file_name);
-        });
+        $created = $factory->create($request);
+        if ($created)
+        {
+            return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został dodany.']);
+        }
+        return redirect(route('certificates.index'))->withErrors('Certyfikat nie został dodany.');
 
-        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został dodany.']);
     }
 
     /**
@@ -76,31 +71,14 @@ class CertificateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(CertificateUpdateRequest $request, Certificate $certificate, CertificateBuilder $builder)
     {
-        DB::transaction(function() use ($request, $certificate){
-
-            $certificate->update([
-                'title' => $request->title,
-                'description' => $request->description,
-            ]);
-            if ($request->filepath)
-            {
-                $old_file = $certificate->path;
-                $file_name =  basename($request->filepath);
-                $path = 'certificates/' .basename($file_name);
-                Storage::disk('storage')->put($path,Storage::disk('file-manager')->get($file_name));
-                $certificate->update([
-                    'disk' => 'storage',
-                    'file' => $file_name,
-                    'path' => $path
-                ]);
-                Storage::disk('file-manager')->delete($file_name);
-                Storage::disk('storage')->delete($old_file);
-            }
-        });
-
-        return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został zapisany.']);
+        $created = $builder->update($request, $certificate);
+        if ($created)
+        {
+            return redirect(route('certificates.index'))->with(['status' => 'Certyfikat został zapisany.']);
+        }
+        return redirect(route('certificates.index'))->withErrors('Certyfikat nie został zapisany.');
 
     }
 
