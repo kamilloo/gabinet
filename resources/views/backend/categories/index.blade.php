@@ -33,7 +33,7 @@
         <tr>
             <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
             <td class="align-middle">{{ $category->name }}</td>
-            <td class="align-middle">
+            <td class="align-middle" >
                 <span class="border border-info rounded text-info shadow-sm p-2 bg-white"><i class="xsicon {{ $category->icon }}"></i></span>
             </td>
             <td class="align-middle">

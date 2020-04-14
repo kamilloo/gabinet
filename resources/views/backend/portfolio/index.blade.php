@@ -33,9 +33,9 @@
         @foreach($files as $file)
         <tr>
             <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
-            <td class="align-middle">
+            <td class="align-middle" height="100">
                 <a href="{{ route('portfolio.edit', $file) }}">
-                    <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$file->filepath) }}">
+                    <img class="img-thumbnail h-100" src="{{ asset('storage/'.$file->filepath) }}">
                 </a>
             </td>
             <td class="align-middle">

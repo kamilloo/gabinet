@@ -34,9 +34,9 @@
         <tr>
             <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
             <td class="align-middle">{{ $pricing_item->name }}</td>
-            <td class="align-middle">
+            <td class="align-middle" height="100">
                 <a href="{{ route('pricing.edit', $pricing_item) }}">
-                    <img width="height" class="img-thumbnail" src="{{ asset('storage/'.$pricing_item->path) }}">
+                    <img width="height" class="img-thumbnail h-100" src="{{ asset('storage/'.$pricing_item->filepath) }}">
                 </a>
             </td>
             <td class="align-middle">

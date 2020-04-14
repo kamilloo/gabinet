@@ -24,6 +24,7 @@ var axios = require('axios');
 
 Vue.component('file-upload', require('./components/FileUpload.vue').default);
 Vue.component('wysiwig', require('./components/Wysiwyg.vue').default);
+Vue.component('pricing-items', require('./components/PricingItems.vue').default);
 
 const app = new Vue({
     el: '#app'

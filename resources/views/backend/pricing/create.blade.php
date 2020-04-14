@@ -31,7 +31,13 @@
     'helper' => 'Podaj minimalną cenę w dodawanym cenniku',
     'value' => old('price_since')
 ])
-    @include('backend.partials.form-file', [])
+    @include('backend.partials.form-file', [
+    'name' => 'filepath',
+    'label' => 'Zdjęcie',
+    'helper' => 'Dodaj zdjęcie do cennika',
+    'filepath' => '',
+])
+
     @include('backend.partials.form-records', [])
 
 @endsection

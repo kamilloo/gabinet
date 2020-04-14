@@ -40,9 +40,9 @@
         <tr>
             <td class="align-middle" scope="row">{{ $loop->iteration }}</td>
             <td class="align-middle">{{ $service->title }}</td>
-            <td class="align-middle">
+            <td class="align-middle" height="100">
                 <a href="{{ route('services.edit', $service) }}">
-                    <img height="50" class="img-thumbnail" src="{{ asset('storage/'.$service->filepath) }}">
+                    <img class="img-thumbnail h-100" src="{{ asset('storage/'.$service->filepath) }}">
                 </a>
             </td>
             <td class="align-middle">
