@@ -1754,25 +1754,46 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PricingItems",
   props: {
-    dataTemplate: String
+    dataTemplate: String,
+    entryItems: Array
   },
   data: function data() {
     return {
-      nextItem: 1,
-      extraItems: ''
+      nextItem: 0,
+      extraItems: []
     };
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.extraItems = this.initExtraItems();
+  },
   methods: {
     addNext: function addNext() {
-      var templateHtml = this.dataTemplate.replace(/\[{%.*%}\]/gi, '[' + this.nextItem + ']');
+      var regex = /{%\s(item){1}\s%}/gi;
+      var templateHtml = this.dataTemplate.replace(regex, this.nextItem).replace(/{%\s(title){1}\s%}/gi, '').replace(/{%\s(price){1}\s%}/gi, '').replace(/{%\s(description){1}\s%}/gi, '').replace(/{%\s(link){1}\s%}/gi, '');
       this.nextItem = this.nextItem + 1;
-      this.extraItems = this.extraItems + templateHtml;
-      console.log(templateHtml);
+      this.extraItems.push(templateHtml);
+    },
+    initExtraItems: function initExtraItems() {
+      if (!Array.isArray(this.entryItems)) {
+        return [];
+      }
+
+      var items = [];
+      var regex = /{%\s(item){1}\s%}/gi;
+      var templateHtml;
+
+      for (var i in this.entryItems) {
+        if (this.entryItems[i].title) {
+          templateHtml = this.dataTemplate.replace(regex, this.nextItem).replace(/{%\s(title){1}\s%}/gi, this.entryItems[i].title ? this.entryItems[i].title : '').replace(/{%\s(price){1}\s%}/gi, this.entryItems[i].price ? this.entryItems[i].price : '').replace(/{%\s(description){1}\s%}/gi, this.entryItems[i].description ? this.entryItems[i].description : '').replace(/{%\s(link){1}\s%}/gi, this.entryItems[i].link ? this.entryItems[i].link : '');
+          this.nextItem = this.nextItem + 1;
+          items.push(templateHtml);
+        }
+      }
+
+      return items;
     }
   }
 });
@@ -37924,9 +37945,9 @@ var render = function() {
     "div",
     { staticClass: "col-12 pb-2" },
     [
-      _vm._t("default"),
-      _vm._v(" "),
-      _c("div", { domProps: { innerHTML: _vm._s(_vm.extraItems) } }),
+      _vm._l(_vm.extraItems, function(i) {
+        return _c("div", { domProps: { innerHTML: _vm._s(i) } })
+      }),
       _vm._v(" "),
       _c(
         "button",

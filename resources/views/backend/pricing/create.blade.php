@@ -38,6 +38,8 @@
     'filepath' => '',
 ])
 
-    @include('backend.partials.form-records', [])
+    @include('backend.partials.form-records', [
+    'items' => old('items')
+])
 
 @endsection

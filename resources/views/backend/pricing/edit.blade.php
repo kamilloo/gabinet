@@ -38,6 +38,8 @@
     'filepath' => $pricing->filepath,
 ])
 
-    @include('backend.partials.form-records-edit', [])
+    @include('backend.partials.form-records', [
+    'items' => $pricing->items
+])
 
 @endsection
