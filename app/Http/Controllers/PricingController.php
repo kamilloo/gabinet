@@ -23,7 +23,7 @@ class PricingController extends Controller
     public function index()
     {
         return \View::first(['backend', 'backend.pricing.index'])->with([
-            'pricing' => Pricing::paginate()
+            'pricing' => Pricing::orderBy('position')->paginate()
         ]);
     }
 

@@ -24,13 +24,25 @@
     'value' => old('name') ?? $pricing->name
 ])
 
-    @include('backend.partials.form-input', [
+    @include('backend.partials.form-number', [
     'name' => 'price_since',
     'label' => 'Ceny od:',
     'placeholder' => 'Podaj minimalną cenę',
     'helper' => 'Podaj minimalną cenę w dodawanym cenniku',
     'value' => old('price_since')  ?? $pricing->price_since
 ])
+    @include('backend.partials.form-select', [
+'name' => 'position',
+'label' => 'Kolejność',
+'placeholder' => 'Ustaw kolejność',
+'helper' => 'Ustaw kolejność, do której zostanie przypisany cennik',
+'value' => old('position') ?? $pricing->position,
+'options' => [
+    '0' => 'pierwszy',
+    '1' => 'bez zmian',
+    '2' => 'ostatni',
+    ]])
+
     @include('backend.partials.form-file', [
     'name' => 'filepath',
     'label' => 'Zdjęcie',
@@ -39,7 +51,7 @@
 ])
 
     @include('backend.partials.form-records', [
-    'items' => $pricing->items
+    'items' => old('items') ?? $pricing->items
 ])
 
 @endsection

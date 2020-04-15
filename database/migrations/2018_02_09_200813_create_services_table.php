@@ -17,6 +17,7 @@ class CreateServicesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->unsignedInteger('category_id')->nullable()->default(null);
+            $table->unsignedInteger('position')->nullable()->default(null);
             $table->text('description')->nullable()->default(null);
             $table->string('filepath')->nullable()->default(null);
             $table->timestamps();

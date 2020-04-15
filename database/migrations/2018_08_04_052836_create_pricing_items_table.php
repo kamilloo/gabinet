@@ -18,6 +18,7 @@ class CreatePricingItemsTable extends Migration
             $table->unsignedInteger('pricing_id');
             $table->string('title');
             $table->string('description')->nullable()->default(null);
+            $table->unsignedInteger('position')->nullable()->default(null);
             $table->decimal('price');
             $table->string('link')->nullable()->default(null);
             $table->timestamps();
