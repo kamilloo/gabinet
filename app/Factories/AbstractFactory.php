@@ -66,7 +66,6 @@ abstract class AbstractFactory
                 $this->setAttribute($data_provider);
                 $this->setFile($data_provider);
                 $this->save();
-                $this->addRelations($data_provider);
                 return true;
             });
         } catch (\Throwable $exception)
@@ -78,6 +77,4 @@ abstract class AbstractFactory
 
     abstract protected function createModel():Model;
     abstract protected function setAttribute(EntryDataProvider $data_provider):void;
-    abstract protected function addRelations(EntryDataProvider $data_provider):void;
-
 }

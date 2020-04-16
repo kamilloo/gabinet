@@ -23,8 +23,4 @@ trait CertificateConcern
         ]);
     }
 
-    protected function addRelations(EntryDataProvider $data_provider): void
-    {
-        // TODO: Implement addRelations() method.
-    }
 }

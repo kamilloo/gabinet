@@ -21,7 +21,7 @@
     'label' => 'Tagi',
     'placeholder' => 'Podaj tagi',
     'helper' => '',
-    'value' => $portfolio->tags->pluck('name')
+    'value' => old('tags') ?? implode(',',$portfolio->tags->pluck('name')->all())
 ])
 
     @include('backend.partials.form-file', [

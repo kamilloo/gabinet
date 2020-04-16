@@ -64,7 +64,10 @@ function initTags(tags_data) {
             valueKey: 'name',
             source: tags.ttAdapter()
         }],
-        freeInput: true
+        freeInput: true,
+        trimValue: true,
+        tagClass: 'badge badge-info',
+
     });
 }
 

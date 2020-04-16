@@ -13,18 +13,20 @@ use App\Models\Tag;
 trait PortfolioConcern
 {
 
-    protected function addRelations(EntryDataProvider $data_provider): void
+    protected function setAttribute(EntryDataProvider $data_provider): void
     {
-        $tags = collect($data_provider->tags())->map(function($raw){
+        $this->tags = collect($data_provider->tags())->map(function($raw){
             return Tag::firstOrCreate([
                 'name' => $raw
             ]);
         });
-        $this->instance->tags()->attach($tags->pluck('id'));
     }
 
-    protected function setAttribute(EntryDataProvider $data_provider): void
+    public function save(): bool
     {
-        //
+
+        $saved = parent::save();
+        $this->instance->tags()->sync($this->tags->pluck('id'));
+        return $saved;
     }
 }

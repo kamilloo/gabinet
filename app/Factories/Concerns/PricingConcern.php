@@ -30,14 +30,14 @@ trait PricingConcern
     /**
      * @param EntryDataProvider|PricingRequest $data_provider
      */
-    protected function setAttribute(EntryDataProvider $data_provider):void
+    protected function setAttribute(EntryDataProvider $data_provider): void
     {
         $this->instance->fill([
             'name' => $data_provider->getName(),
             'price_since' => $data_provider->getPriceSince(),
         ]);
 
-        collect($data_provider->items())->each(function(PricingItemRequestDataProvider $item){
+        collect($data_provider->items())->each(function (PricingItemRequestDataProvider $item) {
             $price = PricingItem::newModelInstance([
                 'title' => $item->getTitle(),
                 'description' => $item->getDescription(),
@@ -46,10 +46,5 @@ trait PricingConcern
             ]);
             $this->items[] = $price;
         });
-    }
-
-    protected function addRelations(EntryDataProvider $data_provider): void
-    {
-        // TODO: Implement addRelations() method.
     }
 }

@@ -22,9 +22,4 @@ trait ServiceConcern
             'category_id' => $data_provider->getCategoryId()
         ]);
     }
-
-    protected function addRelations(EntryDataProvider $data_provider): void
-    {
-        // TODO: Implement addRelations() method.
-    }
 }

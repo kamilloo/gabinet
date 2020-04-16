@@ -40,7 +40,7 @@
             </td>
             <td class="align-middle">
                 @foreach($file->tags as $tag)
-                    <span class="label label-primary">{{ $tag->name }}</span>
+                    <span class="badge badge-info p-2">{{ $tag->name }}</span>
                 @endforeach
             </td>
             <td class="align-middle">
