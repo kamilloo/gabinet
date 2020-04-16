@@ -3,7 +3,7 @@
                 <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
                     <div class="beautypress-single-pricing-table beautypress-version-4">
                         <div class="beautypress-pricing-header">
-                            <img src="{{ asset('storage/'.$file->path) }}" alt="">
+                            <img src="{{ asset('storage/'.$file->filepath) }}" alt="">
                             <div class="beautypress-pricing-header-content">
                                 <div class="beautypress-pricing-title">
                                     <h2>{{ $file->name }}</h2>
