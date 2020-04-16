@@ -69,7 +69,7 @@ class PricingUpdateRequest extends PricingRequest implements PricingRequestDataP
                 return Arr::get($this->item, 'description');
             }
 
-            public function getPrice(): ?float
+            public function getPrice(): ?string
             {
                 return Arr::get($this->item, 'price');
             }

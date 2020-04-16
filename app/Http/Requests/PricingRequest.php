@@ -29,7 +29,7 @@ class PricingRequest extends Request implements PricingRequestDataProvider
             'items' => ['nullable', 'array'],
             'items.*.title' => ['required', 'string', 'min:1'],
             'items.*.description' => ['nullable', 'string', 'min:1'],
-            'items.*.price' => ['nullable', 'numeric', 'min:1'],
+            'items.*.price' => ['nullable', 'string', 'min:1'],
             'items.*.link' => ['nullable','url',],
         ];
     }
@@ -73,7 +73,7 @@ class PricingRequest extends Request implements PricingRequestDataProvider
                 return Arr::get($this->item, 'description');
             }
 
-            public function getPrice(): ?float
+            public function getPrice(): ?string
             {
                 return Arr::get($this->item, 'price');
             }

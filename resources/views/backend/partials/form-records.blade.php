@@ -13,7 +13,7 @@ data-template='
 ])
         </td>
         <td>
-@include('backend.partials.form-number', [
+@include('backend.partials.form-input', [
 'name' => 'items[{% item %}][price]',
 'label' => '',
 'placeholder' => 'Cena',
