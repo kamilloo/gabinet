@@ -69,7 +69,7 @@ class CertificateControllerTest extends TestCase
 
         yield 'invalid data' => [[
             'title' => false,
-            'category_id' => false,
+//            'category_id' => false,
         ]];
     }
 
@@ -77,7 +77,7 @@ class CertificateControllerTest extends TestCase
     {
         yield 'valid data' => [[
             'title' => 'title',
-            'position' => 1
+//            'position' => 1
         ]];
     }
 
@@ -96,7 +96,7 @@ class CertificateControllerTest extends TestCase
     {
         $response = $this->sendCertificateUpdateRequest($this->certificate, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('position');
+//        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('title');
 
     }

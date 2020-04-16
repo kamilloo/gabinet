@@ -71,7 +71,7 @@ class PricingControllerTest extends TestCase
         yield 'invalid data' => [[
             'name' => false,
             'price_since' => false,
-            'position' => false,
+//            'position' => false,
         ]];
     }
 
@@ -80,7 +80,7 @@ class PricingControllerTest extends TestCase
         yield 'valid data' => [[
             'name' => 'title',
             'price_since' => 1,
-            'position' => 1,
+//            'position' => 1,
         ]];
     }
 
@@ -99,7 +99,7 @@ class PricingControllerTest extends TestCase
     {
         $response = $this->sendPricingUpdateRequest($this->pricing, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('position');
+//        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('name');
         $response->assertSessionHasErrors('price_since');
 

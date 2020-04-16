@@ -26,7 +26,7 @@ class PricingUpdateRequest extends PricingRequest implements PricingRequestDataP
     public function rules()
     {
         return array_merge(parent::rules(),[
-            'position' => ['required', 'integer'],
+//            'position' => ['required', 'integer'],
         ]);
     }
 

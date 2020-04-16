@@ -19,14 +19,4 @@ use Illuminate\Filesystem\FilesystemManager;
 class PortfolioBuilder extends AbstractBuilder
 {
     use PortfolioConcern;
-
-    /**
-     * @param EntryDataProvider|PortfolioUpdateRequest $request
-     */
-    protected function setAttribute(EntryDataProvider $request)
-    {
-        $this->instance->fill([
-            'position' => $request->position(),
-        ]);
-    }
 }

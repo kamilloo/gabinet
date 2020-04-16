@@ -24,7 +24,7 @@
     'value' => old('name')
 ])
 
-    @include('backend.partials.form-input', [
+    @include('backend.partials.form-number', [
     'name' => 'price_since',
     'label' => 'Ceny od:',
     'placeholder' => 'Podaj minimalną cenę',

@@ -56,7 +56,7 @@ class CategoryControllerTest extends TestCase
 
         //Assert
         $response->assertStatus(302);
-        $response->assertSessionHasErrors(null,'Katagoria posiada usługi.');
+        $response->assertSessionHas('error','Kategoria posiada usługi.');
 
     }
 

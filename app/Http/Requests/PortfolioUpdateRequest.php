@@ -19,7 +19,7 @@ class PortfolioUpdateRequest extends Request implements PortfolioUpdateDataProvi
     public function rules()
     {
         return [
-            'position' => ['required', 'integer'],
+//            'position' => ['required', 'integer'],
             'tags' => ['nullable', 'string'],
         ];
     }

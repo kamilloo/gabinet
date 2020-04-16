@@ -67,7 +67,7 @@ class PortfolioControllerTest extends TestCase
         ]];
 
         yield 'invalid data' => [[
-            'position' => false,
+//            'position' => false,
             'tags' => false,
         ]];
     }
@@ -75,7 +75,7 @@ class PortfolioControllerTest extends TestCase
     public function entryData()
     {
         yield 'valid data' => [[
-            'position' => 1,
+//            'position' => 1,
             'tags' => 'string',
         ]];
     }
@@ -95,7 +95,7 @@ class PortfolioControllerTest extends TestCase
     {
         $response = $this->sendPortfolioUpdateRequest($this->portfolio, $data);
         $response->assertStatus(302);
-        $response->assertSessionHasErrors('position');
+//        $response->assertSessionHasErrors('position');
         $response->assertSessionHasErrors('tags');
 
     }

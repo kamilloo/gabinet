@@ -22,4 +22,9 @@ trait PortfolioConcern
         });
         $this->instance->tags()->attach($tags->pluck('id'));
     }
+
+    protected function setAttribute(EntryDataProvider $data_provider): void
+    {
+        //
+    }
 }

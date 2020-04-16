@@ -27,7 +27,7 @@ class CertificateUpdateRequest extends Request implements CertificateUpdateReque
             'title' => ['required', 'string'],
             'filepath' => ['nullable', 'url'],
             'description' => ['nullable', 'string'],
-            'position' => ['required', 'integer'],
+//            'position' => ['required', 'integer'],
         ];
     }
 

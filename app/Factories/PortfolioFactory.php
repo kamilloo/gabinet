@@ -29,9 +29,4 @@ class PortfolioFactory extends AbstractFactory
     {
         return Portfolio::newModelInstance();
     }
-
-    protected function setAttribute(EntryDataProvider $data_provider): void
-    {
-        //
-    }
 }
