@@ -22,7 +22,7 @@ class CertificateController extends Controller
     public function index()
     {
         return \View::first(['backend', 'backend.certificates.index'])->with([
-            'certificates' => Certificate::paginate()
+            'certificates' => Certificate::paginate(10)
         ]);
     }
 

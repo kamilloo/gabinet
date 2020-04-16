@@ -67,7 +67,7 @@
                 </div>
                 <ul class="beautypress-simple-iocn-list beautypress-version-1">
                     <li><i class="xsicon icon-call"></i>+48 602 139 040</li>
-                    <li><i class="xsicon icon-envelope"></i>info.kosmetolog@gmail.com</li>
+                    <li><i class="xsicon icon-envelope"></i>pietka.kasia3@gmail.com</li>
                 </ul>
             </div>
         </div>

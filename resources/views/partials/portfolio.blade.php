@@ -2,7 +2,7 @@
         <div class="beautypress-photo-gallery-wraper">
             <div class="beautypress-portfolio-nav portfolio-menu">
                 <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                    <li><a href="#" data-option-value="*" class="selected">All item</a></li>
+                    <li><a href="#" data-option-value="*" class="selected">Wszystkie</a></li>
                     @foreach($tags as $tag)
                     <li><a href="#" data-option-value=".{{ $tag->name }}">{{ $tag->name }}</a></li>
                     @endforeach
@@ -11,13 +11,13 @@
 
 
             <div class="beautypress-photo-gallery-grid">
-                
+
                 @foreach($portfolio as $file)
                     <div class="beautypress-photo-gallery-grid-item {{ $file->tagsToString() }}">
                         <div class="beautypress-single-photo-gallery">
-                            <img src="{{ asset('storage/'.$file->path) }}" alt="">
+                            <img src="{{ asset('storage/'.$file->filepath) }}" alt="">
                             <div class="beautypress-photo-gallery-content">
-                                <a href="{{ asset('storage/'.$file->path) }}" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-pink">
+                                <a href="{{ asset('storage/'.$file->filepath) }}" class="beautypress-image-popup beautypress-iocn-btn full-round-btn bg-color-pink">
                                     <i class="fa fa-eye"></i>
                                 </a>
                                 {{--<a href="#" class="beautypress-iocn-btn full-round-btn bg-color-purple">--}}

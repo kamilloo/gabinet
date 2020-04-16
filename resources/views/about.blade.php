@@ -58,13 +58,13 @@
                 @endif
                 <div class="col-md-12 col-sm-12 col-lg-4 col-xl-4">
                     <div class="beautypress-single-team">
-                        <img src="{{ asset('storage/'.$certificate->path) }}" alt="">
-                        {{--<div class="beautypress-team-content">--}}
-                            {{--<div class="beautypress-team-person-details">--}}
-{{--                                <h3>{{ $certificate->title }}</h3>--}}
-{{--                                <h4>{{ $certificate->description }}</h4>--}}
-                            {{--</div>--}}
-                        {{--</div><!-- .beautypress-team-content END -->--}}
+                        <img src="{{ asset('storage/'.$certificate->filepath) }}" alt="">
+                        <div class="beautypress-team-content">
+                            <div class="beautypress-team-person-details">
+                                <h3>{{ $certificate->title }}</h3>
+                                <h4>{{ $certificate->description }}</h4>
+                            </div>
+                        </div><!-- .beautypress-team-content END -->
                     </div><!-- .beautypress-single-team END -->
                 </div>
                 @endforeach

@@ -71,7 +71,7 @@
                 @foreach($services as $service)
                 <div class="col-md-6 col-xl-4 col-lg-4">
                     <div class="beautypress-single-our-feature beautypress-black-gradient-overlay">
-                        <img src="{{ asset('storage/'.$service->path) }}" alt="">
+                        <img src="{{ asset('storage/'.$service->filepath) }}" alt="">
                         <div class="beautypress-our-features-content">
                             <h3>{{ $service->title }}</h3>
                             <div class="xs-btn-wraper">

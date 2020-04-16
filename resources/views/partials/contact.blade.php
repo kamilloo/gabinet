@@ -35,7 +35,7 @@
                             <ul class="beautypress-icon-with-text">
                                 <li><i class="fa fa-map-marker"></i>ul. Mossego 2, Grodzisk Wlkp.</li>
                                 <li><i class="xsicon icon-phone3"></i>+48 602 139 040</li>
-                                <li><i class="xsicon icon-envelope5"></i>info.kosmetolog@gmail.com</li>
+                                <li><i class="xsicon icon-envelope5"></i>pietka.kasia3@gmail.com</li>
                                 <li><i class="fa fa-facebook"></i>https://www.facebook.com/kosmetolog.wlkp/</li>
                             </ul><!-- .beautypress-icon-with-text END -->
                         </div><!-- .beautypress-contact-details END -->

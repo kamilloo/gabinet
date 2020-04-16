@@ -22,7 +22,7 @@ class PortfolioController extends Controller
 {
     public function index()
     {
-        $files = Portfolio::with('tags')->get();
+        $files = Portfolio::with('tags')->paginate(10);
         return view('backend.portfolio.index',compact('files'));
     }
 
