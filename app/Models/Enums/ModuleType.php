@@ -10,6 +10,7 @@ class ModuleType
     const PORTFOLIO = 'portfolio';
     const CERTIFICATES = 'certificates';
     const PRICING = 'pricing';
+    const SHOP = 'shop';
 
     public static function all():array
     {

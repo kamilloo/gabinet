@@ -35,6 +35,7 @@
                         <li class="nav-item @if($active_module == \App\Models\Enums\ModuleType::PORTFOLIO) active @endif"><a class="nav-link" href="{{ route('portfolio.index') }}">Galeria</a></li>
                         <li class="nav-item @if($active_module == \App\Models\Enums\ModuleType::CERTIFICATES) active @endif"><a class="nav-link" href="{{ route('certificates.index') }}">Certyfikaty</a></li>
                         <li class="nav-item @if($active_module == \App\Models\Enums\ModuleType::PRICING) active @endif"><a class="nav-link" href="{{ route('pricing.index') }}">Cennik</a></li>
+                        <li class="nav-item @if($active_module == \App\Models\Enums\ModuleType::SHOP) active @endif"><a class="nav-link" href="{{ route('shop.show') }}">Sklep</a></li>
                         <li class="nav-item"><a class="ml-2 btn btn-primary" target="_blank" href="{{ route('welcome') }}">Strona</a></li>
                     </ul>
             @endauth
@@ -45,11 +46,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
-                        @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif
+{{--                        @if (Route::has('register'))--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                            </li>--}}
+{{--                        @endif--}}
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -82,11 +82,14 @@
                     <div class="nav-toggle"></div>
                 </div>
                 <div class="nav-search">
-                    {{--<div class="nav-cart-button">--}}
-                    {{--<a href="#">--}}
-                    {{--<i class="fa fa-shopping-basket"></i>--}}
-                    {{--</a>--}}
-                    {{--</div>--}}
+                    @if($shop->status)
+                    <div class="nav-cart-button">
+                    <a href="{{ $shop->url }}" target="_blank">
+                        Kup Bon
+                    <i class="fa fa-shopping-basket"></i>
+                    </a>
+                    </div>
+                    @endif
                     <div class="nav-search-button">
                         <a href="#">
                             <i class="fa fa-search"></i>

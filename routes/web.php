@@ -67,6 +67,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'index' => 'tags.index',
         'store' => 'tags.store',
     ]);
+
+    Route::get('shop', 'ShopController@show')->name('shop.show');
+    Route::put('shop', 'ShopController@update')->name('shop.update');
 });
 Route::get('/admin', 'HomeController@index')->name('home');
 

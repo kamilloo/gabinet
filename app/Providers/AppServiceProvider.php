@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\ViewComposers\ActiveModuleComposer;
 use App\Http\ViewComposers\FacebookComposer;
 use App\Models\Enums\ModuleType;
+use App\Models\Shop;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -27,6 +28,8 @@ class AppServiceProvider extends ServiceProvider
         View::composer(
             '*', ActiveModuleComposer::class
         );
+
+        View::share('shop', $this->getShop());
     }
 
     /**
@@ -37,5 +40,13 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getShop()
+    {
+        return Shop::whereRaw('1=1')->first() ?? new Shop;
     }
 }
