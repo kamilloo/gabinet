@@ -90,11 +90,11 @@
                     </a>
                     </div>
                     @endif
-                    <div class="nav-search-button">
-                        <a href="#">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </div>
+{{--                    <div class="nav-search-button">--}}
+{{--                        <a href="#">--}}
+{{--                            <i class="fa fa-search"></i>--}}
+{{--                        </a>--}}
+{{--                    </div>--}}
                     <form><span class="nav-search-close-button" tabindex="0">✕</span>
                         <div class="nav-search-inner">
                             <input type="search" name="search" placeholder="Type and hit ENTER">
