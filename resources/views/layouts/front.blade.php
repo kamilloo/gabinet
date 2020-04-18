@@ -81,7 +81,7 @@
                     </a>
                     <div class="nav-toggle"></div>
                 </div>
-                <div class="nav-search">
+                <div class="nav-search" style="display: flex !important;">
                     @if($shop->status)
                     <div class="nav-cart-button">
                     <a href="{{ $shop->url }}" target="_blank">
