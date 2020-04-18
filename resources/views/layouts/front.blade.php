@@ -85,7 +85,7 @@
                     @if($shop->status)
                     <div class="nav-cart-button">
                     <a href="{{ $shop->url }}" target="_blank">
-                        Kup Bon
+                        <span style="{text-transform: uppercase; font-size: 14px, font-weight: normal}">Kup Bon&nbsp;</span>
                     <i class="fa fa-shopping-basket"></i>
                     </a>
                     </div>
