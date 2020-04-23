@@ -2,9 +2,9 @@
         <div class="beautypress-photo-gallery-wraper">
             <div class="beautypress-portfolio-nav portfolio-menu">
                 <ul id="filters" class="option-set clearfix" data-option-key="filter">
-                    <li><a href="#" data-option-value="*" class="selected">Wszystkie</a></li>
+{{--                    <li><a href="#" data-option-value="*" style="text-transform: none" class="selected">Wszystkie</a></li>--}}
                     @foreach($tags as $tag)
-                    <li><a href="#" data-option-value=".{{ $tag->name }}">{{ $tag->name }}</a></li>
+                    <li><a href="#" @if($loop->index == 0) class="selected" @endif style="text-transform: none" data-option-value=".{{ $tag->name }}">{{ $tag->name }}</a></li>
                     @endforeach
                 </ul>
             </div>
