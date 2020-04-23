@@ -37,7 +37,8 @@
     </section><!-- .beautypress-booking-section END -->
 
     <!-- Maps -->
-    <div id="beautypress_maps"></div>
+    <div id="beautypress_map" class="beautypress-contact-wraper" style="padding: 0; margin: 0 auto">
+    </div>
     <!-- Maps end -->
 
     <!-- partner section -->

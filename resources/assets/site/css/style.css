@@ -14,7 +14,7 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
 ============================== index.html =========================
 
 1. INDEX-V1 Header section
-2. INDEX-V1 welcome section 
+2. INDEX-V1 welcome section
 3. INDEX-V1 about section
 4. INDEX-V1 our secrets section
 5. INDEX-V1 vidoe popup section
@@ -116,8 +116,8 @@ Author URI: http://themeforest.net/user/XpeedStudio/portfolio
 /* css variable list */
 
 :root {
-	 /*color purple*/ 
-	--color-purple: #6A1B9A; 
+	 /*color purple*/
+	--color-purple: #6A1B9A;
 	/* color navy blue */
 	--color-navy-blue: #590D88;
 	/* color pink */
@@ -530,7 +530,7 @@ Section
 	opacity: 0;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	-webkit-backface-visibility: hidden;
-	-webkit-transition: all 0.3s ease-out; 
+	-webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 }
 
@@ -543,7 +543,7 @@ Section
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
 }
 
-.mfp-with-zoom.mfp-removing .mfp-container, 
+.mfp-with-zoom.mfp-removing .mfp-container,
 .mfp-with-zoom.mfp-removing.mfp-bg {
 	opacity: 0;
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
@@ -691,7 +691,7 @@ Section
 
 .beautypress-light-overlay.beautypress-purple-overlay:before {
 	background-image: -webkit-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(106,27,154) 0%, rgba(151,95,184,0.5) 30%, rgba(255,255,255,0) 100%);
-	background-image: -ms-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(106,27,154) 0%, rgba(151,95,184,0.5) 30%, rgba(255,255,255,0) 100%);	
+	background-image: -ms-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(106,27,154) 0%, rgba(151,95,184,0.5) 30%, rgba(255,255,255,0) 100%);
 }
 .beautypress-light-overlay.beautypress-pink-overlay:before  {
 	background-image: -webkit-linear-gradient( 90deg, rgb(0,0,0) 0%, rgb(236,85,152) 0%, rgba(242,136,183,0.5) 30%, rgba(255,255,255,0) 100%);
@@ -929,7 +929,7 @@ Section
 	top: -50%;
 }
 /*======================================================================================
-								1. INDEX-V1 Header section 
+								1. INDEX-V1 Header section
 ===============================================================================*/
 
 .beautypress-header-section {
@@ -1162,7 +1162,7 @@ Section
 	border-right: solid 1px #f0f0f0;
 	z-index: -2;
 }
-.beautypress-main-header .megamenu-panel .megamenu-list li a:hover, 
+.beautypress-main-header .megamenu-panel .megamenu-list li a:hover,
 .beautypress-main-header .megamenu-panel .megamenu-list li a:focus {
 	background-color: transparent;
 }
@@ -1256,7 +1256,7 @@ Section
 	margin-top: 3px;
 }
 /*======================================================================================
-								2. INDEX-V1 welcome section 
+								2. INDEX-V1 welcome section
 ===============================================================================*/
 
 .beautypress-welcome-container {
@@ -1435,7 +1435,7 @@ Section
 }
 
 /*======================================================================================
-								3. INDEX-V1 about section 
+								3. INDEX-V1 about section
 ===============================================================================*/
 
 .beautypress-border-with-text-wrap {
@@ -1644,7 +1644,7 @@ Section
 	line-height: 1.8;
 }
 
-.twentytwenty-horizontal .beautypress-before-after .twentytwenty-handle:before, 
+.twentytwenty-horizontal .beautypress-before-after .twentytwenty-handle:before,
 .twentytwenty-horizontal .beautypress-before-after .twentytwenty-handle:after {
 	background: #681C98;
 	box-shadow: none;
@@ -2112,7 +2112,7 @@ Section
 .beautypress-booking-form-wraper input[type="submit"]:hover {
 	background-color: var(--color-purple);
 }
-.datepicker td, 
+.datepicker td,
 .datepicker th {
 	width: 30px;
 	height: 30px;
@@ -2130,10 +2130,10 @@ Section
 	background-color: var(--color-pink) !important;
 	background-image: none !important;
 }
-.beautypress-booking-form-wraper input[type="number"]::-webkit-inner-spin-button, 
-.beautypress-booking-form-wraper input[type="number"]::-webkit-outer-spin-button { 
-	-webkit-appearance: none; 
-	margin: 0; 
+.beautypress-booking-form-wraper input[type="number"]::-webkit-inner-spin-button,
+.beautypress-booking-form-wraper input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 /*======================================================================================
 								6. INDEX-V1 Photo Gallery
@@ -2837,9 +2837,9 @@ Section
 .beautypress-newsfeed-img {
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;	
-	-webkit-box-align: center;	
-	-ms-flex-align: center;	
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
 	align-items: center;
 	align-self: flex-end;
 	flex: 1;
@@ -2857,7 +2857,7 @@ Section
 	display: block;
 	color: var(--color-white);
 }
-.beautypress-dates {	
+.beautypress-dates {
 	text-align: right;
 	flex: 1;
 	flex-basis: 30%;
@@ -3108,7 +3108,7 @@ Section
 	background-repeat: no-repeat;
 	background-position: center center;
 	width: 100%;
-	padding: 0; 
+	padding: 0;
 	padding-top: calc(100% * 1 / 10);
 }
 .beautypress-footer-section:after {
@@ -3118,7 +3118,7 @@ Section
 	left: 0;
 	height: 100%;
 	width: 100%;
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 829.4" preserveAspectRatio="none"><path fill= "rgb(103, 28, 152)" fill-opacity= "0.7" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');	
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 829.4" preserveAspectRatio="none"><path fill= "rgb(103, 28, 152)" fill-opacity= "0.7" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');
 	pointer-events: none;
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -3214,7 +3214,7 @@ Section
 
 
 /*==============================-------------------------------------
-												index-v2.html 
+												index-v2.html
 =========================----------------------------------*/
 
 /*=============== section heading ==========================*/
@@ -4010,7 +4010,7 @@ Section
 	color: inherit;
 	font-size: 1em;
 }
-.beautypress-version-2.beautypress-footer-section:before, 
+.beautypress-version-2.beautypress-footer-section:before,
 .beautypress-version-2.beautypress-footer-section:after {
 	display: none;
 }
@@ -4037,7 +4037,7 @@ Section
 
 
 /*==============================-------------------------------------
-												index-v3.html 
+												index-v3.html
 =========================----------------------------------*/
 
 /*====================== section heading ========================*/
@@ -4203,16 +4203,16 @@ Section
 								3. INDEX-V3 Our Services
 ===============================================================================*/
 
-.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-side-nav li a:hover, 
+.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-side-nav li a:hover,
 .beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-side-nav li.active a,
-.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li a:hover i, 
+.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li a:hover i,
 .beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li.active a i {
 	color: var(--color-cyan);
 }
 .beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-side-nav li a:before {
 	background-color: var(--color-cyan);
 }
-.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li a:before, 
+.beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li a:before,
 .beautypress-service-section.beautypress-version-2 .beautypress-tab .beautypress-top-nav li a:after {
 	border-color: var(--color-cyan);
 }
@@ -4225,7 +4225,7 @@ Section
 ===============================================================================*/
 
 .beautypress-booking-section.beautypress-version-2 .beautypress-border.beautypress-version-3 ,
-.beautypress-booking-section.beautypress-version-2 .beautypress-border.beautypress-version-3:before, 
+.beautypress-booking-section.beautypress-version-2 .beautypress-border.beautypress-version-3:before,
 .beautypress-booking-section.beautypress-version-2 .beautypress-border.beautypress-version-3:after {
 	border-color: var(--color-chocolate);
 }
@@ -4239,8 +4239,8 @@ Section
 .beautypress-booking-section.beautypress-version-2 .beautypress-icon-bg-text:before {
 	color: var(--color-chocolate);
 }
-.beautypress-booking-section.beautypress-version-2 .beautypress-booking-form-wraper textarea:focus, 
-.beautypress-booking-section.beautypress-version-2 .beautypress-booking-form-wraper input:focus, 
+.beautypress-booking-section.beautypress-version-2 .beautypress-booking-form-wraper textarea:focus,
+.beautypress-booking-section.beautypress-version-2 .beautypress-booking-form-wraper input:focus,
 .beautypress-booking-section.beautypress-version-2 .beautypress-booking-form-wraper select:focus {
 	border-color: var(--color-chocolate) !important;
 }
@@ -4260,7 +4260,7 @@ Section
 								4. INDEX-V3 Photo Gallery
 ===============================================================================*/
 
-.beautypress-photo-gallery-section.beautypress-version-2 .beautypress-portfolio-nav ul li a:hover, 
+.beautypress-photo-gallery-section.beautypress-version-2 .beautypress-portfolio-nav ul li a:hover,
 .beautypress-photo-gallery-section.beautypress-version-2 .beautypress-portfolio-nav ul li a.selected {
 	color: var(--color-cyan);
 }
@@ -4425,7 +4425,7 @@ Section
 }
 
 /*==============================-------------------------------------
-												index-v4.html 
+												index-v4.html
 =========================----------------------------------*/
 
 /*======================================================================================
@@ -4536,7 +4536,7 @@ Section
 
 
 /*==============================-------------------------------------
-												index-v5.html 
+												index-v5.html
 =========================----------------------------------*/
 
 /*======================================================================================
@@ -4580,7 +4580,7 @@ Section
 	height: 100%;
 }
 .beautypress-header-section.beautypress-header-version-4 .nav-header .xs-nav-logo {
-	display: none;		
+	display: none;
 }
 
 /*======================================================================================
@@ -5311,7 +5311,7 @@ Section
 .back-to-top-center {
 	right: inherit;
 	transform: translateX(-50%) !important;
-	left: 50%;	
+	left: 50%;
 }
 .back-to-top-center.beautypress-back-to-top-wraper{
 	height: 40px;
@@ -5677,7 +5677,7 @@ Section
 }
 .beautypress-single-square-service-content:hover .beautypress-overlay-with-img {
 	top: 0;
-	left: 0;	
+	left: 0;
 	background-color: transparent;
 }
 .beautypress-single-square-service-content:hover:before {
@@ -5708,10 +5708,13 @@ Section
 /*=========================================================================
 								5. INNER PAGE Contact.html
 =============================================================================*/
-
-#beautypress_maps {
-	height: 570px;
-	width: 100%;
+#beautypress_map {
+	min-height: 523px;
+	text-align: center;
+	overflow: hidden;
+	background-color: #999999;
+	background-image: url("../img/map.png");
+	background-position: center;
 }
 
 .beautypress-contact-us-section {
@@ -6047,7 +6050,7 @@ Section
 	margin: 0;
 }
 .beautypress-blog-post-wraper .beautypress-tag a {
-	margin: 0 10px 10px 0;	
+	margin: 0 10px 10px 0;
 }
 .beautypress-blog-post-wraper .beautypress-tag {
 	margin: 0 0 15px;
@@ -6886,9 +6889,9 @@ Section
 }
 .next-prev-btn.small-btn {
 	height: 50px;
-	width: 50px;	
-	display: -webkit-inline-box;	
-	display: -ms-inline-flexbox;	
+	width: 50px;
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
 	display: inline-flex;
 	-webkit-box-pack: center;
 	-ms-flex-pack: center;
@@ -7307,7 +7310,7 @@ Section
 }
 .beautypress-version-2.beautypress-single-square-service-content:hover h2  {
 	color: #444444;
-} 
+}
 .beautypress-version-2.beautypress-single-square-service-content:hover p {
 	color: var(--color-semi-ash);
 }
@@ -7506,7 +7509,7 @@ Section
 	margin: 0;
 }
 .beautypress-sub-heading.beautypress-watermark-title.beautypress-version-2 {
-	margin: 0 0 30px;	
+	margin: 0 0 30px;
 }
 .beautypress-about-section-v2 .beautypress-about-us-content p {
 	color: #888888;
@@ -7914,19 +7917,19 @@ Section
 	background-color: #F44336;
 }
 .beautypress-footer-details-text.beautypress-red h5 {
-	color: #F44336;	
+	color: #F44336;
 }
 .beautypress-footer-details-icon.beautypress-blue {
 	background-color: #3498F1;
 }
 .beautypress-footer-details-text.beautypress-blue h5 {
-	color: #3498F1;	
+	color: #3498F1;
 }
 .beautypress-footer-details-icon.beautypress-green {
 	background-color: #56B054;
 }
 .beautypress-footer-details-text.beautypress-green h5 {
-	color: #56B054;	
+	color: #56B054;
 }
 .beautypress-footer-link.beautypress-version-3 li a {
 	color: #999999;
@@ -8011,7 +8014,7 @@ Section
 	border-bottom: 0px solid var(--color-white);
 	margin: 0;
 }
-.beautypress-version-6.beautypress-footer-section:before, 
+.beautypress-version-6.beautypress-footer-section:before,
 .beautypress-version-6.beautypress-footer-section:after {
 	display: none;
 }
@@ -8083,7 +8086,7 @@ Section
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(0, 0, 0)" fill-opacity= "0.7" fill-rule= "evenodd" d="M0,10266s198.4,114,387,5,497.966-214.4,774-170,689.47,140,759,169v650H0v-654Z" transform="translate(0 -10090.6)"/></svg>');
 }
 .beautypress-version-7.beautypress-footer-section:after {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(0, 0, 0)" fill-opacity= "0.7" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');	
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(0, 0, 0)" fill-opacity= "0.7" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');
 }
 .beautypress-version-7.beautypress-footer-section .beautypress-copyright-text span {
 	color: var(--color-purple);
@@ -8095,7 +8098,7 @@ Section
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(248, 248, 248)" fill-opacity= "0.5" fill-rule= "evenodd" d="M0,10266s198.4,114,387,5,497.966-214.4,774-170,689.47,140,759,169v650H0v-654Z" transform="translate(0 -10090.6)"/></svg>');
 }
 .beautypress-version-8.beautypress-footer-section:after {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(248, 248, 248)" fill-opacity= "0.5" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');	
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><path fill= "rgb(248, 248, 248)" fill-opacity= "0.5" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');
 }
 .beautypress-version-8.beautypress-footer-section .beautypress-copyright-text span {
 	color: #5BC271;
@@ -8121,7 +8124,7 @@ Section
 	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><defs><linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(123, 17, 251);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(208, 40, 252);stop-opacity:1" /></linearGradient></defs><path fill= "url(%23grad1)" fill-opacity= "0.6" fill-rule= "evenodd" d="M0,10266s198.4,114,387,5,497.966-214.4,774-170,689.47,140,759,169v650H0v-654Z" transform="translate(0 -10090.6)"/></svg>');
 }
 .beautypress-version-9.beautypress-footer-section:after {
-	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><defs><linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(123, 17, 251);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(208, 40, 252);stop-opacity:1" /></linearGradient></defs><path fill= "url(%23grad2)" fill-opacity= ".6" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');	
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920 829.4"><defs><linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:rgb(123, 17, 251);stop-opacity:1" /><stop offset="100%" style="stop-color:rgb(208, 40, 252);stop-opacity:1" /></linearGradient></defs><path fill= "url(%23grad2)" fill-opacity= ".6" fill-rule= "evenodd" d="M0,10095s570.853,396,1495,58c0,0,271.65-105.1,425-92v863H0v-829Z" transform="translate(0 -10059.8)"/></svg>');
 }
 .beautypress-footer-section.beautypress-version-9 .beautypress-subscribe-content {
 	padding: 0;
@@ -8139,8 +8142,8 @@ Section
 /* new pricing */
 .beautypress-single-new-pricing-wraper {
 	display: -ms-grid;
-	display: grid;	
-	-ms-grid-columns: calc(33.33333% - 25px) calc(50% - 25px) 16.666667%;	
+	display: grid;
+	-ms-grid-columns: calc(33.33333% - 25px) calc(50% - 25px) 16.666667%;
 	grid-template-columns: calc(33.33333% - 25px) calc(50% - 25px) 16.666667%;
 	grid-gap: 25px;
 	margin: 0 0 30px;
@@ -8370,7 +8373,7 @@ Section
 	margin: 5px;
 }
 .beautypress-sync-slider-thumb.beautypress-version-2 .owl-item.current .beautypress-sync-thumb {
-	box-shadow: var(--primary-shadow);	
+	box-shadow: var(--primary-shadow);
 }
 .beautypress-sync-thumb {
 	position: relative;
@@ -8450,7 +8453,7 @@ Section
 .beautypress-portfolio-text-content:last-child {
 	padding: 0;
 	margin: 0;
-	border-bottom: 0px solid #f4f4f4;	
+	border-bottom: 0px solid #f4f4f4;
 }
 
 .beautypress-next-prev-wraper {
@@ -8668,7 +8671,7 @@ label[for="rating"] {
 	line-height: 1.875;
 	margin: 0 0 30px;
 }
-.woocommerce div.product p.price, 
+.woocommerce div.product p.price,
 .woocommerce div.product span.price {
 	font-size: inherit;
 }
@@ -8722,7 +8725,7 @@ label[for="rating"] {
 	align-items: center;
 	cursor: pointer;
 	transition: all .4s ease;
-}	
+}
 .beautypress_input_number .add {
 	float: right;
 }
@@ -8739,17 +8742,17 @@ label[for="rating"] {
 	width: 46px;
 	font-weight: 400;
 }
-.beautypress_input_number input[type="number"]::-webkit-inner-spin-button, 
-.beautypress_input_number input[type="number"]::-webkit-outer-spin-button { 
-	-webkit-appearance: none; 
-	margin: 0; 
+.beautypress_input_number input[type="number"]::-webkit-inner-spin-button,
+.beautypress_input_number input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 .beautypress-add-to-chart-form .w-quantity-btn {
 	margin: 0 0 0 20px;
 }
 .beautypress-add-to-chart-form .beautypress-wishlist {
 	/*margin: 10px 0 0 20px;	*/
-	margin: 0px 0 0 20px;	
+	margin: 0px 0 0 20px;
 }
 .beautypress-add-to-chart-form .w-quantity-btn button.button.alt {
 	background-color: var(--color-purple);
@@ -8891,7 +8894,7 @@ label[for="rating"] {
 	resize: none;
 	height: 120px !important;
 	padding: 18px;
-} 
+}
 .beautypress-woocommerce-tabs #respond input#submit {
 	background-color: var(--color-purple);
 	height: 50px;
@@ -9064,7 +9067,7 @@ label[for="rating"] {
 }
 .beautypress-main-header li .nav-submenu p ,
 .beautypress-new-header li .nav-submenu p {
-	color: var(--color-semi-black);	
+	color: var(--color-semi-black);
 }
 .beautypress-main-header.color-white .xs_nav-landscape .submenu-indicator-chevron {
 	border-color: transparent #fff #fff transparent;
@@ -9320,8 +9323,8 @@ label[for="rating"] {
 	background-image: linear-gradient(to right, #2fb6ed 0%,#2fb6ed 50%,#2d3e4f 50%,#2d3e4f 100%);
 }
 .theme-switcher-inner ul li a[data-name="cian"] {
-	background-image: linear-gradient(to right, #681c98 0%,#681c98 50%,#222222 50%,#222222 100%); 
+	background-image: linear-gradient(to right, #681c98 0%,#681c98 50%,#222222 50%,#222222 100%);
 }
 .theme-switcher-inner ul li a[data-name="orange"] {
-	background-image: linear-gradient(to right, #E1BCA9 0%,#E1BCA9 50%,#333333 50%,#333333 100%); 
+	background-image: linear-gradient(to right, #E1BCA9 0%,#E1BCA9 50%,#333333 50%,#333333 100%);
 }
