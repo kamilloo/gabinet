@@ -43,6 +43,7 @@
         "tilt.js": "^1.2.1",
         "v-file-upload": "^3.1.7",
         "vue-image-upload-resize": "^2.1.2",
-        "vue-upload-component": "^2.8.20"
+        "vue-upload-component": "^2.8.20",
+        "vuedraggable": "^2.23.2"
     }
 }

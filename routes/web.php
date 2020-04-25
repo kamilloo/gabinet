@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     ])->except('show');
 
 
+    Route::get('pricing-show-all', 'PricingController@showAll')->name('pricing.show.all');
     Route::resource('pricing', 'PricingController')->names([
         'index' => 'pricing.index',
         'create' => 'pricing.create',
@@ -61,6 +62,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'edit' => 'pricing.edit',
         'update' => 'pricing.update',
         'destroy' => 'pricing.destroy',
+        'show' => 'pricing.show',
     ]);
 
     Route::resource('tags', 'TagController')->names([

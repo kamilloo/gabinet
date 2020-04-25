@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Model;
+use App\Models\Pricing;
 
 class PricingController extends Controller
 {
     public function index()
     {
-        return view('pricing', ['pricing' => \App\Models\Pricing::with('items')->get()]);
+        $pricing = Pricing::with(['items' => Model::orderByPosition()])->orderBy('position')->get();
+        return view('pricing', compact('pricing'));
     }
 }
