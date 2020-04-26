@@ -81,7 +81,7 @@ Route::group(['namespace' => 'Front'], function (){
     Route::get('onas', 'AboutController@index')->name('about');
     Route::get('cennik', 'PricingController@index')->name('pricing');
     Route::get('kontakt', 'Contact@index')->name('contact');
-    Route::post('kontakt', 'Contact@store');
+    Route::post('kontakt', 'Contact@store')->name('contact-form');
     Route::get('/', 'WelcomeController@index')->name('welcome');
 });
 

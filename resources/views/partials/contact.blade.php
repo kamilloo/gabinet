@@ -3,7 +3,7 @@
                     <div class="col-sm-12 col-lg-8 col-xl-8">
                         <div class="beautypress-contact-form">
                             <h2>Napisz do Nas</h2>
-                            <form action="{{ route('contact') }}" method="POST" id="beautypress-contact">
+                            <form action="{{ route('contact-form') }}" method="POST" id="beautypress-contact">
                                 {{ csrf_field() }}
                                 <div class="beautypress-spilit-container">
                                     <div class="input-group">
@@ -12,12 +12,12 @@
                                     </div>
                                     <div class="input-group">
                                         <input type="email" name="email" id="c_email" placeholder="Twój email">
-                                        <div class="input-group-addon"><i class="xsicon icon-envelope5"></i></div>
+                                        <div class="input-group-addon">@</div>
                                     </div>
                                 </div><!-- .beautypress-spilit-container END -->
                                 <div class="input-group">
                                     <input type="text" name="subject" id="c_subject" placeholder="Temat">
-                                    <div class="input-group-addon">@</div>
+                                    <div class="input-group-addon"><i class="xsicon icon-envelope5"></i></div>
                                 </div>
                                 <div class="input-group">
                                     <textarea name="massage" id="c_massage" cols="30" rows="10" placeholder="Treść..."></textarea>

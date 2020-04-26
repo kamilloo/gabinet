@@ -2,10 +2,10 @@
 "use strict";
 	/*------------------------------------------------------------------
 	 [Table of contents]
-	 
-	 
+
+
 	 beautypress custom function
-	 menu fixed function 
+	 menu fixed function
 	 email patern
 	 prelaoder
 	 beautypress portfolio grid
@@ -44,7 +44,7 @@
 	 meun scroll and add class
 	 snazzy maps 1
 	 snazzy maps 2
-	 
+
 	 -------------------------------------------------------------------*/
 
 
@@ -77,13 +77,13 @@
 			}
 				}
 
-//  email patern 
+//  email patern
 		function email_pattern( email ) {
 		var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			return regex.test( email );
 			}
 
-// menu fixed function 
+// menu fixed function
 		function muneFixed( ) {
 
 		var scroll = $( document ).scrollTop( ),
@@ -115,7 +115,7 @@
 		} );
 			}
 
-// menu fixed anim class function 
+// menu fixed anim class function
 		function menuFixedAnimClass( ) {
 
 		var scroll = $( document ).scrollTop( ),
@@ -154,7 +154,7 @@
 		beautypress_function( );
 			// menu fixed
 			muneFixed( );
-			// menu fixed anim class function 
+			// menu fixed anim class function
 			menuFixedAnimClass( );
 
 			/*=============================================================
@@ -373,7 +373,7 @@
 
 // Beautypress custom function init
 		beautypress_function( );
-// menu fixed anim class function 
+// menu fixed anim class function
 			menuFixedAnimClass( );
 			/*=============================================================
 			 Date Picker
@@ -823,6 +823,8 @@
 			c_subject = $( '#c_subject' ),
 			c_massage = $( '#c_massage' ),
 			c_submit = $( '#c_submit' ),
+			c_token = $( "[name='_token']" ),
+				contactFormAction = $( '#beautypress-contact' ).attr('action'),
 			c_error = false;
 			$( '.c_error_massage , .beautypress_success_message , .beautypress_loader' ).hide( ).fadeOut( 400 );
 			if ( c_name.val( ) === '' ) {
@@ -854,12 +856,13 @@
 		c_submit.before( ).hide( ).fadeIn( );
 			$.ajax( {
 			type: "POST",
-				url: "php/contact-form.php",
+				url: contactFormAction,
 				data: {
-				'c_name' : c_name.val( ),
-					'c_email' : c_email.val( ),
-					'c_subject' : c_subject.val( ),
-					'c_massage' : c_massage.val( )
+				'name' : c_name.val( ),
+					'email' : c_email.val( ),
+					'subject' : c_subject.val( ),
+					'message' : c_massage.val( ),
+					'_token' : c_token.val( ),
 				},
 				success: function( result ){
 				c_submit.after( '<span class="beautypress_success_message">' + result + '</span>' ).hide( ).fadeIn( );
@@ -1009,7 +1012,7 @@
 		 parallax bg
 		 =========================================================================*/
 
-	 
+
 
 		if ( $( '.parallax-bg' ).length > 0 ) {
 		$( '.parallax-bg' ).parallax( {
@@ -1060,7 +1063,7 @@
 			input.val( function( i, oldval ) { return ++oldval; } );
 		} );
 			} );
-			
+
 			} );
 			$( window ).on( 'scroll', function( ) {
 
@@ -1080,7 +1083,7 @@
 		$( '.beautypress-back-to-top-wraper.show-last-pos' ).removeClass( 'active' );
 			}
 
-		} ); // END Scroll Function 
+		} ); // END Scroll Function
 
 			$( window ).on( 'resize', function( ) {
 		// Beautypress custom function init
@@ -1109,11 +1112,11 @@
 				// The latitude and longitude to center the map (always required)
 				center: new google.maps.LatLng( 40.6700, - 73.9400 ), // New York
 
-				// How you would like to style the map. 
+				// How you would like to style the map.
 				// This is where you would paste any style found on Snazzy Maps.
 				styles: [{"featureType":"administrative", "elementType":"all", "stylers":[{"saturation":"-100"}]}, {"featureType":"administrative.province", "elementType":"all", "stylers":[{"visibility":"off"}]}, {"featureType":"landscape", "elementType":"all", "stylers":[{"saturation": - 100}, {"lightness":65}, {"visibility":"on"}]}, {"featureType":"poi", "elementType":"all", "stylers":[{"saturation": - 100}, {"lightness":"50"}, {"visibility":"simplified"}]}, {"featureType":"road", "elementType":"all", "stylers":[{"saturation":"-100"}]}, {"featureType":"road.highway", "elementType":"all", "stylers":[{"visibility":"simplified"}]}, {"featureType":"road.arterial", "elementType":"all", "stylers":[{"lightness":"30"}]}, {"featureType":"road.local", "elementType":"all", "stylers":[{"lightness":"40"}]}, {"featureType":"transit", "elementType":"all", "stylers":[{"saturation": - 100}, {"visibility":"simplified"}]}, {"featureType":"water", "elementType":"geometry", "stylers":[{"hue":"#ffff00"}, {"lightness": - 25}, {"saturation": - 97}]}, {"featureType":"water", "elementType":"labels", "stylers":[{"lightness": - 25}, {"saturation": - 100}]}]
 			};
-				// Get the HTML DOM element that will contain your map 
+				// Get the HTML DOM element that will contain your map
 				// We are using a div with id="map" seen below in the <body>
 				var mapElement = document.getElementById( 'beautypress_maps' );
 				// Create the Google Map using our element and options defined above
@@ -1149,11 +1152,11 @@
 				// The latitude and longitude to center the map (always required)
 				center: new google.maps.LatLng( 40.6700, - 73.9400 ), // New York
 
-				// How you would like to style the map. 
+				// How you would like to style the map.
 				// This is where you would paste any style found on Snazzy Maps.
 				styles: [{"featureType":"all", "elementType":"all", "stylers":[{"visibility":"on"}]}, {"featureType":"all", "elementType":"labels", "stylers":[{"visibility":"off"}, {"saturation":"-100"}]}, {"featureType":"all", "elementType":"labels.text.fill", "stylers":[{"saturation":36}, {"color":"#000000"}, {"lightness":40}, {"visibility":"off"}]}, {"featureType":"all", "elementType":"labels.text.stroke", "stylers":[{"visibility":"off"}, {"color":"#000000"}, {"lightness":16}]}, {"featureType":"all", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]}, {"featureType":"administrative", "elementType":"geometry.fill", "stylers":[{"color":"#000000"}, {"lightness":20}]}, {"featureType":"administrative", "elementType":"geometry.stroke", "stylers":[{"color":"#000000"}, {"lightness":17}, {"weight":1.2}]}, {"featureType":"landscape", "elementType":"geometry", "stylers":[{"color":"#000000"}, {"lightness":20}]}, {"featureType":"landscape", "elementType":"geometry.fill", "stylers":[{"color":"#4d6059"}]}, {"featureType":"landscape", "elementType":"geometry.stroke", "stylers":[{"color":"#4d6059"}]}, {"featureType":"landscape.natural", "elementType":"geometry.fill", "stylers":[{"color":"#4d6059"}]}, {"featureType":"poi", "elementType":"geometry", "stylers":[{"lightness":21}]}, {"featureType":"poi", "elementType":"geometry.fill", "stylers":[{"color":"#4d6059"}]}, {"featureType":"poi", "elementType":"geometry.stroke", "stylers":[{"color":"#4d6059"}]}, {"featureType":"road", "elementType":"geometry", "stylers":[{"visibility":"on"}, {"color":"#7f8d89"}]}, {"featureType":"road", "elementType":"geometry.fill", "stylers":[{"color":"#7f8d89"}]}, {"featureType":"road.highway", "elementType":"geometry.fill", "stylers":[{"color":"#7f8d89"}, {"lightness":17}]}, {"featureType":"road.highway", "elementType":"geometry.stroke", "stylers":[{"color":"#7f8d89"}, {"lightness":29}, {"weight":0.2}]}, {"featureType":"road.arterial", "elementType":"geometry", "stylers":[{"color":"#000000"}, {"lightness":18}]}, {"featureType":"road.arterial", "elementType":"geometry.fill", "stylers":[{"color":"#7f8d89"}]}, {"featureType":"road.arterial", "elementType":"geometry.stroke", "stylers":[{"color":"#7f8d89"}]}, {"featureType":"road.local", "elementType":"geometry", "stylers":[{"color":"#000000"}, {"lightness":16}]}, {"featureType":"road.local", "elementType":"geometry.fill", "stylers":[{"color":"#7f8d89"}]}, {"featureType":"road.local", "elementType":"geometry.stroke", "stylers":[{"color":"#7f8d89"}]}, {"featureType":"transit", "elementType":"geometry", "stylers":[{"color":"#000000"}, {"lightness":19}]}, {"featureType":"water", "elementType":"all", "stylers":[{"color":"#2b3638"}, {"visibility":"on"}]}, {"featureType":"water", "elementType":"geometry", "stylers":[{"color":"#2b3638"}, {"lightness":17}]}, {"featureType":"water", "elementType":"geometry.fill", "stylers":[{"color":"#24282b"}]}, {"featureType":"water", "elementType":"geometry.stroke", "stylers":[{"color":"#24282b"}]}, {"featureType":"water", "elementType":"labels", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"labels.text", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"labels.text.fill", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"labels.text.stroke", "stylers":[{"visibility":"off"}]}, {"featureType":"water", "elementType":"labels.icon", "stylers":[{"visibility":"off"}]}]
 			};
-				// Get the HTML DOM element that will contain your map 
+				// Get the HTML DOM element that will contain your map
 				// We are using a div with id="map" seen below in the <body>
 				var mapElement = document.getElementById( 'beautypress_maps_2' );
 				// Create the Google Map using our element and options defined above
