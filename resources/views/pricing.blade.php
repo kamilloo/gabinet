@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Inner welcome -->
-    <section class="beautypress-inner-welocme-section beautypress-bg" style="background-image: url(img/inner-section-bg.jpg);">
+    <section class="beautypress-inner-welocme-section beautypress-bg" style="background-image: url(img/slider-3_img_3.jpg);">
         <div class="beautypress-black-overlay"></div>
         <div class="container">
             <div class="beautypress-inner-welcome-content">
