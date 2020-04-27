@@ -77,7 +77,7 @@
             <nav class="xs_nav_2 xs_nav-landscape">
                 <div class="nav-header">
                     <a class="nav-logo" href="{{ route('welcome') }}">
-                        <img src="img/logo-v4.png" alt="logo">
+                        <img width="150" src="img/logo-v4.png" alt="logo">
                     </a>
                     <div class="nav-toggle"></div>
                 </div>
@@ -85,7 +85,7 @@
                     @if($shop->status)
                     <div class="nav-cart-button">
                     <a href="{{ $shop->url }}" target="_blank">
-                        <span style="{text-transform: uppercase; font-size: 14px, font-weight: normal}">Kup Bon&nbsp;</span>
+                        <span style="{text-transform: uppercase; font-size: 14px; font-weight: normal}">Kup Bon&nbsp;</span>
                     <i class="fa fa-shopping-basket"></i>
                     </a>
                     </div>
@@ -95,11 +95,11 @@
 {{--                            <i class="fa fa-search"></i>--}}
 {{--                        </a>--}}
 {{--                    </div>--}}
-                    <form><span class="nav-search-close-button" tabindex="0">✕</span>
-                        <div class="nav-search-inner">
-                            <input type="search" name="search" placeholder="Type and hit ENTER">
-                        </div>
-                    </form>
+{{--                    <form><span class="nav-search-close-button" tabindex="0">✕</span>--}}
+{{--                        <div class="nav-search-inner">--}}
+{{--                            <input type="search" name="search" placeholder="Type and hit ENTER">--}}
+{{--                        </div>--}}
+{{--                    </form>--}}
                 </div>
                 <div class="nav-menus-wrapper">
                     <ul class="nav-menu nav-menu-centered">
