@@ -69,6 +69,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property string|null $icon
+ * @property int|null $position
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Service[] $services
@@ -80,6 +81,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereIcon($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Category whereUpdatedAt($value)
  */
 	class Category extends \Eloquent {}
@@ -92,6 +94,7 @@ namespace App\Models{
  * @property int $id
  * @property string $name
  * @property float|null $price_since
+ * @property int|null $position
  * @property string|null $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -104,6 +107,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing wherePriceSince($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Pricing whereUpdatedAt($value)
  */
@@ -118,7 +122,8 @@ namespace App\Models{
  * @property int $pricing_id
  * @property string $title
  * @property string|null $description
- * @property float $price
+ * @property int|null $position
+ * @property string $price
  * @property string|null $link
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -130,6 +135,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem wherePrice($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem wherePricingId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\PricingItem whereTitle($value)
@@ -140,11 +146,33 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Shop
+ *
+ * @property int $id
+ * @property string|null $url
+ * @property int $status
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop query()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Shop whereUrl($value)
+ */
+	class Shop extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Service
  *
  * @property int $id
  * @property string $title
  * @property int|null $category_id
+ * @property int|null $position
  * @property string|null $description
  * @property string|null $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -158,6 +186,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Service whereUpdatedAt($value)
  */
@@ -171,7 +200,7 @@ namespace App\Models{
  * @property int $id
  * @property int|null $position
  * @property string $title
- * @property string $description
+ * @property string|null $description
  * @property string $filepath
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
@@ -182,7 +211,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereDescription($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereFilepath($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereOrdinal($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate wherePosition($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Certificate whereUpdatedAt($value)
  */

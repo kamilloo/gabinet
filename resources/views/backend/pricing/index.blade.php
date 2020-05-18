@@ -13,7 +13,11 @@
         <th scope="col">Lp</th>
         <th scope="col">Tytuł</th>
         <th scope="col">Zdjęcie</th>
-        <th scope="col"><a class="btn btn-info mr-3" href="{{ route('pricing.show.all') }}">Sortuj&nbsp;Cenniki<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a> Action</th>
+        <th scope="col">
+            <a class="btn btn-info mr-3" href="{{ route('pricing.show.all') }}">Sortuj&nbsp;Cenniki<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            <a class="btn btn-info mr-3" href="{{ route('pricing.printing') }}">Do&nbsp;PDF<span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
+            Action
+        </th>
     </tr>
 
 @endsection

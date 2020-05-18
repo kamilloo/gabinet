@@ -55,6 +55,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
 
     Route::get('pricing-show-all', 'PricingController@showAll')->name('pricing.show.all');
+    Route::get('pricing-printing', 'PricingController@printing')->name('pricing.printing');
     Route::resource('pricing', 'PricingController')->names([
         'index' => 'pricing.index',
         'create' => 'pricing.create',

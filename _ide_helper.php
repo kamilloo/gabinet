@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.48 on 2020-04-08 18:42:11.
+ * Generated for Laravel 5.5.48 on 2020-05-18 19:02:58.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -3274,20 +3274,32 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function flush()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->flush();
         }
         
         /**
-         * Get the underlying database connection.
+         * Get the Filesystem instance.
          *
-         * @return \Illuminate\Database\MySqlConnection 
+         * @return \Illuminate\Filesystem\Filesystem 
          * @static 
          */ 
-        public static function getConnection()
+        public static function getFilesystem()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
-                        return $instance->getConnection();
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getFilesystem();
+        }
+        
+        /**
+         * Get the working directory of the cache.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getDirectory()
+        {
+                        /** @var \Illuminate\Cache\FileStore $instance */
+                        return $instance->getDirectory();
         }
         
         /**
@@ -3298,7 +3310,7 @@ namespace Illuminate\Support\Facades {
          */ 
         public static function getPrefix()
         {
-                        /** @var \Illuminate\Cache\DatabaseStore $instance */
+                        /** @var \Illuminate\Cache\FileStore $instance */
                         return $instance->getPrefix();
         }
          
@@ -13816,6 +13828,188 @@ namespace Illuminate\Support\Facades {
  
 }
 
+namespace Barryvdh\DomPDF { 
+
+    /**
+     * 
+     *
+     */ 
+    class Facade {
+        
+        /**
+         * Get the DomPDF instance
+         *
+         * @return \Barryvdh\DomPDF\Dompdf 
+         * @static 
+         */ 
+        public static function getDomPDF()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->getDomPDF();
+        }
+        
+        /**
+         * Set the paper size (default A4)
+         *
+         * @param string $paper
+         * @param string $orientation
+         * @return \Barryvdh\DomPDF\PDF 
+         * @static 
+         */ 
+        public static function setPaper($paper, $orientation = 'portrait')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setPaper($paper, $orientation);
+        }
+        
+        /**
+         * Show or hide warnings
+         *
+         * @param bool $warnings
+         * @return \Barryvdh\DomPDF\PDF 
+         * @static 
+         */ 
+        public static function setWarnings($warnings)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setWarnings($warnings);
+        }
+        
+        /**
+         * Load a HTML string
+         *
+         * @param string $string
+         * @param string $encoding Not used yet
+         * @return static 
+         * @static 
+         */ 
+        public static function loadHTML($string, $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadHTML($string, $encoding);
+        }
+        
+        /**
+         * Load a HTML file
+         *
+         * @param string $file
+         * @return static 
+         * @static 
+         */ 
+        public static function loadFile($file)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadFile($file);
+        }
+        
+        /**
+         * Add metadata info
+         *
+         * @param array $info
+         * @return static 
+         * @static 
+         */ 
+        public static function addInfo($info)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->addInfo($info);
+        }
+        
+        /**
+         * Load a View and convert to HTML
+         *
+         * @param string $view
+         * @param array $data
+         * @param array $mergeData
+         * @param string $encoding Not used yet
+         * @return static 
+         * @static 
+         */ 
+        public static function loadView($view, $data = [], $mergeData = [], $encoding = null)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->loadView($view, $data, $mergeData, $encoding);
+        }
+        
+        /**
+         * Set/Change an option in DomPdf
+         *
+         * @param array $options
+         * @return static 
+         * @static 
+         */ 
+        public static function setOptions($options)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setOptions($options);
+        }
+        
+        /**
+         * Output the PDF as a string.
+         *
+         * @return string The rendered PDF as string
+         * @static 
+         */ 
+        public static function output()
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->output();
+        }
+        
+        /**
+         * Save the PDF to a file
+         *
+         * @param $filename
+         * @return static 
+         * @static 
+         */ 
+        public static function save($filename)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->save($filename);
+        }
+        
+        /**
+         * Make the PDF downloadable by the user
+         *
+         * @param string $filename
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */ 
+        public static function download($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->download($filename);
+        }
+        
+        /**
+         * Return a response with the PDF to show in the browser
+         *
+         * @param string $filename
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */ 
+        public static function stream($filename = 'document.pdf')
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->stream($filename);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setEncryption($password)
+        {
+                        /** @var \Barryvdh\DomPDF\PDF $instance */
+                        return $instance->setEncryption($password);
+        }
+         
+    }
+ 
+}
+
 namespace Intervention\Image\Facades { 
 
     /**
@@ -17294,6 +17488,8 @@ namespace  {
     class Validator extends \Illuminate\Support\Facades\Validator {}
 
     class View extends \Illuminate\Support\Facades\View {}
+
+    class PDF extends \Barryvdh\DomPDF\Facade {}
 
     class Image extends \Intervention\Image\Facades\Image {}
 

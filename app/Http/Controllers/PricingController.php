@@ -10,6 +10,8 @@ use App\Http\Requests\PricingUpdateRequest;
 use App\Models\Certificate;
 use App\Models\Model;
 use App\Models\Pricing;
+use App\Services\PdfService;
+use App\Services\PricingExporterService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
@@ -40,6 +42,13 @@ class PricingController extends Controller
         return view('backend.pricing.show-all')->with([
             'pricing' => Pricing::orderBy('position')->get()
         ]);
+    }
+
+    public function printing(PdfService $pdf_service, PricingExporterService $pricing_exporter_service)
+    {
+        $exported = $pricing_exporter_service->export();
+
+        return $pdf_service->render($exported);
     }
 
     /**
