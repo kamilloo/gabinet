@@ -26,7 +26,6 @@ class PdfService
     {
         return $this->pdf
             ->loadView('pdf.pricing', compact('payload'))
-            ->stream()
             ->download('pricing.pdf')
             ;
         return view('pdf.pricing', compact('payload'));
