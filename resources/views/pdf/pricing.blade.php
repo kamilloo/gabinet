@@ -5,15 +5,9 @@
     <title>Cennik</title>
 
     <style>
-        @font-face {
-            font-family: 'Open Sans';
-            font-style: normal;
-            font-weight: normal;
-            src: url(http://themes.googleusercontent.com/static/fonts/opensans/v8/cJZKeOuBrn4kERxqtaUH3aCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
-        }
 
         body{
-            font-family: "Open Sans", sans-serif;
+            font-family: DejaVu Sans;
             font-size: 1em;
             width: 100%;
             margin: 10px;
@@ -50,18 +44,12 @@
             margin: 0 auto;
             padding: 10px;
             height: 80px;
-            border-bottom: 2px solid #901867;
-            border-left: 2px solid #901867;
-            border-right: 2px solid #901867;
-
         }
         .logo-wrapper{
             width: 400px;
             text-align: center;
             margin: 0px auto;
             height: 80px;
-            border: 2px solid #901867;
-
         }
         .logo{
             padding-top: 20px;
