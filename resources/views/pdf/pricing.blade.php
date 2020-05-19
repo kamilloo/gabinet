@@ -30,10 +30,8 @@
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 2cm;
-
+            height: 1cm;
             text-align: center;
-            line-height: 1.5cm;
         }
 
         body{
@@ -41,7 +39,7 @@
             font-size: 12px;
             width: 100%;
             border: 2px solid #901867;
-            margin: 3cm 1cm 2cm 1cm;
+            margin: 2cm 1cm 2cm 1cm;
         }
 
         * {
@@ -69,7 +67,7 @@
             text-align: center;
             margin: 0px auto;
             padding: 10px;
-            height: 80px;
+            /*height: 80px;*/
         }
         .logo{
             padding-top: 20px;
