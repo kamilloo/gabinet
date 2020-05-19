@@ -1,10 +1,7 @@
 <!doctype html>
 <html lang="pl">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Cennik</title>
 
     <style>
@@ -16,7 +13,7 @@
         }
 
         body{
-            font-family: "Open Sans", SansSerif;
+            font-family: "Open Sans", sans-serif;
             font-size: 1em;
             width: 100%;
             margin: 10px;
@@ -101,6 +98,9 @@
             width: 20%;
             text-align: right;
         }
+        .break-page-avoid{
+            page-break-inside: avoid;
+        }
     </style>
 </head>
 <body>
@@ -115,20 +115,22 @@
 <div class="body">
     <h1>Cennik</h1>
 @foreach($payload as $pricing)
-    <h2>{{ $pricing->name }}</h2>
-    <table>
-        @foreach($pricing->items as $item)
-        <tr>
-            <td class="title" >
-                <span>{{ $item->title }}</span>
-                @if(!empty($item->description))
-                    <li>({{ $item->description }})</li>
-                @endif
-            </td>
-            <td class="price" ><span>{{ $item->price }} zł</span></td>
-        </tr>
-        @endforeach
-    </table>
+    <div class="break-page-avoid">
+        <h2>{{ $pricing->name }}</h2>
+        <table>
+            @foreach($pricing->items as $item)
+                <tr>
+                    <td class="title" >
+                        <span>{{ $item->title }}</span>
+                        @if(!empty($item->description))
+                            <li>({{ $item->description }})</li>
+                        @endif
+                    </td>
+                    <td class="price" ><span>{{ $item->price }} zł</span></td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 @endforeach
 
 </div>
