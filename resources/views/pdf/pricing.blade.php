@@ -61,21 +61,21 @@
             text-transform: uppercase;
             margin-left: 40px;
             margin-bottom: 20px;
-            font-weight: 300;
+            font-weight: normal;
         }
         h2{
             font-size: 24px;
             line-height: 36px;
             margin-left: 40px;
             margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: normal;
         }
         p{
             font-size: 18px;
             line-height: 24px;
             margin-left: 20px;
             margin-bottom: 5px;
-            font-weight: 300;
+            font-weight: normal;
         }
         table{
             width: 100%;
