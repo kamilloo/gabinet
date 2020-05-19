@@ -6,12 +6,50 @@
 
     <style>
 
+        /**
+               Set the margins of the page to 0, so the footer and the header
+               can be of the full height and width !
+            **/
+        @page {
+            margin: 0;
+        }
+
+        /** Define the header rules **/
+        header {
+            position: fixed;
+            top: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 2cm;
+
+            /** Extra personal styles **/
+            background-color: #03a9f4;
+            color: white;
+            text-align: center;
+            line-height: 1.5cm;
+        }
+
+        /** Define the footer rules **/
+        footer {
+            position: fixed;
+            bottom: 0cm;
+            left: 0cm;
+            right: 0cm;
+            height: 2cm;
+
+            /** Extra personal styles **/
+            background-color: #03a9f4;
+            color: white;
+            text-align: center;
+            line-height: 1.5cm;
+        }
+
         body{
             font-family: DejaVu Sans;
             font-size: 12px;
             width: 100%;
-            margin: 10px;
             border: 2px solid #901867;
+            margin: 1cm;
         }
 
         * {
@@ -95,39 +133,45 @@
     </style>
 </head>
 <body>
-<div class="header">
-    <div class="logo-outer-wrapper">
-        <div class="logo-wrapper">
-            <img class="logo" src="{{ asset('img/logo-v4.png') }}">
+<!-- Define header and footer blocks before your content -->
+<header>
+    <div class="header">
+        <div class="logo-outer-wrapper">
+            <div class="logo-wrapper">
+                <img class="logo" src="{{ asset('img/logo-v4.png') }}">
+            </div>
         </div>
     </div>
+</header>
 
-</div>
-<div class="body">
-@foreach($payload as $pricing)
-    <div class="break-page-avoid">
-        <h2>{{ $pricing->name }}</h2>
-        <table>
-            @foreach($pricing->items as $item)
-                <tr>
-                    <td class="title" >
-                        <span>{{ $item->title }}</span>
-                        @if(!empty($item->description))
-                            <br>({{ $item->description }})
-                        @endif
-                    </td>
-                    <td class="price" ><span>{{ $item->price }} zł</span></td>
-                </tr>
-            @endforeach
-        </table>
+<footer>
+
+    <div class="footer">
+        <p>Szczegóły na stronie internetowej {{ config('app.url') }}</p>
     </div>
-@endforeach
+</footer>
 
-</div>
-
-<div class="footer">
-    <p>Szczegóły na stronie internetowej {{ config('app.url') }}</p>
-</div>
-
+<main>
+    <div class="body">
+        @foreach($payload as $pricing)
+            <div class="break-page-avoid">
+                <h2>{{ $pricing->name }}</h2>
+                <table>
+                    @foreach($pricing->items as $item)
+                        <tr>
+                            <td class="title" >
+                                <span>{{ $item->title }}</span>
+                                @if(!empty($item->description))
+                                    <br>({{ $item->description }})
+                                @endif
+                            </td>
+                            <td class="price" ><span>{{ $item->price }} zł</span></td>
+                        </tr>
+                    @endforeach
+                </table>
+            </div>
+        @endforeach
+    </div>
+</main>
 </body>
 </html>
