@@ -16,12 +16,12 @@
                         </div><!-- .beautypress-pricing-header END -->
                         <div class="beautypress-pricing-footer">
                             <ul class="beautypress-both-side-list beautypress-version-3">
-                                @foreach($file->items as $item)
-                                <li>{{ $item->title }}<span>{{ $item->price }} zł</span></li>
-                                @if(!empty($item->description))
-                                    <li>({{ $item->description }})</li>
-                                @endif
-                                @endforeach
+                                    @foreach($file->items as $item)
+                                    <li>{{ $item->title }}<span>{{ $item->price }} zł</span></li>
+                                    @if(!empty($item->description))
+                                        <li>({{ $item->description }})</li>
+                                    @endif
+                                    @endforeach
                             </ul>
 
                             <div class="beautypress-btn-wraper">

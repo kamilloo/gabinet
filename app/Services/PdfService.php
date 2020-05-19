@@ -24,10 +24,10 @@ class PdfService
 
     public function render(Arrayable $payload)
     {
-//        return $this->pdf
-//            ->loadView('pdf.pricing', compact($payload))
-//            ->stream()
-//            ->download('pricing.pdf')
+        return $this->pdf
+            ->loadView('pdf.pricing', compact('payload'))
+            ->stream()
+            ->download('pricing.pdf')
             ;
         return view('pdf.pricing', compact('payload'));
 
