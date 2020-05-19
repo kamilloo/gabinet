@@ -14,19 +14,14 @@
             margin: 0;
         }
 
-        /** Define the header rules **/
         header {
             position: fixed;
-            top: 0cm;
-            left: 0cm;
-            right: 0cm;
-            height: 2cm;
+            height: 3cm;
 
             /** Extra personal styles **/
-            background-color: #03a9f4;
-            color: white;
             text-align: center;
             line-height: 1.5cm;
+            margin-bottom: 20px;
         }
 
         /** Define the footer rules **/
@@ -37,9 +32,6 @@
             right: 0cm;
             height: 2cm;
 
-            /** Extra personal styles **/
-            background-color: #03a9f4;
-            color: white;
             text-align: center;
             line-height: 1.5cm;
         }
@@ -49,17 +41,13 @@
             font-size: 12px;
             width: 100%;
             border: 2px solid #901867;
-            margin: 1cm;
+            margin: 3cm 1cm 2cm 1cm;
         }
 
         * {
             padding: 0;
             margin: 0;
             border: 0;
-        }
-        .header{
-            height: 100px;
-            margin-bottom: 20px;
         }
         .body{
             width: 80%;
@@ -76,17 +64,11 @@
             line-height: 20px;
             font-style: italic;
         }
-        .logo-outer-wrapper{
-            width: 400px;
-            text-align: center;
-            margin: 0 auto;
-            padding: 10px;
-            height: 80px;
-        }
         .logo-wrapper{
             width: 400px;
             text-align: center;
             margin: 0px auto;
+            padding: 10px;
             height: 80px;
         }
         .logo{
@@ -135,17 +117,12 @@
 <body>
 <!-- Define header and footer blocks before your content -->
 <header>
-    <div class="header">
-        <div class="logo-outer-wrapper">
-            <div class="logo-wrapper">
-                <img class="logo" src="{{ asset('img/logo-v4.png') }}">
-            </div>
-        </div>
+    <div class="logo-wrapper">
+        <img class="logo" src="{{ asset('img/logo-v4.png') }}">
     </div>
 </header>
 
 <footer>
-
     <div class="footer">
         <p>Szczegóły na stronie internetowej {{ config('app.url') }}</p>
     </div>
