@@ -30,7 +30,7 @@
             bottom: 0cm;
             left: 0cm;
             right: 0cm;
-            height: 1cm;
+            height: 2cm;
             text-align: center;
         }
 
@@ -116,7 +116,7 @@
 <!-- Define header and footer blocks before your content -->
 <header>
     <div class="logo-wrapper">
-        <img class="logo" src="{{ asset('img/logo-v4.png') }}">
+        <img class="logo" src="{{ asset('img/logo_bez_tla.png') }}" width="300px">
     </div>
 </header>
 
