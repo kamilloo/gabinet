@@ -8,7 +8,7 @@
 
         body{
             font-family: DejaVu Sans;
-            font-size: 1em;
+            font-size: 12px;
             width: 100%;
             margin: 10px;
             border: 2px solid #901867;
@@ -56,23 +56,26 @@
             vertical-align: middle;
         }
         h1{
-            font-size: 48px;
-            line-height: 60px;
+            font-size: 36px;
+            line-height: 48px;
             text-transform: uppercase;
             margin-left: 40px;
             margin-bottom: 20px;
+            font-weight: 300;
         }
         h2{
-            font-size: 36px;
-            line-height: 50px;
+            font-size: 24px;
+            line-height: 36px;
             margin-left: 40px;
-            margin-bottom: 10px
+            margin-bottom: 10px;
+            font-weight: 300;
         }
         p{
-            font-size: 24px;
-            line-height: 30px;
+            font-size: 18px;
+            line-height: 24px;
             margin-left: 20px;
-            margin-bottom: 5px
+            margin-bottom: 5px;
+            font-weight: 300;
         }
         table{
             width: 100%;
@@ -111,7 +114,7 @@
                     <td class="title" >
                         <span>{{ $item->title }}</span>
                         @if(!empty($item->description))
-                            <li>({{ $item->description }})</li>
+                            <br>({{ $item->description }})
                         @endif
                     </td>
                     <td class="price" ><span>{{ $item->price }} zł</span></td>
