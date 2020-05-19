@@ -39,7 +39,7 @@
             font-size: 12px;
             width: 100%;
             border: 2px solid #901867;
-            margin: 3cm 1cm 2cm 1cm;
+            margin: 2.5cm 1cm 2cm 1cm;
         }
 
         * {
