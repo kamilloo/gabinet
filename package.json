@@ -22,7 +22,7 @@
         "jquery": "^3.2",
         "laravel-mix": "^4.1.4",
         "lodash": "^4.17.15",
-        "node-sass": "^4.13.1",
+        "node-sass": "^7.0.0",
         "popper.js": "^1.16.0",
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.23.7",
